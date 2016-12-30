@@ -34,6 +34,13 @@ CREATE TABLE `equipo` (
   `foto_equipo` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `equipo`
+--
+
+INSERT INTO `equipo` (`id_equipo`, `nombre_equipo`, `anio_fundacion`, `foto_equipo`) VALUES
+(1, 'Sevilla', '1905', './img/sevilla.png'),
+(2, 'Betis', '1907', './img/betis.png');
 -- --------------------------------------------------------
 
 --
@@ -127,6 +134,14 @@ CREATE TABLE `usuario` (
   `equipo_id` int(11) NOT NULL,
   `admin` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`id_usuario`, `nombre_usuario`, `apellido1_usuario`, `apellido2_usuario`, `correo_usuario`, `pass_usuario`, `foto_usuario`, `ciudad_usuario`, `equipo_id`, `admin`) VALUES
+(1, 'User', 'Social', 'Football', 'user@gmail.com', 'user', 'C:\\\\xampp\\\\tmp\\\\php7955.tmp', 'Sevilla', 1, 1),
+(2, 'Admin', 'Social', 'Football', 'admin@gmail.com', 'admin', 'C:\\\\xampp\\\\tmp\\\\php7955.tmp', 'Sevilla', 2, 0);
 
 --
 -- Índices para tablas volcadas

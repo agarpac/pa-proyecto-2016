@@ -31,7 +31,7 @@ if (isset($_POST['btnEnviar'])){
         $correo = $_POST['correo'];
         $password = $_POST['password'];
         $foto = $_FILES['foto']['tmp_name'];
-        print_r($_POST);
+        
         
         $nombre = filter_var($nombre, FILTER_SANITIZE_MAGIC_QUOTES);
         $apellido1 = filter_var($apellido1, FILTER_SANITIZE_MAGIC_QUOTES);
@@ -41,7 +41,7 @@ if (isset($_POST['btnEnviar'])){
         $foto = filter_var($foto, FILTER_SANITIZE_MAGIC_QUOTES);
         
         createUsuario($nombre, $apellido1, $apellido2, $correo, $password, $foto, $_POST['ciudades'], $_POST['equipos']);
-        //header('location: index.php');
+        header('location: index.php');
     } else {
         echo '<span style="color:red"><h3>Debe rellenar todos los campos</h3></span>';
     }

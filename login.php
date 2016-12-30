@@ -38,12 +38,10 @@ if (isset($_POST['btnLogin'])){
             $_SESSION['nombreUserLogin'] = $col['nombre_usuario'];
             $_SESSION['apellido1UserLogin'] = $col['apellido1_usuario'];
             $_SESSION['apellido2UserLogin'] = $col['apellido2_usuario'];
-            //Si es admin se redirige a la página de admin
-            if ($col['admin'] == 0) {
-                header('location: indexAdministrador.php');
-            } elseif ($col['admin'] == 1) {
-                header('location: indexCliente.php');
-            }
+            $_SESSION['admin'] = $col['admin'];
+            
+            header('location: inicio.php');
+            
         } else {
             $_SESSION['errorLogin'] = True;
         }
