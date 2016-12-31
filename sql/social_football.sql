@@ -75,7 +75,8 @@ CREATE TABLE `mensaje` (
 
 CREATE TABLE `noticia` (
   `id_noticia` int(11) NOT NULL,
-  `fecha_noticia` varchar(10) NOT NULL,
+  `fecha_noticia` varchar(15) NOT NULL,
+  `titular_noticia` varchar(200) NOT NULL,
   `texto_noticia` varchar(400) NOT NULL,
   `id_equipo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
