@@ -40,7 +40,25 @@ CREATE TABLE `equipo` (
 
 INSERT INTO `equipo` (`id_equipo`, `nombre_equipo`, `anio_fundacion`, `foto_equipo`) VALUES
 (1, 'Sevilla', '1905', './img/sevilla.png'),
-(2, 'Betis', '1907', './img/betis.png');
+(2, 'Betis', '1907', './img/betis.png'),
+(3, 'Alaves', '1921', './img/alaves.png'),
+(4, 'Athletic', '1898', './img/athletic.png'),
+(5, 'Atletico', '1903', './img/atletico.png'),
+(6, 'Barcelona', '1899', './img/barcelona.png'),
+(7, 'Celta', '1923', './img/celta.png'),
+(8, 'Deportivo', '1906', './img/deportivo.png'),
+(9, 'Eibar', '1940', './img/eibar.png'),
+(10, 'Espanyol', '1900', './img/espanyol.png'),
+(11, 'Granada', '1931', './img/granada.png'),
+(12, 'Las Palmas', '1945', './img/laspalmas.png'),
+(13, 'Leganes', '1928', './img/leganes.png'),
+(14, 'Malaga', '1921', './img/malaga.png'),
+(15, 'Osasuna', '1920', './img/osasuna.png'),
+(16, 'Madrid', '1902', './img/realmadrid.png'),
+(17, 'Real', '1920', './img/realsociedad.png'),
+(18, 'Sporting', '1905', './img/sporting.png'),
+(19, 'Valencia', '1919', './img/valencia.png'),
+(20, 'Villarreal', '1923', './img/villarreal.png');
 -- --------------------------------------------------------
 
 --
@@ -75,11 +93,19 @@ CREATE TABLE `mensaje` (
 
 CREATE TABLE `noticia` (
   `id_noticia` int(11) NOT NULL,
-  `fecha_noticia` varchar(15) NOT NULL,
+  `fecha_noticia` varchar(10) NOT NULL,
   `titular_noticia` varchar(200) NOT NULL,
   `texto_noticia` varchar(400) NOT NULL,
   `id_equipo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `noticia`
+--
+
+INSERT INTO `noticia` (`id_noticia`, `fecha_noticia`, `titular_noticia`, `texto_noticia`, `id_equipo`) VALUES
+(1, '25/12/2016', 'El Betis arrasa en la Liga Promises', 'El conjunto andaluz, liderado por Alfonso, ha sido campeón de la Liga Promises por delante de equipos como el Barcelona o real Madrid. Todo ello gracias al entrenador Alberto que ha tenido a sus jugadores enchufadísimos durante todo el torneo.', 2),
+(2, '26/12/2016', 'El Sevilla se hace con el central Clement.', 'Finalmente fue el equipo de Nervión el que se hizo con los servicios del jugador. Todo parecía indicar que el galo acabaría jugando en el equipo colchonero debido a que la oferta era mayor, pero para sorpresa de todos, el jugador del Nantes decidió irse a Sevilla.', 1);
 
 -- --------------------------------------------------------
 --
@@ -167,6 +193,12 @@ ALTER TABLE `mensaje`
   ADD PRIMARY KEY (`id_mensaje`);
 
 --
+-- Indices de la tabla `noticia`
+--
+ALTER TABLE `noticia`
+  ADD PRIMARY KEY (`id_noticia`);
+
+--
 -- Indices de la tabla `partido`
 --
 ALTER TABLE `partido`
@@ -203,6 +235,11 @@ ALTER TABLE `estadio`
 --
 ALTER TABLE `mensaje`
   MODIFY `id_mensaje` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `noticia`
+--
+ALTER TABLE `noticia`
+  MODIFY `id_noticia` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `partido`
 --
