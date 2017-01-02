@@ -38,6 +38,7 @@ if (isset($_POST['btnLogin'])){
             $_SESSION['nombreUserLogin'] = $col['nombre_usuario'];
             $_SESSION['apellido1UserLogin'] = $col['apellido1_usuario'];
             $_SESSION['apellido2UserLogin'] = $col['apellido2_usuario'];
+            $_SESSION['equipoUser'] = $col['equipo_id'];
             $_SESSION['admin'] = $col['admin'];
             
             header('location: inicio.php');
