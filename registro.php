@@ -14,7 +14,8 @@ function muestraEquipos() {
                 echo '<input type="radio" name="equipos" value="' . $col['id_equipo'] . '" checked />' . '<img src = "' . $col['foto_equipo'] . '" alt = "equipo' . $col['id_equipo'] . '"/> ' . $col['nombre_equipo'] . "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" ;
                 $i++;
             } else {
-                echo '<input type="radio" name="equipos" value="' . $col['id_equipo'] . '" />' . $col['nombre_equipo'] . '<img src = "' . $col['foto_equipo'] . '" width = "75" alt = "imagen"/> <br>';
+                echo '<input type="radio" name="equipos" value="' . $col['id_equipo'] . '" checked />' . '<img src = "' . $col['foto_equipo'] . '" alt = "equipo' . $col['id_equipo'] . '"/> ' . $col['nombre_equipo'] . "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" ; 
+                echo '<br>';
                 $i = 0;
             }
         }

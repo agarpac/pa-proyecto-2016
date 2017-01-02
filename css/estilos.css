@@ -1,0 +1,11 @@
+#colPrincipal1 {
+  float: left;
+  width: 70%;
+  background-color: #CCF;
+}
+#colPrincipal2 {
+  float: left;
+  width: 30%;
+  
+  background-color: #FFA;
+}

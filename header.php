@@ -10,6 +10,7 @@
             <a href="partidos.php">Partidos</a>
             <a href="mensajes.php">Mensajes</a>
             <a href="amigos.php">Amigos</a>
+            
             <?php
                 if ($_SESSION['admin']==0){
                     ?>
@@ -18,6 +19,7 @@
                     <?php
                 }
             ?>
+           <a href="logout.php">Cerrar Sesión</a>
         </div>
     </body>
 </html>

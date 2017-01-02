@@ -64,3 +64,4 @@ function deleteNoticia($id_noticia){
     
     mysqli_close($con);
 }
+
