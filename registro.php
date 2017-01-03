@@ -1,6 +1,7 @@
 <?php
 include './CRUDUsuario.php';
 include_once './conexionBD.php';
+session_start();
 
 function muestraEquipos() {
     $con = conectaBD();
