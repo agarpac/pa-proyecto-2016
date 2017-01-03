@@ -1,11 +1,181 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,800,800italic");
+
+html, body, div {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline; 
+}
+
+body {
+    /* line-height: 1;*/
+}
+
+body, input, select, textarea {
+    color: #fff;
+    font-family: "Open Sans", Helvetica, sans-serif;
+    font-size: 13pt;
+    font-weight: 400;
+    letter-spacing: 0.075em;
+    line-height: 1.65em;
+}
+
+input{
+    color: black;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #000;
+    font-weight: 800;
+    letter-spacing: 0.225em;
+    line-height: 1em;
+    margin: 0 0 1em 0;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-size: 1.35em;
+    line-height: 1.75em;
+}
+
+#fondo {
+    background: #2e3842;
+    background-image: url("../img/estadio.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    cursor: default;
+    height: 100vh;
+    min-height: 35em;
+    /*overflow: hidden;*/
+    position: relative;
+    text-align: center;
+}
+
+
+#fondo h2 {
+    color: #fff;
+    font-size: 1.75em;
+    opacity: 1;
+    padding: 0.35em 1em;
+    z-index: 1;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-width: 2px;
+    width: 25%;
+    margin: 0 auto;
+}
+.centrar{
+
+}
+/*inicio estilo formulario*/
+.form-style{
+    max-width: 500px;
+
+    font: 14px Arial, Helvetica, sans-serif;
+    margin: 0 auto;
+}
+.form-style-heading{
+    font-weight: bold;
+    font-style: italic;
+    border-bottom: 2px solid #ddd;
+    margin-bottom: 20px;
+    font-size: 15px;
+    padding-bottom: 3px;
+}
+.form-style label{
+    display: block;
+    margin: 15px;
+}
+.form-style label > span{
+    width: 100px;
+    font-weight: bold;
+    float: left;
+    padding-top: 8px;
+    padding-right: 5px;
+}
+.form-style span.required{
+    color:red;
+}
+.form-style .tel-number-field{
+    width: 40px;
+    text-align: center;
+}
+.form-style input.input-field{
+    width: 48%;
+
+}
+
+.form-style input.input-field, 
+.form-style .tel-number-field, 
+.form-style .textarea-field, 
+.form-style .select-field{
+    box-sizing: border-box;
+    border: 1px solid #C2C2C2;
+    box-shadow: 1px 1px 4px #EBEBEB;
+    border-radius: 3px;
+    outline: none;
+}
+.form-style .input-field:focus, 
+.form-style .tel-number-field:focus, 
+.form-style .textarea-field:focus,  
+.form-style .select-field:focus{
+    border: 1px solid #0C0;
+}
+.form-style .textarea-field{
+    height:100px;
+    width: 55%;
+}
+/*Fin estilo formularios*/
+
+/*Inicio estilo botones login*/
+.button.special {
+    background-color: #ed4933;
+    box-shadow: none !important;
+    color: #ffffff !important;
+}
+
+.button.special:hover {
+    background-color: #ef5e4a !important;
+}
+
+.button.special:active {
+    background-color: #eb341c !important;
+}
+
+.form-style input[type=submit]{
+    border: none;
+    padding: 8px 15px 8px 15px;
+    background: #ed4933;
+    color: #fff;
+    box-shadow: 1px 1px 4px #DADADA;
+    -moz-box-shadow: 1px 1px 4px #DADADA;
+    -webkit-box-shadow: 1px 1px 4px #DADADA;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+}
+.form-style input[type=submit]:hover{
+    background: #ed4933;
+    color: #fff;
+}
+/* fin estilo botones login*/
+
 #colPrincipal1 {
-  float: left;
-  width: 70%;
-  background-color: #CCF;
+    float: left;
+    width: 70%;
+    background-color: #CCF;
 }
 #colPrincipal2 {
-  float: left;
-  width: 30%;
-  
-  background-color: #FFA;
+    float: left;
+    width: 30%;
+
+    background-color: #FFA;
 }
+
