@@ -49,8 +49,7 @@ function createUsuario($nombre, $apellido1, $apellido2, $correo, $password, $fot
 
        $con = conectaBD();
            
-       $result = mysqli_query($con,'INSERT INTO usuario (nombre_usuario, apellido1_usuario, apellido2_usuario, correo_usuario, pass_usuario, foto_usuario, ciudad_usuario, equipo_id, admin) '
-                . 'VALUES ("' . $nombre . '", "' . $apellido1 . '", "' . $apellido2 . '", "' . $correo . '", "' . $password . '", "' . $foto . '", "' . $ciudad . '", ' . $equipo . ', 1)');
+       mysqli_query($con,'INSERT INTO usuario (nombre_usuario, apellido1_usuario, apellido2_usuario, correo_usuario, pass_usuario, foto_usuario, ciudad_usuario, equipo_id, admin) VALUES ("' . $nombre . '", "' . $apellido1 . '", "' . $apellido2 . '", "' . $correo . '", "' . $password . '", "' . $foto . '", "' . $ciudad . '", ' . $equipo . ', 1)');
         
         mysqli_close($con);
     } else {
@@ -91,7 +90,7 @@ function updateUsuario($id, $nombre, $apellido1, $apellido2, $password, $foto, $
     
     $con = conectaBD();
     
-    $result = mysqli_query('UPDATE usuario SET nombre_usuario = "' . $nombre . '", apellido1_usuario = "' . $apellido1 . '", apellido2_usuario = "' . $apellido2 . '", pass_usuario = "' . $password . '", foto_usuario = "' . $foto . '", ciudad_usuario = "' . $ciudad . '", equipo_id = "' . $equipo . '" WHERE id_usuario = ' . $id);
+    mysqli_query('UPDATE usuario SET nombre_usuario = "' . $nombre . '", apellido1_usuario = "' . $apellido1 . '", apellido2_usuario = "' . $apellido2 . '", pass_usuario = "' . $password . '", foto_usuario = "' . $foto . '", ciudad_usuario = "' . $ciudad . '", equipo_id = "' . $equipo . '" WHERE id_usuario = ' . $id);
     
     mysqli_close($con);
 }
@@ -100,7 +99,7 @@ function updateUsuario($id, $nombre, $apellido1, $apellido2, $password, $foto, $
 function deleteUsuario($id){
     $con = conectaBD();
     
-    $result = mysqli_query('DELETE FROM usuario WHERE id_usuario = ' . $id);
+    mysqli_query('DELETE FROM usuario WHERE id_usuario = ' . $id);
     
     mysqli_close($con);
 }

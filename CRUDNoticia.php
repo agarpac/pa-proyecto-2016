@@ -24,7 +24,7 @@ function createNoticia($titular, $texto, $id_equipo){
     
     $con = conectaBD();
     
-    $result = mysqli_query($con, 'INSERT INTO noticia (fecha_noticia, texto_noticia, id_equipo, titular_noticia) VALUES ("' . date("d/m/y H:m:s") . '", "' . $texto . '", ' . $id_equipo . ', "' . $titular . '")');
+    mysqli_query($con, 'INSERT INTO noticia (fecha_noticia, texto_noticia, id_equipo, titular_noticia) VALUES ("' . date("d/m/y H:m:s") . '", "' . $texto . '", ' . $id_equipo . ', "' . $titular . '")');
     mysqli_close($con);
 }
 
@@ -51,7 +51,7 @@ function updateNoticia($id_noticia, $titular, $texto, $id_equipo){
     
     $con = conectaBD();
     
-    $result = mysqli_query($con, 'UPDATE noticia SET titular_noticia = "' . $titular . '", texto_noticia = "' . $texto . '", id_equipo = ' . $id_equipo . ' WHERE id_noticia = ' . $id_noticia);
+    mysqli_query($con, 'UPDATE noticia SET titular_noticia = "' . $titular . '", texto_noticia = "' . $texto . '", id_equipo = ' . $id_equipo . ' WHERE id_noticia = ' . $id_noticia);
     
     mysqli_close($con);
 }
@@ -60,7 +60,7 @@ function updateNoticia($id_noticia, $titular, $texto, $id_equipo){
 function deleteNoticia($id_noticia){
     $con = conectaBD();
     
-    $result = mysqli_query($con, 'DELETE FROM noticia WHERE id_noticia = ' . $id_noticia);
+    mysqli_query($con, 'DELETE FROM noticia WHERE id_noticia = ' . $id_noticia);
     
     mysqli_close($con);
 }
