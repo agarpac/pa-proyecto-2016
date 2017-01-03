@@ -80,9 +80,9 @@ if (isset($_POST['btnRegistro'])) {
 
                     <ul>
                         <li>
-                            <input type="submit" class="button special" name="btnLogin" value="Login"/>
+                            <input type="submit" class="buttonSpecial" name="btnLogin" value="Login"/>
 
-                            <input type="submit" class="button special" name="btnRegistro" value="Reg&iacute;strate!"/> 
+                            <input type="submit" class="buttonSpecial" name="btnRegistro" value="Reg&iacute;strate!"/> 
                         </li>
                     </ul>
                 </form>           
