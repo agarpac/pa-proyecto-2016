@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 require_once  './conexionBD.php';
 
 //Recoge los datos del equipo
@@ -18,13 +18,14 @@ function datosEquipo($id){
 }
 
 //Crea una noticia
-function createNoticia($titular, $texto, $id_equipo){
+function createNoticia($titular, $texto, $id_equipo, $fecha){
     $titular = filter_var($titular, FILTER_SANITIZE_MAGIC_QUOTES);
     $texto = filter_var($texto, FILTER_SANITIZE_MAGIC_QUOTES);
+    $fecha = filter_var($fecha, FILTER_SANITIZE_MAGIC_QUOTES);
     
     $con = conectaBD();
     
-    mysqli_query($con, 'INSERT INTO noticia (fecha_noticia, texto_noticia, id_equipo, titular_noticia) VALUES ("' . date("d/m/y H:m:s") . '", "' . $texto . '", ' . $id_equipo . ', "' . $titular . '")');
+    mysqli_query($con, 'INSERT INTO noticia (fecha_noticia, texto_noticia, id_equipo, titular_noticia) VALUES ("' . $fecha . '", "' . $texto . '", ' . $id_equipo . ', "' . $titular . '")');
     mysqli_close($con);
 }
 

@@ -1,34 +1,9 @@
 <?php
 include './CRUD/CRUDUsuario.php';
 include_once './conexionBD.php';
+include './CRUD/CRUDEquipo.php';
 
-function muestraEquipos() {
-    $con = conectaBD();
-    $result = mysqli_query($con, 'SELECT id_equipo, nombre_equipo, foto_equipo FROM equipo');
 
-    if (mysqli_num_rows($result) != 0) {
-
-        echo '<fieldset>';
-        echo '<legend>Elige tu favorito</legend>';
-        $i = 0;
-        while ($col = mysqli_fetch_array($result)) {
-            if ($i < 2) {
-
-                echo '<input type="radio" name="equipos" value="' . $col['id_equipo'] . '" checked />' . '<img src = "' . $col['foto_equipo'] . '" alt = "equipo' . $col['id_equipo'] . '"/> ' . $col['nombre_equipo'];
-
-                $i++;
-            } else {
-                echo '<label>';
-                echo '<input type="radio" name="equipos" value="' . $col['id_equipo'] . '" checked />' . '<img src = "' . $col['foto_equipo'] . '" alt = "equipo' . $col['id_equipo'] . '"/> ' . $col['nombre_equipo'];
-                echo '</label>';
-                $i = 0;
-            }
-        }
-        echo '</fieldset>';
-    } else {
-        echo 'No hay equipos para mostrar';
-    }
-}
 
 if (isset($_POST['btnEnviar'])) {
     if ($_POST['nombre'] != "" && $_POST['apellido1'] != "" && $_POST['apellido2'] != "" && $_POST['correo'] != "" && $_POST['password'] != "") {

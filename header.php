@@ -13,21 +13,20 @@
             <nav id="nav">
                 <ul>
                     <li class="special">
-                      <!--  <a href="#menu" class="menuToggle"><span>Menu</span></a>
-                        <div id="menu">
-                            <ul>-->
-                    <li><a href="inicio.php">Inicio</a></li>
-                    <li><a href="partidos.php">Partidos</a></li>
-                    <li><a href="mensajes.php">Mensajes</a></li>
-                    <li><a href="amigos.php">Amigos</a></li><?php
+                      
+                    <a href="inicio.php">Inicio</a>
+                    <a href="partidos.php">Partidos</a>
+                    <a href="mensajes.php">Mensajes</a>
+                    <a href="amigos.php">Amigos</a>
+                    <?php
                     if ($_SESSION['admin'] == 0) {
                         ?>
-                        <li><a href="noticias.php">Noticias</a></li>
-                        <li><a href="equipos.php">Equipos</a></li>
+                    <a href="noticiasAdmin.php">Noticias</a>
+                    <a href="equipos.php">Equipos</a>
                         <?php
                     }
                     ?>
-                    <li><a href="logout.php">Cerrar Sesión</a></li>
+                    <a href="logout.php">Cerrar Sesión</a>
                     <!-- </ul>
                  </div>
              </li>-->

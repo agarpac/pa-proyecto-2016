@@ -54,7 +54,7 @@ echo '<h1>Bienvenido  ' . $_SESSION['nombreUserLogin'] . ' ' . $_SESSION['apelli
                 //Muestro todos los titulares en forma de enlace. 
                 while ($col = mysqli_fetch_array($result)){
                      
-                     echo "<a href='?idNoticia=".$col['id_noticia']."'>".$col['titular_noticia']."</a>";
+                     echo "<a href='?idNoticia=".$col['id_noticia']."'>".$col['titular_noticia']."</a><br/>";
                 }
                                 
                 
