@@ -8,7 +8,7 @@ function datosEquipo($id){
     $con = conectaBD();
     
     //Realiza una consulta
-    $result = mysqli_query('SELECT nombre_equipo, foto_equipo FROM equipo WHERE id_equipo = "' . $id . '"');
+    $result = mysqli_query($con, 'SELECT nombre_equipo, foto_equipo FROM equipo WHERE id_equipo = "' . $id . '"');
     if(mysqli_num_rows($result) == 1){
         $col = mysqli_fetch_array($result);
         $_SESSION['nombre_equipo'] = $col['nombre_equipo'];

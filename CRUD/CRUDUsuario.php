@@ -29,7 +29,7 @@ function datosEquipo($id){
     $con = conectaBD();
     
     //Realiza una consulta
-    $result = mysqli_query('SELECT nombre_equipo, foto_equipo FROM equipo WHERE id_equipo = ' . $id);
+    $result = mysqli_query($con, 'SELECT nombre_equipo, foto_equipo FROM equipo WHERE id_equipo = ' . $id);
     if(mysqli_num_rows($result) == 1){
         $col = mysqli_fetch_array($result);
         $_SESSION['nombre_equipo'] = $col['nombre_equipo'];
@@ -65,20 +65,27 @@ function readUsuario($correo, $password) {
 
     $con = conectaBD();
 
-    $result = mysqli_query('SELECT * FROM usuario WHERE correo_usuario = "' . $correo . '" AND pass_usuario = "' . $password . '"');
+    $result = mysqli_query($con, 'SELECT * FROM usuario WHERE correo_usuario = "' . $correo . '" AND pass_usuario = "' . $password . '"');
     if (mysqli_num_rows($result) == 1) {
+        $_SESSION['errorLogin'] = False;
         $col = mysqli_fetch_array($result);
-        $_SESSION['nombre_usuario'] = $col['nombre_usuario'];
-        $_SESSION['apellido1_usuario'] = $col['apellido1_usuario'];
-        $_SESSION['apellido2_usuario'] = $col['apellido2_usuario'];
-        $_SESSION['correo_usuario'] = $col['correo_usuario'];
-        $_SESSION['foto_usuario'] = $col['foto_usuario'];
-        $_SESSION['ciudad_usuario'] = $col['ciudad_usuario'];
+        $_SESSION['id_usuario_login'] = $col['id_usuario'];
+        $_SESSION['nombre_usuario_login'] = $col['nombre_usuario'];
+        $_SESSION['apellido1_usuario_login'] = $col['apellido1_usuario'];
+        $_SESSION['apellido2_usuario_login'] = $col['apellido2_usuario'];
+        $_SESSION['correo_usuario_login'] = $col['correo_usuario'];
+        $_SESSION['foto_usuario_login'] = $col['foto_usuario'];
+        $_SESSION['ciudad_usuario_login'] = $col['ciudad_usuario'];
+        $_SESSION['admin'] = $col['admin'];
         datosEquipo($col['equipo_usuario']); //Muestra el nombre y la foto del equipo de ese ID
+        $encontrado = True;
     } else {
-        echo '<span style="color:red"><h3>El usuario no existe.</h3></span>';
+        $_SESSION['errorLogin'] = True;
+        $encontrado = False;
+        //echo '<span style="color:red"><h3>El usuario no existe.</h3></span>';
     }
     mysqli_close($con);
+    return $encontrado;
 }
 
 //Actualiza un usuario
@@ -91,7 +98,7 @@ function updateUsuario($id, $nombre, $apellido1, $apellido2, $password, $foto, $
     
     $con = conectaBD();
     
-    mysqli_query('UPDATE usuario SET nombre_usuario = "' . $nombre . '", apellido1_usuario = "' . $apellido1 . '", apellido2_usuario = "' . $apellido2 . '", pass_usuario = "' . $password . '", foto_usuario = "' . $foto . '", ciudad_usuario = "' . $ciudad . '", equipo_id = "' . $equipo . '" WHERE id_usuario = ' . $id);
+    mysqli_query($con, 'UPDATE usuario SET nombre_usuario = "' . $nombre . '", apellido1_usuario = "' . $apellido1 . '", apellido2_usuario = "' . $apellido2 . '", pass_usuario = "' . $password . '", foto_usuario = "' . $foto . '", ciudad_usuario = "' . $ciudad . '", equipo_id = "' . $equipo . '" WHERE id_usuario = ' . $id);
     
     mysqli_close($con);
 }
@@ -100,7 +107,7 @@ function updateUsuario($id, $nombre, $apellido1, $apellido2, $password, $foto, $
 function deleteUsuario($id){
     $con = conectaBD();
     
-    mysqli_query('DELETE FROM usuario WHERE id_usuario = ' . $id);
+    mysqli_query($con, 'DELETE FROM usuario WHERE id_usuario = ' . $id);
     
     mysqli_close($con);
 }
