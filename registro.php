@@ -150,5 +150,4 @@ if (isset($_POST['btnEnviar'])) {
 
             </div>
         </section>
-    </body>
-</html>
+        <?php include("footer.php"); ?>
