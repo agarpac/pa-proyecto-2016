@@ -1,5 +1,5 @@
 <?php
-include './CRUDUsuario.php';
+include './CRUD/CRUDUsuario.php';
 include_once './conexionBD.php';
 
 function muestraEquipos() {
