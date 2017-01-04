@@ -61,32 +61,19 @@ if (isset($_POST['btnEnviar'])) {
         <title>Social Football</title>
         <link rel="stylesheet" href="css/estilos.css" />
     </head>
-    <body class="bodyRegistro">
-        <section>
+    <body>
+        <section class="bodyRegistro">
 
             <div class="form-style">
 
                 <div class="form-style-heading">Registro en Social Football</div>
                 <form action="#" method="POST" enctype="multipart/form-data">
                     <label><span>Nombre: <span class="required">*</span></span><input type="text" class="input-field" name="nombre" value="" /></label>
-                   <!-- Nombre: <input type="text" name="nombre" /> <br> -->
                     <label><span>Primer apellido: <span class="required">*</span></span><input type="text" class="input-field" name="apellido1" value="" /></label>
-                   <!-- Primer apellido: <input type="text" name="apellido1" /> <br>-->
                     <label><span>Segundo apellido: <span class="required">*</span></span><input type="text" class="input-field" name="apellido2" value="" /></label>
-                     <!-- Segundo apellido: <input type="text" name="apellido2" /> <br>-->
                     <label><span>Email: <span class="required">*</span></span><input type="email" class="input-field" name="correo" value="" /></label>
-                    <!--Correo: <input type="email" name="correo" /> <br>-->
                     <label><span>Password: <span class="required">*</span></span><input type="password" class="input-field" name="password" value=""/></label>
-                    <!--Password: <input type="password" name="password" /> <br>-->
                     <label><span>Foto: </span><input type="file" name="foto" /></label>
-                    <!--Foto: <input type="file" name="foto" /> <br>-->
-
-
-<!--<input type="file" name="foto" id="foto" class="inputfile"/>
-<label for="foto"> el for="" debe tener el mismo nombre que el id del input 
-    <span class="buttonSpecial">Subir foto</span>
-</label>-->
-
                     <label><span>Ciudad:</span><select name="ciudades" class="select-field">
                             <option value="A Coru&ntilde;a">A coru&ntilde;a</option>
                             <option value="&Aacute;lava">&Aacute;lava</option>
