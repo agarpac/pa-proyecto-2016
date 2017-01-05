@@ -1,6 +1,5 @@
 <?php
-//Se inicia session
-session_start();
+
 include_once './CRUD/CRUDUsuario.php';
 //Si se ha pulsado sobre el botón de login
 if (isset($_POST['btnLogin'])) {
