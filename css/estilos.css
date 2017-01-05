@@ -1,13 +1,22 @@
 @import url(font-awesome.min.css);
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,800,800italic");
 
-html, body, div, footer, h1, header, form {
+html, body, div, footer, h1, header, form, article, section {
     margin: 0;
     padding: 0;
     border: 0;
     font-size: 100%;
     font: inherit;
     vertical-align: baseline; 
+}
+html
+{
+    position: relative; 
+    min-height: 100%;
+}
+body
+{
+    margin: 0 0 65px;
 }
 
 body, input, select, textarea {
@@ -203,6 +212,10 @@ footer{
     padding: 2em 0 2em 0 ;
     background-color: #1d242a;
     text-align: center;
+   /*pegarlo abajo*/
+    width: 100%;
+    bottom: 0;
+    position: absolute;
 }
 
 #footer .icons {
@@ -375,3 +388,15 @@ ul.icons li:last-child {
     background-color: #FFA;
 }
 /*Fin columnas noticias*/
+
+/*Inicio pag genericas Ej: quienesSomos*/
+.generico {
+    padding: 6em 0 4em 0 ;
+    background-color: #ffffff;
+    color: #4E4852;
+    
+    width: 60em;
+    margin: 0 auto;
+}
+
+/*Fin pag genericas*/
