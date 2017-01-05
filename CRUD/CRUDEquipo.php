@@ -1,7 +1,4 @@
 <?php
-
-session_start();
-
 require_once './conexionBD.php';
 
 //Crea un equipo
@@ -52,4 +49,32 @@ function deleteEquipo($id){
     mysqli_query($con, 'DELETE FROM equipo WHERE id_equipo = ' - $id);
     
     mysqli_close($con);
+}
+
+function muestraEquipos() {
+    $con = conectaBD();
+    $result = mysqli_query($con, 'SELECT id_equipo, nombre_equipo, foto_equipo FROM equipo');
+
+    if (mysqli_num_rows($result) != 0) {
+
+        echo '<fieldset>';
+        echo '<legend>Elige tu favorito</legend>';
+        $i = 0;
+        while ($col = mysqli_fetch_array($result)) {
+            if ($i < 2) {
+
+                echo '<input type="radio" id="equipo'. $col['id_equipo'] . '"  name="equipos" value="' . $col['id_equipo'] . '" checked />' . '<img src = "' . $col['foto_equipo'] . '" alt = "equipo' . $col['id_equipo'] . '"/> ' . $col['nombre_equipo'];
+
+                $i++;
+            } else {
+                echo '<label>';
+                echo '<input type="radio" id="equipo'. $col['id_equipo'] . '" name="equipos" value="' . $col['id_equipo'] . '" checked />' . '<img src = "' . $col['foto_equipo'] . '" alt = "equipo' . $col['id_equipo'] . '"/> ' . $col['nombre_equipo'];
+                echo '</label>';
+                $i = 0;
+            }
+        }
+        echo '</fieldset>';
+    } else {
+        echo 'No hay equipos para mostrar';
+    }
 }
