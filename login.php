@@ -57,6 +57,4 @@ if (isset($_POST['btnRegistro'])) {
             </div>
         </section>
 
-
-    </body>
-</html>
+<?php include("footer.php"); ?>
