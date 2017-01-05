@@ -379,13 +379,13 @@ ul.icons li:last-child {
 #colPrincipal1 {
     float: left;
     width: 70%;
-    background-color: #CCF;
+    background-color: #4E4852;
 }
 #colPrincipal2 {
     float: left;
     width: 30%;
 
-    background-color: #FFA;
+    background-color: #4E4852;
 }
 /*Fin columnas noticias*/
 
@@ -400,3 +400,9 @@ ul.icons li:last-child {
 }
 
 /*Fin pag genericas*/
+.error{
+    color: red;
+    text-decoration: underline;
+
+}
+

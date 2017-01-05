@@ -76,6 +76,7 @@ function readUsuario($correo, $password) {
         $_SESSION['correo_usuario_login'] = $col['correo_usuario'];
         $_SESSION['foto_usuario_login'] = $col['foto_usuario'];
         $_SESSION['ciudad_usuario_login'] = $col['ciudad_usuario'];
+        $_SESSION['equipoUser'] = $col['equipo_id'];
         $_SESSION['admin'] = $col['admin'];
         datosEquipo($col['equipo_usuario']); //Muestra el nombre y la foto del equipo de ese ID
         $encontrado = True;
