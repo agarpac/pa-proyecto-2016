@@ -46,14 +46,14 @@ function readNoticia($id_noticia){
 }
 
 //Actualiza una noticia
-function updateNoticia($id_noticia, $titular, $texto, $id_equipo){
+function updateNoticia($id_noticia, $titular, $texto){
     $titular = filter_var($titular, FILTER_SANITIZE_MAGIC_QUOTES);
     $texto = filter_var($texto, FILTER_SANITIZE_MAGIC_QUOTES);
-    
+   
     $con = conectaBD();
     
-    mysqli_query($con, 'UPDATE noticia SET titular_noticia = "' . $titular . '", texto_noticia = "' . $texto . '", id_equipo = ' . $id_equipo . ' WHERE id_noticia = ' . $id_noticia);
-    
+    mysqli_query($con, 'UPDATE noticia SET titular_noticia = "' . $titular .'" , texto_noticia = "' . $texto . '" WHERE id_noticia = "' . $id_noticia);
+                        
     mysqli_close($con);
 }
 

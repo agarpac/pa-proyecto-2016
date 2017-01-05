@@ -14,24 +14,16 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <title>Social Football</title>
         <link rel="stylesheet" href="css/estilos.css" type="text/css" />
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">   
+         <script script type="text/javascript" src="js/clear.js"></script>  
         
-        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        <script script type="text/javascript" src="js/clear.js"></script>
-        <script>
-            $( function() {
-              $( "#datepicker" ).datepicker({ dateFormat: 'dd/mm/yy' }).val();              
-            } );
-            
-        </script>
+       
         <script type="text/javascript">
             //Funcion que valida los datos del registro, en caso de errores muestra un mensaje por cada error y devuelve false
             function validacionRegistro() {
                 
                 var titulo = document.getElementById("titulo");
                 var cuerpoNoticia = document.getElementById("cuerpoNoticia");
-                var fecha = document.getElementById("datepicker");
+               
                 var bool = true;
 
                 //Borramos mensajes de error anteriores si los hay
@@ -42,11 +34,6 @@ and open the template in the editor.
                 if ($("#cuerpoError").length !== 0) {
                     $("#cuerpoError").remove();
                 }
-
-                if ($("#fechaError").length !== 0) {
-                    $("#fechaError").remove();
-                }
-
 
                 //Comprobamos todos los campos, mostrando un error en aquellos que los haya
                 if (titulo.value === "") {
@@ -68,20 +55,11 @@ and open the template in the editor.
                     bool = false;
                 } 
                 
-                if (fecha.value === "") {
-                    var aux = document.createElement("p");
-                    aux.setAttribute("id", "fechaError");
-                    aux.setAttribute("class", "error");
-                    aux.innerHTML = "Introduzca la fecha";
-                    $("#datepicker").after(aux);
-                    bool = false;
-                } 
+               
                
                 return bool;
             }
         </script>
-
-       
     </head>
     <body>
         <?php
@@ -89,17 +67,19 @@ and open the template in the editor.
              if (isset($_POST['btnVolver'])) {
                   header('location: noticiasAdmin.php');
              }
-            if (isset($_POST['btnCrearNoticia'])) {
+            if (isset($_POST['btnModificarNoticia'])) {
                  //Recogida de datos del formulario
                  $titulo = $_POST['titulo'];
-                 $cuerpoNoticia = $_POST['cuerpoNoticia'];
-                 $id_equipo = $_POST['equipos'];
-                 $fecha = $_POST['fecha'];
-                
-                 createNoticia($titulo, $cuerpoNoticia, $id_equipo, $fecha);
+                 $cuerpoNoticia = $_POST['cuerpoNoticia'];                 
+                 
+                echo $_SESSION['id_noticia'];
+                echo $titulo;
+                echo $cuerpoNoticia;
+                 updateNoticia($_SESSION['id_noticia'], $titulo, $cuerpoNoticia);
+                 unset($_SESSION['id_noticia']);
                  ?>
                  <article >
-                    <p>Noticia se ha creado con éxito</p>
+                    <p>Noticia se ha modificado con éxito</p>
                     <form method="post" action="./noticiasAdmin.php">
                         <input class="botonBusqueda" type="submit" value="Volver"/>
                     </form>
@@ -109,16 +89,16 @@ and open the template in the editor.
         ?>
         <?php
         //En este caso se muestra un formulario de registro
-        if (!isset($_POST['btnCrearNoticia'])) {
-            print_r($_SESSION);
+        if (!isset($_POST['btnModificarNoticia'])) {           
+           
+            readNoticia($_SESSION['id_noticia']);
             
             ?>
          <form method="POST" >
-             <span>Titulo: </span><input type="text" id="titulo" class="input-field" name="titulo"   />
-             <span>Noticia: </span><textarea id="cuerpoNoticia" rows="4" cols="50" class="input-field" name="cuerpoNoticia" ></textarea>
-             <span>Date: </span><input type="text" id="datepicker" name="fecha" />
-             <span>Equipos:</span> <?php muestraEquipos(); ?>
-             <input type="submit"  name="btnCrearNoticia" value="Crear"  onclick="return validacionRegistro();"/>
+             <span>Titulo: </span><input type="text" id="titulo" class="input-field" name="titulo" value="<?php echo $_SESSION['titular_noticia'] ?>"  />
+             <span>Noticia: </span><textarea id="cuerpoNoticia" rows="4" cols="50" class="input-field" name="cuerpoNoticia" ><?php echo $_SESSION['texto_noticia']?></textarea>
+                       
+             <input type="submit"  name="btnModificarNoticia" value="Modificar"  onclick="return validacionRegistro();"/>
              <input type="button" name="clear" value="Limpiar" onclick="clearForm(this.form);" >
              <input type="submit"  name="btnVolver" value="Volver" />
         </form>           

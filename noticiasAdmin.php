@@ -2,6 +2,7 @@
 session_start();
 include './header.php'; 
 include_once './conexionBD.php';
+include_once './CRUD/CRUDNoticia.php';
 print_r($_GET);
 ?>
 
@@ -14,74 +15,47 @@ print_r($_GET);
     </head>
     <body>
         <?php
-            $con = conectaBD();
-            if (isset($_POST['btnCrearNoticia'])) {
+            
+            if (isset($_GET['btnCrearNoticia'])) {
                 header('location: crearNoticia.php');
             }
-            if (isset($_POST['btnModificarNoticia'])) {
-                 if (isset($_GET['idNoticia'])){
-                       $_SESSION['idNoticia'] = $_GET['idNoticia'];             
-                }else{
-                    
-                    $sqlQuery = "SELECT id_noticia FROM noticia ORDER BY id_noticia DESC";
-                    $result = mysqli_query($con, $sqlQuery);
-
-                    //No hago bucle porque solo quiero mnostrar la última noticia
-                    $col = mysqli_fetch_array($result);
-                    
-                    $_SESSION['idNoticia'] = $col['id_noticia'];    
-                }
-                header('location: modificarNoticia.php');
+            if (isset($_GET['btnModificarNoticia'])) {
+               header('location: modificarNoticia.php');
+    
             }
-            if (isset($_POST['btnEliminarNoticia'])) {
-                if (!isset($_GET['idNoticia'])){
-                    $sqlQuery = "SELECT id_noticia FROM noticia ORDER BY id_noticia DESC";
-                    $result = mysqli_query($con, $sqlQuery);
-
-                    //No hago bucle porque solo quiero mnostrar la última noticia
-                    $col = mysqli_fetch_array($result);
-                    
-                    $idNoticia = $col['id_noticia'];                    
-                }else{
-                    $idNoticia = $_GET['idNoticia'];
-                }
+            if (isset($_GET['btnEliminarNoticia'])) {                
+                if ($_SESSION['id_noticia']){
+                    deleteNoticia($_SESSION['id_noticia']);
+                    unset($_SESSION['id_noticia']);
+            }
                 
-                $sqlQuery = "DELETE FROM noticia WHERE id_noticia=".$idNoticia;
-                $result = mysqli_query($con, $sqlQuery);
+                
             }
-            mysqli_close($con);
+           
         ?>
         <div id="colPrincipal1">
-            <p>Columna 1 (Por defecto se ve la ultima noticia publicada )</p>
+            <p>Selecciona una noticia Columna1 (Listado de titulares de las noticias. Si haces click en una, se muestra en la izda )</p>
             <?php
-                $con = conectaBD();
+               
     
-                if (!isset($_GET['idNoticia'])){
-                    $sqlQuery = "SELECT * FROM noticia ORDER BY id_noticia DESC";
-                    $result = mysqli_query($con, $sqlQuery);
-
-                    //No hago bucle porque solo quiero mnostrar la última noticia
-                    $col = mysqli_fetch_array($result);
-                    echo $col['fecha_noticia']. " ".$col['titular_noticia'].'<br>' ;
-                    echo $col['texto_noticia'];    
+                if (isset($_GET['idNoticia'])){
+                    readNoticia($_GET['idNoticia']);
                     
+                    echo $_SESSION['fecha_noticia']. " ".$_SESSION['titular_noticia'].'<br>' ;
+
+                    echo $_SESSION['texto_noticia'];   
+                    $_SESSION['id_noticia'] = $_GET['idNoticia'];
                 }else{
-                    $sqlQuery = "SELECT * FROM noticia WHERE id_noticia=" .$_GET['idNoticia'];
-                    $result = mysqli_query($con, $sqlQuery);
-
-                    //No hago bucle porque solo quiero mnostrar la última noticia
-                    $col = mysqli_fetch_array($result);
-                    echo $col['fecha_noticia']. " ".$col['titular_noticia'].'<br>' ;
-
-                    echo $col['texto_noticia'];   
+                    echo "Prueba a seleccionar una noticia";
                 }
                                 
                 
-                mysqli_close($con);
+               
             ?>
         </div>
         <div id="colPrincipal2">
             <p>Columna 2 (Listado de titulares de las noticias. Si haces click en una, se muestra en la izda )</p>
+            <form action="noticiasAdmin.php" method="get" >   
             <?php
             $con = conectaBD();
     
@@ -89,13 +63,15 @@ print_r($_GET);
                 $result = mysqli_query($con, $sqlQuery);
                 
                 //Muestro todos los titulares en forma de enlace. 
-                while ($col = mysqli_fetch_array($result)){                     
-                     echo "<a href='?idNoticia=".$col['id_noticia']."'>".$col['titular_noticia']."</a><br/>";
+                while ($col = mysqli_fetch_array($result)){   
+                   
+                    echo "<a href='?idNoticia=".$col['id_noticia']."'>".$col['titular_noticia']."</a><br/>";
+                     
                 }
                 mysqli_close($con);
              ?>
         </div>
-        <form action="noticiasAdmin.php" method="get" >      
+           
             <ul>
                 <li>
                     <input type="submit" class="buttonSpecial" name="btnCrearNoticia" value="Crear"/>
