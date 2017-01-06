@@ -3,7 +3,7 @@ session_start();
 include './header.php';
 include_once './conexionBD.php';
 
-echo '<h1>Bienvenido  ' . $_SESSION['nombreUserLogin'] . ' ' . $_SESSION['apellido1UserLogin'] . ' ' . $_SESSION['apellido2UserLogin'] . '</h1>';
+echo '<h1>Bienvenido  ' . $_SESSION['nombre_usuario_login'] . ' ' . $_SESSION['apellido1_usuario_login'] . ' ' . $_SESSION['apellido2_usuario_login'] . '</h1>';
 ?>
 
 <html>
