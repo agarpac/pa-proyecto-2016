@@ -195,31 +195,22 @@ include './CRUD/CRUDEquipo.php';
                 $foto = $_FILES['foto']['tmp_name'];
                
                 if($_FILES['foto']['name']){
-                    //if no errors...
+                    //Si no hay errores
                     if($_FILES['foto']['error'] == 0){
                         if (soloImagenes($_FILES['foto'])){
-                            //now is the time to modify the future file name and validate the file
-                            $new_file_name = strtolower($_FILES['foto']['tmp_name']); //rename file
-                            if($_FILES['foto']['size'] > (2048000)){ //can't be larger than 2 MB
-
-                                    $valid_file = FALSE;
-                                    $message = 'Oops!  Your file\'s size is to large.';
+                            //Cogemos el nombre del fichero
+                            $new_file_name = strtolower($_FILES['foto']['tmp_name']); //Lo renombramos
+                            if($_FILES['foto']['size'] > (2048000)){ //Si el fichero es menor que 2MB
+                                    $valid_file = FALSE;                                    
                             }
 
-                            //if the file has passed the test
+                            //Si ha pasado bien 
                             if($valid_file){
-                                    $ruta = "userImgs/".time().$_FILES['foto']['name'];
-                                    
-                                    $foto = 'userImgs/'.$new_file_name;
-                                    $message = 'Congratulations!  Your file was accepted.';
+                                    $ruta = "userImgs/".time().$_FILES['foto']['name'];                                    
+                                    $foto = 'userImgs/'.$new_file_name;                                    
                             }
                         }
-                    }else{
-                     //if there is an error...   
-                                //set that to be the returned message
-                                $message = 'Ooops!  Your upload triggered the following error:  '.$_FILES['foto']['error'];
-                        }
-                        
+                    }                        
                 }                
                 //Si foto ok
                 if (isset($ruta)){
@@ -229,12 +220,12 @@ include './CRUD/CRUDEquipo.php';
                     $correo = filter_var($correo, FILTER_SANITIZE_MAGIC_QUOTES);
                     $password = filter_var($password, FILTER_SANITIZE_MAGIC_QUOTES);
                     $foto = filter_var($ruta, FILTER_SANITIZE_MAGIC_QUOTES);
-                    //Trato la ruta de la foto y la muevo
+                    
                     if (createUsuario($nombre, $apellido1, $apellido2, $correo, $password, $foto, $_POST['ciudades'], $_POST['equipos'])){
-                        //move it to where we want it to be
+                        //Una vez que se ha insertado en Base de datos, trato la ruta de la foto y la muevo
                          move_uploaded_file($_FILES['foto']['tmp_name'], $ruta);
                         ?>
-                        <!--Mostramos mensaje de exito-->
+                        <!--Mensaje de exito-->
                         <article class="contenedor2">
                             <p>Su cuenta se ha creado con éxito</p>
                             <form method="post" action="./index.php">
@@ -350,5 +341,4 @@ include './CRUD/CRUDEquipo.php';
         </section>
         <?php }
         include './footer.php';?>
-    </body>
-</html>
+    
