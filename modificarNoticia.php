@@ -8,6 +8,7 @@ and open the template in the editor.
     session_start();        
     include_once './CRUD/CRUDNoticia.php';
     include_once './CRUD/CRUDEquipo.php';
+    if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado'] && ($_SESSION['admin'] == 0)) {
 ?>
 <html>
     <head>
@@ -102,6 +103,10 @@ and open the template in the editor.
              <input type="button" name="clear" value="Limpiar" onclick="clearForm(this.form);" >
              <input type="submit"  name="btnVolver" value="Volver" />
         </form>           
-         <?php } ?>
+         <?php } 
+            }else{
+                header('location: login.php');
+            }
+         ?>
     </body>
 </html>
