@@ -61,16 +61,16 @@ function muestraEquipos() {
         echo '<legend>Elige tu favorito</legend>';
         $i = 0;
         while ($col = mysqli_fetch_array($result)) {
-            if ($i < 2) {
+            if ($i <= 4) {
 
-                echo '<input type="radio" id="equipo'. $col['id_equipo'] . '"  name="equipos" value="' . $col['id_equipo'] . '" checked />' . '<img src = "' . $col['foto_equipo'] . '" alt = "equipo' . $col['id_equipo'] . '"/> ' . $col['nombre_equipo'];
+                echo '<input type="radio" id="equipo'. $col['id_equipo'] . '"  name="equipos" value="' . $col['id_equipo'] . '" checked />' . '<img src = "' . $col['foto_equipo'] . '" alt = "equipo' . $col['id_equipo'] . '"/> ' ;
 
                 $i++;
             } else {
-                echo '<label>';
-                echo '<input type="radio" id="equipo'. $col['id_equipo'] . '" name="equipos" value="' . $col['id_equipo'] . '" checked />' . '<img src = "' . $col['foto_equipo'] . '" alt = "equipo' . $col['id_equipo'] . '"/> ' . $col['nombre_equipo'];
-                echo '</label>';
-                $i = 0;
+               echo '<br/>';
+                echo '<input type="radio" id="equipo'. $col['id_equipo'] . '" name="equipos" value="' . $col['id_equipo'] . '" checked />' . '<img src = "' . $col['foto_equipo'] . '" alt = "equipo' . $col['id_equipo'] . '"/> ' ;
+               
+                $i = 1;
             }
         }
         echo '</fieldset>';

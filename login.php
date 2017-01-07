@@ -17,7 +17,7 @@ if (isset($_POST['btnLogin'])) {
 
 
        $correo = addslashes($correo);
-       $pass = addslashes($pass);
+       $pass=md5($pass);
         
         if (readUsuario($correo, $pass)){
             header('location: inicio.php');

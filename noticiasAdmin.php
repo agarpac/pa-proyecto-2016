@@ -3,7 +3,7 @@ session_start();
 include './header.php'; 
 include_once './conexionBD.php';
 include_once './CRUD/CRUDNoticia.php';
-print_r($_GET);
+if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado'] && ($_SESSION['admin'] == 0)) {
 ?>
 
 <html>
@@ -85,4 +85,8 @@ print_r($_GET);
 
 
 
-<?php include './footer.php';?>
+<?php include './footer.php';
+    }else{
+        header('location: login.php');
+    }
+?>

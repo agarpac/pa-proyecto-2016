@@ -2,8 +2,8 @@
 session_start();
 include './header.php';
 include_once './conexionBD.php';
-
-echo '<h1>Bienvenido  ' . $_SESSION['nombre_usuario_login'] . ' ' . $_SESSION['apellido1_usuario_login'] . ' ' . $_SESSION['apellido2_usuario_login'] . '</h1>';
+if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
+    echo '<h1>Bienvenido  ' . $_SESSION['nombre_usuario_login'] . ' ' . $_SESSION['apellido1_usuario_login'] . ' ' . $_SESSION['apellido2_usuario_login'] . '</h1>';
 ?>
 
 <html>
@@ -59,6 +59,10 @@ echo '<h1>Bienvenido  ' . $_SESSION['nombre_usuario_login'] . ' ' . $_SESSION['a
                                 
                 
                 mysqli_close($con);
+                
+        }else{
+            header('location: login.php');
+        }
              ?>
         </div>
     </body>

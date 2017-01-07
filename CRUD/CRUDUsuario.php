@@ -13,6 +13,7 @@ function compruebaSiCorreoRegistrado($correo) {
     $result = mysqli_query($con, 'SELECT nombre_usuario, apellido1_usuario FROM usuario WHERE correo_usuario = "' . $correo . '"');
     
     //Si solo hay un resultado es que está bien
+    
     if (mysqli_num_rows($result) == 1) {
         $encontrado = TRUE;
         $col = mysqli_fetch_array($result);
@@ -46,6 +47,7 @@ function createUsuario($nombre, $apellido1, $apellido2, $correo, $password, $fot
         $apellido1 = filter_var($apellido1, FILTER_SANITIZE_MAGIC_QUOTES);
         $apellido2 = filter_var($apellido2, FILTER_SANITIZE_MAGIC_QUOTES);
         $password = filter_var($password, FILTER_SANITIZE_MAGIC_QUOTES);
+        $password = md5($password);
         $foto = filter_var($foto, FILTER_SANITIZE_MAGIC_QUOTES);
 
        $con = conectaBD();
@@ -53,9 +55,14 @@ function createUsuario($nombre, $apellido1, $apellido2, $correo, $password, $fot
        mysqli_query($con,'INSERT INTO usuario (nombre_usuario, apellido1_usuario, apellido2_usuario, correo_usuario, pass_usuario, foto_usuario, ciudad_usuario, equipo_id, admin) VALUES ("' . $nombre . '", "' . $apellido1 . '", "' . $apellido2 . '", "' . $correo . '", "' . $password . '", "' . $foto . '", "' . $ciudad . '", ' . $equipo . ', 1)');
         
         mysqli_close($con);
+        $flag= TRUE;
+        
     } else {
-        echo '<span style="color:red"><h3>Sr. ' . $_SESSION['nombre_usuario'] . ' ' . $_SESSION['apellido1_usuario'] . ' ya est&aacute;s registrado.</h3></span>';
+        $flag = FALSE;
+        //echo '<span style="color:red"><h3>Sr. ' . $_SESSION['nombre_usuario'] . ' ' . $_SESSION['apellido1_usuario'] . ' ya est&aacute;s registrado.</h3></span>';
+        
     }
+    return $flag;
 }
 
 //Lee los datos de un usuario
@@ -78,6 +85,7 @@ function readUsuario($correo, $password) {
         $_SESSION['ciudad_usuario_login'] = $col['ciudad_usuario'];
         $_SESSION['equipoUser'] = $col['equipo_id'];
         $_SESSION['admin'] = $col['admin'];
+        $_SESSION['usuario_logueado'] = TRUE;
         datosEquipo($col['equipo_usuario']); //Muestra el nombre y la foto del equipo de ese ID
         $encontrado = True;
     } else {

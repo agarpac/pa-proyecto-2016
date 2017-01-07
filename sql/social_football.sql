@@ -167,8 +167,8 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id_usuario`, `nombre_usuario`, `apellido1_usuario`, `apellido2_usuario`, `correo_usuario`, `pass_usuario`, `foto_usuario`, `ciudad_usuario`, `equipo_id`, `admin`) VALUES
-(1, 'User', 'Social', 'Football', 'user@gmail.com', 'user', 'C:\\\\xampp\\\\tmp\\\\php7955.tmp', 'Sevilla', 1, 1),
-(2, 'Admin', 'Social', 'Football', 'admin@gmail.com', 'admin', 'C:\\\\xampp\\\\tmp\\\\php7955.tmp', 'Sevilla', 2, 0);
+(37, 'User', 'User1', 'User2', 'user@gmail.com', 'ee11cbb19052e40b07aac0ca060c23ee', 'userImgs/1483732258Paso1.PNG', 'A CoruÃ±a', 2, 1),
+(38, 'Admin', 'admin1', 'admin2', 'admin@gmail.com', '21232f297a57a5a743894a0e4a801fc3', 'userImgs/1483732305Paso1.PNG', 'A CoruÃ±a', 1, 0);
 
 --
 -- Índices para tablas volcadas
