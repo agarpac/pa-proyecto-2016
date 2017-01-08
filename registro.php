@@ -268,7 +268,7 @@ include './CRUD/CRUDEquipo.php';
             <div class="form-style">
 
                 <div class="form-style-heading">Registro en Social Football</div>
-                <form action="#" method="POST" enctype="multipart/form-data">
+                <form action="#" method="POST" enctype="multipart/form-data" >
                     <label><span>Nombre: <span class="required">*</span></span><input id="nombre" type="text" class="input-field" name="nombre" value="" /></label>
                     <label><span>Primer apellido: <span class="required">*</span></span><input id="apellido1" type="text" class="input-field" name="apellido1" value="" /></label>
                     <label><span>Segundo apellido: <span class="required">*</span></span><input id="apellido2" type="text" class="input-field" name="apellido2" value="" /></label>
@@ -332,7 +332,7 @@ include './CRUD/CRUDEquipo.php';
                         </select></label>
                     <label><span>Equipos:</span> <?php muestraEquipos(); ?></label>  
                     <div class="derecha">                    
-                        <input type="submit" class="buttonSpecial" name="btnEnviar" value="Enviar" onsubmit="return validacionRegistro()"/>
+                        <input type="submit" class="buttonSpecial" name="btnEnviar" value="Enviar" onclick="return validacionRegistro()"/>
                         <input  type="submit" class="buttonSpecial" name="volver" value="Cancelar" /> 
                     </div>
                 </form>
