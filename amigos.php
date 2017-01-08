@@ -1,16 +1,8 @@
 <?php
-session_start();
 include './header.php';
 ?>
-
-<html>
-    <head>
-        <meta charset="UTF-8">
-         <link rel="stylesheet" href="css/estilos.css" type="text/css" />
-        <title>Social Football</title>
-    </head>
-    <body>
-        
+<section class="generico">   
+    <article>
         <div id="colPrincipal1">
             <p>Columna 1 (Para listar a los amigos )</p>
             
@@ -19,9 +11,6 @@ include './header.php';
             <p>Columna 2 (Para ver las peticiones )</p>
             
         </div>
-    </body>
-</html>
-
-
-
+        </article>
+</section>
 <?php include './footer.php';?>

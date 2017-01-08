@@ -1,19 +1,11 @@
 <?php
-session_start();
 include './header.php';
 include_once './conexionBD.php';
 if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
     echo '<h1>Bienvenido  ' . $_SESSION['nombre_usuario_login'] . ' ' . $_SESSION['apellido1_usuario_login'] . ' ' . $_SESSION['apellido2_usuario_login'] . '</h1>';
 ?>
-
-<html>
-    <head>
-        <meta charset="UTF-8">
-         <link rel="stylesheet" href="css/estilos.css" type="text/css" />
-        <title>Social Football</title>
-    </head>
-    <body>
-        
+<section class="generico">   
+    <article>
         <div id="colPrincipal1">
             <p>Columna 1 (Por defecto se ve la ultima noticia publica sobre el equipo el cual el user es seguidor )</p>
             <?php
@@ -65,9 +57,8 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
         }
              ?>
         </div>
-    </body>
-</html>
-
+        </article>
+</section>
 
 
 <?php include './footer.php';?>
