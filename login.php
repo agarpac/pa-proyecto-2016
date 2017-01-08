@@ -29,7 +29,7 @@ if (isset($_POST['btnRegistro'])) {
     header('location: registro.php');
 }
 ?>
-
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -100,7 +100,7 @@ if (isset($_POST['btnRegistro'])) {
     </head>
     <body>
         
-        <section id="fondo">
+        <main id="fondo">
             <h2>Social Football</h2>
             <div class="centrar">
                 <form action="#" method="POST" class="form-style" >
@@ -117,6 +117,6 @@ if (isset($_POST['btnRegistro'])) {
                     </ul>
                 </form>           
             </div>
-        </section>
+        </main>
 
 <?php include("footer.php"); ?>

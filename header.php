@@ -29,7 +29,7 @@ session_start();
                         <?php
                         if ($_SESSION['admin'] == 0) {
                             ?>
-                            <li><a href="noticias.php" class="admin">Noticias</a></li>
+                            <li><a href="noticiasAdmin.php" class="admin">Noticias</a></li>
                             <li><a href="equipos.php" class="admin">Equipos</a></li>
                                 <?php
                             }

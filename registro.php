@@ -226,7 +226,7 @@ include './CRUD/CRUDEquipo.php';
                          move_uploaded_file($_FILES['foto']['tmp_name'], $ruta);
                         ?>
                         <!--Mensaje de exito-->
-                        <article class="contenedor2">
+                        <article class="contenedor2 generico">
                             <p>Su cuenta se ha creado con éxito</p>
                             <form method="post" action="./index.php">
                                 <input  type="submit" value="Volver"/>
@@ -236,7 +236,7 @@ include './CRUD/CRUDEquipo.php';
                     } else {
                         
                         ?>
-                        <article class="contenedor2">
+                        <article class="contenedor2 generico">
                             <p>El usuario ya existe</p>
                             <form method="post" action="./registro.php">
                                 <input type="submit" value="Volver"/>
@@ -263,7 +263,7 @@ include './CRUD/CRUDEquipo.php';
         if (!isset($_POST['btnEnviar'])) {
             ?>
         
-        <section class="bodyRegistro">
+        <section class="bodyRegistro generico">
 
             <div class="form-style">
 
