@@ -7,7 +7,7 @@ html, body, div, footer, h1, header, form, article, section {
     border: 0;
     font-size: 100%;
     font: inherit;
-    vertical-align: baseline; 
+    vertical-align: baseline;
 }
 html
 {
@@ -57,10 +57,9 @@ h2 {
     flex-direction: column;
     justify-content: center;
     cursor: default;
-    height: 100vh;
-    min-height: 35em;
-    /*overflow: hidden;*/
-    position: relative;
+    min-height: 100%;
+    /*overflow: hidden;
+    position: relative;*/
     text-align: center;
 }
 
@@ -176,6 +175,7 @@ h2 {
 .bodyRegistro{
     background-color: #fff;
     color: #4E4852;
+    min-height: 100%;
 }
 .bodyRegistro .form-style{
     background: rgba(144, 144, 144, 0.25);
@@ -212,10 +212,13 @@ footer{
     padding: 2em 0 2em 0 ;
     background-color: #1d242a;
     text-align: center;
-   /*pegarlo abajo*/
+    /*pegarlo abajo*/
     width: 100%;
-    bottom: 0;
-    position: absolute;
+    /*bottom: 0;*/
+    position: relative;
+    margin-top: -50px; 
+    /*height: 120px;*/
+    clear: both;
 }
 
 #footer .icons {
@@ -391,12 +394,15 @@ ul.icons li:last-child {
 
 /*Inicio pag genericas Ej: quienesSomos*/
 .generico {
-    padding: 6em 0 4em 0 ;
+    padding-top: 30px;
     background-color: #ffffff;
     color: #4E4852;
-    
+
     width: 60em;
     margin: 0 auto;
+    padding-bottom: 50px; /*este valor debe ser igual al del margin-top del footer*/
+    height: auto;
+    min-height: 100%;
 }
 
 /*Fin pag genericas*/
@@ -405,4 +411,3 @@ ul.icons li:last-child {
     text-decoration: underline;
 
 }
-

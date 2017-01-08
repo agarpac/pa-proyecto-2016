@@ -262,7 +262,7 @@ include './CRUD/CRUDEquipo.php';
         //En este caso se muestra un formulario de registro
         if (!isset($_POST['btnEnviar'])) {
             ?>
-        ?>
+        
         <section class="bodyRegistro">
 
             <div class="form-style">
