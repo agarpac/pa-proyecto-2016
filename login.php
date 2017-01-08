@@ -103,14 +103,14 @@ if (isset($_POST['btnRegistro'])) {
         <section id="fondo">
             <h2>Social Football</h2>
             <div class="centrar">
-                <form action="#" method="POST" class="form-style">
+                <form action="#" method="POST" class="form-style" >
 
                     <label><span>Email: </span><input type="email" id="user" class="input-field" name="correo" value=""  /></label>
                     <label><span>Password: </span><input type="password" id="password" class="input-field" name="password" value="" /></label>
 
                     <ul>
                         <li>
-                            <input type="submit" class="buttonSpecial" name="btnLogin" value="Login" onsubmit="return validacionLogin()"/>
+                            <input type="submit" class="buttonSpecial" name="btnLogin" value="Login" onclick="return validacionLogin()"/>
 
                             <input type="submit" class="buttonSpecial" name="btnRegistro" value="Reg&iacute;strate!"/> 
                         </li>
