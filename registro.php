@@ -262,7 +262,7 @@ include './CRUD/CRUDEquipo.php';
         //En este caso se muestra un formulario de registro
         if (!isset($_POST['btnEnviar'])) {
             ?>
-        ?>
+        
         <section class="bodyRegistro">
 
             <div class="form-style">
@@ -332,7 +332,7 @@ include './CRUD/CRUDEquipo.php';
                         </select></label>
                     <label><span>Equipos:</span> <?php muestraEquipos(); ?></label>  
                     <div class="derecha">                    
-                        <input type="submit" class="buttonSpecial" name="btnEnviar" value="Enviar" onclick="return validacionRegistro();"/>
+                        <input type="submit" class="buttonSpecial" name="btnEnviar" value="Enviar" onsubmit="return validacionRegistro()"/>
                         <input  type="submit" class="buttonSpecial" name="volver" value="Cancelar" /> 
                     </div>
                 </form>

@@ -1,5 +1,5 @@
 <!-- Footer -->
-<div id="footer">
+<footer id="footer">
     <ul class="icons">
         <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
         <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
@@ -13,7 +13,7 @@
         <li><a href="dondeEstamos.php">Donde Estamos</a></li>
         <li><a href="politicas.php">Politicas</a></li>
     </ul>
-</div>
+</footer>
 
 <!-- Scripts -->
 

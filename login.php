@@ -110,7 +110,7 @@ if (isset($_POST['btnRegistro'])) {
 
                     <ul>
                         <li>
-                            <input type="submit" class="buttonSpecial" name="btnLogin" value="Login" onclick="return validacionLogin();"/>
+                            <input type="submit" class="buttonSpecial" name="btnLogin" value="Login" onsubmit="return validacionLogin()"/>
 
                             <input type="submit" class="buttonSpecial" name="btnRegistro" value="Reg&iacute;strate!"/> 
                         </li>
