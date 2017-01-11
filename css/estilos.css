@@ -404,6 +404,7 @@ ul.icons li:last-child {
 #colPrincipal2 a {
     text-decoration: underline;
     color: #ed4933;
+    /*border-bottom: 2px solid #1d242a;*/
 }
 
 /*Fin columnas noticias*/
