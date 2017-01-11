@@ -52,7 +52,7 @@ function updateNoticia($id_noticia, $titular, $texto){
    
     $con = conectaBD();
     
-    mysqli_query($con, 'UPDATE noticia SET titular_noticia = "' . $titular .'" , texto_noticia = "' . $texto . '" WHERE id_noticia = "' . $id_noticia);
+    mysqli_query($con, 'UPDATE noticia SET titular_noticia = "' . $titular .'" , texto_noticia = "' . $texto . '" WHERE id_noticia = ' . $id_noticia);
                         
     mysqli_close($con);
 }
