@@ -435,9 +435,9 @@ ul.icons li:last-child {
     text-align: justify;
 }
 
-.error{
+.error{ /* formulario registro*/
     color: red;
-    text-decoration: underline;
+    text-decoration: none;
 
 }
 .contenedor2, .contenedor3{
