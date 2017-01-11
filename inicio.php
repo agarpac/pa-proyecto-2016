@@ -20,7 +20,7 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
 
                     //No hago bucle porque solo quiero mnostrar la última noticia
                     $col = mysqli_fetch_array($result);
-                    echo '<strong>' . $col['fecha_noticia'] . '</strong>' . " " . $col['titular_noticia'] . '<br>';
+                    echo '<strong>' . $col['fecha_noticia'] . '</strong>' . " <br><strong>" . $col['titular_noticia'] . '</strong><br>';
 
                     echo '<p class="pNoticia">' . $col['texto_noticia'] . '</p>';
                 } else {
