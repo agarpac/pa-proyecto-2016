@@ -1,9 +1,3 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <?php
 include './header.php';
 include_once './CRUD/CRUDMensaje.php';
@@ -45,18 +39,19 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
         header("Location: redactarMensaje.php");
     }
     ?>
-    <br><br>
-    <table width="60%" cellpadding="2" cellspacing="0" border="0" bgcolor="#000000">
-        <tr>
-            <td width="1%" > </td>
-            <td width="20%"> Mensajes Recibidos: </td>
-        </tr>
-        <?php listaMensajes(); ?>
-    </table>
-    <form action="#" method="POST">
-        <input type="submit" value="Redactar mensaje" name="btnRedactar" />
-        <input type="submit" value="Eliminar mensaje" name="btnBorrar" />
-    </form>
+    <section class="generico2">       
+        <table width="100%" cellpadding="2" cellspacing="0" border="0" bgcolor="#fff">
+            <tr>
+                <td width="1%" > </td>
+                <td width="20%"> Mensajes Recibidos: </td>
+            </tr>
+            <?php listaMensajes(); ?>
+        </table>
+        <form  action="#" method="POST">
+            <input type="submit" value="Redactar mensaje" name="btnRedactar" />
+            <input type="submit" value="Eliminar mensaje" name="btnBorrar" />
+        </form>
+    </section>
     <?php
 } else {
     header('location: login.php');

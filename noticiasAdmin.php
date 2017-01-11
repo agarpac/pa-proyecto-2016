@@ -20,22 +20,24 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado'] && ($_
     <section class="generico">   
         <article>
             <div id="colPrincipal1">
-                <p>Selecciona una noticia Columna1 (Listado de titulares de las noticias. Si haces click en una, se muestra en la izda )</p>
+                <h1>Cuerpo de la noticia:</h1>
                 <?php
                 if (isset($_GET['idNoticia'])) {
                     readNoticia($_GET['idNoticia']);
 
-                    echo $_SESSION['fecha_noticia'] . " " . $_SESSION['titular_noticia'] . '<br>';
+                    echo '<strong>' . $_SESSION['fecha_noticia'] . '</strong>' . " <br><strong>" . $_SESSION['titular_noticia'] . '</strong><br>';
 
-                    echo $_SESSION['texto_noticia'];
+                    echo '<p class="pNoticia">' . $_SESSION['texto_noticia'] . '</p>';
                     $_SESSION['id_noticia'] = $_GET['idNoticia'];
                 } else {
                     echo "Prueba a seleccionar una noticia";
                 }
                 ?>
             </div>
+        </article>
+        <article>
             <div id="colPrincipal2">
-                <p>Columna 2 (Listado de titulares de las noticias. Si haces click en una, se muestra en la izda )</p>
+                <h1>Titulares:</h1><p>Haz click para ver el contenido</p>
                 <form action="noticiasAdmin.php" method="get" >   
                     <?php
                     $con = conectaBD();
@@ -46,21 +48,17 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado'] && ($_
                     //Muestro todos los titulares en forma de enlace. 
                     while ($col = mysqli_fetch_array($result)) {
 
-                        echo "<a href='?idNoticia=" . $col['id_noticia'] . "'>" . $col['titular_noticia'] . "</a><br/>";
+                        echo "<a href='?idNoticia=" . $col['id_noticia'] . "'>" . $col['titular_noticia'] . "</a><hr size='1' />";
                     }
                     mysqli_close($con);
                     ?>
+                    <span class="form-style">                        
+                        <input type="submit" class="buttonSpecial" name="btnCrearNoticia" value="Crear"/>
+                        <input type="submit" class="buttonSpecial" name="btnModificarNoticia" value="Modificar"/> 
+                        <input type="submit" class="buttonSpecial" name="btnEliminarNoticia" value="Eliminar" onclick="return confirmDel()"/>
+                    </span>
+                </form>
             </div>
-
-            <ul>
-                <li>
-                    <input type="submit" class="buttonSpecial" name="btnCrearNoticia" value="Crear"/>
-                    <input type="submit" class="buttonSpecial" name="btnModificarNoticia" value="Modificar"/> 
-                    <input type="submit" class="buttonSpecial" name="btnEliminarNoticia" value="Eliminar" onclick="return confirmDel()"/> 
-                </li>
-            </ul>
-            </form>           
-
         </article>
     </section>
 
