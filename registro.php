@@ -287,7 +287,7 @@ if (isset($_POST['volver'])) {
                         <label><span>Email: <span class="required">*</span></span><input id="email" type="email" class="input-field" name="correo" value="" /></label>
                         <label><span>Password: <span class="required">*</span></span><input id="password" type="password" class="input-field" name="password" onkeyup="passStrenght();" data-display="displayElement" value=""/></label>
                         <div id="displayElement" class="displayElement"></div>
-                        <label><span>Foto: </span><input type="file" name="foto" /></label>
+                        <label><span>Foto: <span class="required">*</span></span><input type="file" name="foto" /></label>
                         <label><span>Ciudad:</span><select name="ciudades" class="select-field">
                                 <option value="A Coru&ntilde;a">A coru&ntilde;a</option>
                                 <option value="&Aacute;lava">&Aacute;lava</option>
