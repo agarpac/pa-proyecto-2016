@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once './CRUD/CRUDUsuario.php';
 //Si se ha pulsado sobre el botón de login
 if (isset($_POST['btnLogin'])) {
@@ -40,7 +41,7 @@ if (isset($_POST['btnRegistro'])) {
 
         <script>
 
-            $(document).ready(function () { 
+            $(document).ready(function () {
                 $('#password').focus(function () {
                     /*cuando se le pone focus, el input se vacia y es tipo password*/
                     document.formLogin.password.value = "";
@@ -61,17 +62,17 @@ if (isset($_POST['btnRegistro'])) {
                 var pass = document.getElementById("password");
                 var bool = true;
 
-               /* if ($("#userError").length !== 0) {
-                    $("#userError").remove();
-                    $("#user").css("background-color", "#f2d6b5");
-                }
-                if ($("#passError").length !== 0) {
-                    $("#passError").remove();
-                    $("#password").css("background-color", "#f2d6b5");
-                }
-                if ($("#userError").length !== 0) {
-                    $("#userError").remove();
-                }*/
+                /* if ($("#userError").length !== 0) {
+                 $("#userError").remove();
+                 $("#user").css("background-color", "#f2d6b5");
+                 }
+                 if ($("#passError").length !== 0) {
+                 $("#passError").remove();
+                 $("#password").css("background-color", "#f2d6b5");
+                 }
+                 if ($("#userError").length !== 0) {
+                 $("#userError").remove();
+                 }*/
 
                 if (user.value === "") {
 

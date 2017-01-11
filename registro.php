@@ -1,4 +1,5 @@
 <?php
+session_start();
 include './CRUD/CRUDUsuario.php';
 include_once './conexionBD.php';
 include './CRUD/CRUDEquipo.php';
