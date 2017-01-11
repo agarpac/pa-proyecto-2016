@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-01-2017 a las 19:11:42
+-- Tiempo de generación: 11-01-2017 a las 19:32:47
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -90,7 +90,7 @@ INSERT INTO `estadio` (`id_estadio`, `nombre_estadio`, `direccion`, `ciudad`) VA
 
 CREATE TABLE IF NOT EXISTS `mensaje` (
   `id_mensaje` int(11) NOT NULL,
-  `texto` varchar(200) NOT NULL,
+  `texto` varchar(500) NOT NULL,
   `leido` varchar(2) NOT NULL,
   `id_usuario_envia` int(11) NOT NULL,
   `id_usuario_recibe` int(11) NOT NULL
@@ -113,8 +113,8 @@ INSERT INTO `mensaje` (`id_mensaje`, `texto`, `leido`, `id_usuario_envia`, `id_u
 CREATE TABLE IF NOT EXISTS `noticia` (
   `id_noticia` int(11) NOT NULL,
   `fecha_noticia` varchar(10) NOT NULL,
-  `titular_noticia` varchar(200) NOT NULL,
-  `texto_noticia` varchar(400) NOT NULL,
+  `titular_noticia` varchar(500) NOT NULL,
+  `texto_noticia` varchar(10000) NOT NULL,
   `id_equipo` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
@@ -125,9 +125,9 @@ CREATE TABLE IF NOT EXISTS `noticia` (
 INSERT INTO `noticia` (`id_noticia`, `fecha_noticia`, `titular_noticia`, `texto_noticia`, `id_equipo`) VALUES
 (1, '25/12/2016', 'El Betis arrasa en la Liga Promises', 'El conjunto andaluz, liderado por Alfonso, ha sido campeón de la Liga Promises por delante de equipos como el Barcelona o real Madrid. Todo ello gracias al entrenador Alberto que ha tenido a sus jugadores enchufadísimos durante todo el torneo.', 2),
 (2, '26/12/2016', 'El Sevilla se hace con el central Clement.', 'Finalmente fue el equipo de Nervión el que se hizo con los servicios del jugador. Todo parecía indicar que el galo acabaría jugando en el equipo colchonero debido a que la oferta era mayor, pero para sorpresa de todos, el jugador del Nantes decidió irse a Sevilla.', 1),
-(3, '10/09/2017', 'Lucas sufre una sobrecarga muscular', 'El Atlético de Madrid confirmó que la lesión del defensor francés Lucas Hernández, sustituido ayer en el descanso del partido de la Copa del Rey contra la Unión Deportiva Las Palmas, es una "sobrecarga muscular en el recto anterior del muslo derecho". <br>Las pruebas realizadas este miércoles en la Clínica FREMAP de Majadahonda han determinado que la lesión es muscular y afecta al recto anterior d', 5),
-(4, '09/01/2017', 'El Betis buscará el sábado vencer por primera vez al Atlético de Simeone', 'El Real Betis, que el sábado visitará el Vicente Calderón (18.30 horas), sólo ha ganado uno de sus diez últimos partidos oficiales contra el Atlético de Madrid, al que no vence desde un 0-2 en diciembre de 2011 que propició la llegada al banquillo colchonero del argentino Diego Simeone. En aquella decimoséptima jornada de la Liga 2011-12, el Betis ganó en Madrid por 0-2, con goles de Pozuelo y el ', 2),
-(5, '10/09/2017', 'Jovetic entra en la lista y Lenglet será titular', 'El Sevilla se mide este jueves al Real Madrid en la vuelta copera, una cita para la que ha estado trabajando hoy en la ciudad deportiva. Y lo ha hecho con la novedad de Stevan Jovetic, que se ha ejercitado por primera vez junto a sus nuevos compañeros para, instantes después, entrar en la convocatoria para dicho encuentro. El delantero montenegrino se ha unido así al francés Lenglet, la otra incor', 1);
+(3, '10/09/2017', 'Lucas sufre una sobrecarga muscular', 'El Atlético de Madrid confirmó que la lesión del defensor francés Lucas Hernández, sustituido ayer en el descanso del partido de la Copa del Rey contra la Unión Deportiva Las Palmas, es una "sobrecarga muscular en el recto anterior del muslo derecho". Las pruebas realizadas este miércoles en la Clínica FREMAP de Majadahonda han determinado que la lesión es muscular y afecta al recto anterior del muslo derecho, por lo que el jugador tendrá que someterse a un tratamiento de fisioterapia y entrenamiento en el gimnasio. No se ha precisado tiempo de baja. Lucas, que salió al césped como lateral izquierdo titular en el partido de vuelta de octavos de final de la Copa del Rey que terminó con victoria visitante 2-3 y clasificación local a cuartos, fue cambiado en el intermedio por Gabi Fernández.', 5),
+(4, '09/01/2017', 'El Betis buscará el sábado vencer por primera vez al Atlético de Simeone', 'El Real Betis, que el sábado visitará el Vicente Calderón (18.30 horas), sólo ha ganado uno de sus diez últimos partidos oficiales contra el Atlético de Madrid, al que no vence desde un 0-2 en diciembre de 2011 que propició la llegada al banquillo colchonero del argentino Diego Simeone. En aquella decimoséptima jornada de la Liga 2011-12, el Betis ganó en Madrid por 0-2, con goles de Pozuelo y el paraguayo Roque Santa Cruz, resultado que provocó la destitución de Gregorio Manzano como entrenador atlético y el fichaje de Simeone. El preparador argentino empató a dos en el partido de vuelta de aquel campeonato (Pozuelo y Pereira marcaron para los locales y Koke y Falcao hicieron los goles visitantes) y, desde entonces, ha encadenado siete victorias y un empate en sus enfrentamientos con el Betis.', 2),
+(5, '10/09/2017', 'Jovetic entra en la lista y Lenglet será titular', 'El Sevilla se mide este jueves al Real Madrid en la vuelta copera, una cita para la que ha estado trabajando hoy en la ciudad deportiva. Y lo ha hecho con la novedad de Stevan Jovetic, que se ha ejercitado por primera vez junto a sus nuevos compañeros para, instantes después, entrar en la convocatoria para dicho encuentro. El delantero montenegrino se ha unido así al francés Lenglet, la otra incorporación del Sevilla en el presente mercado invernal. El defensa tiene muchas posibilidades de estrenarse como titular ante el Madrid, como ha confirmado el propio Jorge Sampaoli: "Tenemos la posibilidad con la llegada de Lenglet de tener tres centrales y el equipo se siente cómodo con ese dibujo. Sería ilógico cambiarlo". Los 18 jugadores que ha citado el entrenador argentino son Sergio Rico, David Soria, Kranevitter, Lenglet, Iborra, Vietto, Nasri, Correa, Ben Yedder, Kiyotake, Jovetic, Sarabia, Escudero, Ganso, Vitolo, Nico Pareja, Rami y Mercado.', 1);
 
 -- --------------------------------------------------------
 
