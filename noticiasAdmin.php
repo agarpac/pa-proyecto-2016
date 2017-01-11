@@ -40,7 +40,7 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado'] && ($_
                     <?php
                     $con = conectaBD();
 
-                    $sqlQuery = "SELECT titular_noticia, id_noticia FROM noticia  ORDER BY id_noticia DESC";
+                    $sqlQuery = "SELECT titular_noticia, id_noticia FROM noticia  ORDER BY id_equipo ASC";
                     $result = mysqli_query($con, $sqlQuery);
 
                     //Muestro todos los titulares en forma de enlace. 
