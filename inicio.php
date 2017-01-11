@@ -2,18 +2,25 @@
 include './header.php';
 include_once './conexionBD.php';
 include_once './CRUD/CRUDUsuario.php';
+datosEquipo($_SESSION['equipoUser']);
 if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
     ?>
     <section class="generico2">   
         <?php
         echo '<h1>Bienvenido  ' . $_SESSION['nombre_usuario_login'] . ' ' . $_SESSION['apellido1_usuario_login'] . ' ' . $_SESSION['apellido2_usuario_login'] . '</h1>';
-        echo '<img src="'. $_SESSION['foto_usuario_login'] . '" alt="' . $_SESSION['nombre_usuario_login'] . '" height="150">';
-        datosEquipo($_SESSION['equipoUser']);
-        echo '<img src="'. $_SESSION['foto_equipo'] . '" alt="' . $_SESSION['nombre_usuario_login'] . '" height="40">';
+        echo '<img src="' . $_SESSION['foto_usuario_login'] . '" alt="' . $_SESSION['nombre_usuario_login'] . '" height="150">';       
         ?>
         <article>           
             <div id="colPrincipal1">
-                <h1>Noticias de mi equipo:</h1>
+                <table><tr><td>
+                            <h1>Noticias de mi equipo: <em><?php echo " ". $_SESSION['nombre_equipo']; ?></em></h1>
+                        </td>
+                        <td><?php
+                            echo '<img src="' . $_SESSION['foto_equipo'] . '" alt="' . $_SESSION['nombre_equipo'] . '" height="35">';
+                            ?>
+                        </td>
+                    </tr>
+                </table>
                 <?php
                 $con = conectaBD();
 
