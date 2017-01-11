@@ -62,7 +62,7 @@ and open the template in the editor.
             }
         </script>
     </head>
-    <body>
+    <body style="color:black">
         <?php
         
              if (isset($_POST['btnVolver'])) {
@@ -97,7 +97,7 @@ and open the template in the editor.
             ?>
          <form method="POST" >
              <span>Titulo: </span><input type="text" id="titulo" class="input-field" name="titulo" value="<?php echo $_SESSION['titular_noticia'] ?>"  />
-             <span>Noticia: </span><textarea id="cuerpoNoticia" rows="4" cols="50" class="input-field" name="cuerpoNoticia" ><?php echo $_SESSION['texto_noticia']?></textarea>
+             <span>Noticia: </span><textarea style="color:black" id="cuerpoNoticia" rows="4" cols="50" class="input-field" name="cuerpoNoticia" ><?php echo $_SESSION['texto_noticia']?></textarea>
                        
              <input type="submit"  name="btnModificarNoticia" value="Modificar"  onclick="return validacionRegistro();"/>
              <input type="button" name="clear" value="Limpiar" onclick="clearForm(this.form);" >
