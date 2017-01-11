@@ -10,7 +10,7 @@ if (isset($_POST['volver'])) {
 
 <html>
     <head>
-        <meta charset="UTF-8">
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
         <title>Social Football</title>
         <link rel="stylesheet" href="css/estilos.css" />
         <link rel="stylesheet" href="jquery-ui-1.11.4/jquery-ui.css" type="text/css" />
@@ -184,7 +184,7 @@ if (isset($_POST['volver'])) {
                     <?php
                     if (!isset($_SESSION['id_usuario_login'])) { //no logueado
                         ?>
-                    <li class="vertical"><a href="login.php">Iniciar sesi&oacute;n</a></li>
+                        <li class="vertical"><a href="login.php">Iniciar sesi&oacute;n</a></li>
                     <?php } ?>
                 </ul>
             </nav>
@@ -351,7 +351,7 @@ if (isset($_POST['volver'])) {
 
                 </div>
             </section>
-        <?php
+            <?php
         }
         include './footer.php';
         ?>

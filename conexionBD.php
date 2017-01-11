@@ -5,7 +5,7 @@ function conectaBD() {
     if (!$con) {
         die("Error al conectarse a la base de datos");
     }
-    $db = mysqli_select_db($con,'social_football');
+    $db = mysqli_select_db($con,'social_football');   
     if (!$db) {
         die("Error al seleccionar la base de datos". mysqli_error($con));
     }
