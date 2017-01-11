@@ -9,6 +9,14 @@ session_start();
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" href="css/estilos.css" />
 
+        <script type="text/javascript">
+            function confirmDel() { //confirmar borrar noticia
+                if (confirm("¿Realmente desea eliminarla?"))
+                    return true; 
+                else
+                    return false;
+            }
+        </script>
     </head>
     <body>
         <header id="header">
@@ -18,8 +26,8 @@ session_start();
                     <?php
                     if (!isset($_SESSION['id_usuario_login'])) { //no logueado
                         ?>
-                    <li><a href="login.php">Iniciar sesi&oacute;n</a></li>
-                    <li><a href="registro.php">Reg&iacute;strate</a></li>
+                        <li><a href="login.php">Iniciar sesi&oacute;n</a></li>
+                        <li><a href="registro.php">Reg&iacute;strate</a></li>
                     <?php } else { // usuario logueado
                         ?>
                         <li><a href="inicio.php">Inicio</a></li>

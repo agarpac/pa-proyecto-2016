@@ -56,7 +56,7 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado'] && ($_
                 <li>
                     <input type="submit" class="buttonSpecial" name="btnCrearNoticia" value="Crear"/>
                     <input type="submit" class="buttonSpecial" name="btnModificarNoticia" value="Modificar"/> 
-                    <input type="submit" class="buttonSpecial" name="btnEliminarNoticia" value="Eliminar"/> 
+                    <input type="submit" class="buttonSpecial" name="btnEliminarNoticia" value="Eliminar" onclick="return confirmDel()"/> 
                 </li>
             </ul>
             </form>           

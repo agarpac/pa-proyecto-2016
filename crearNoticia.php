@@ -58,7 +58,7 @@ and open the template in the editor.
                     bool = false;
                 } 
                
-
+               
                 if (cuerpoNoticia.value === "") {
                     var aux = document.createElement("p");
                     aux.setAttribute("id", "cuerpoError");
@@ -83,7 +83,7 @@ and open the template in the editor.
 
        
     </head>
-    <body>
+    <body style="color:black">
         <?php
         
              if (isset($_POST['btnVolver'])) {
@@ -113,7 +113,7 @@ and open the template in the editor.
             ?>
          <form method="POST" >
              <span>Titulo: </span><input type="text" id="titulo" class="input-field" name="titulo"   />
-             <span>Noticia: </span><textarea id="cuerpoNoticia" rows="4" cols="50" class="input-field" name="cuerpoNoticia" ></textarea>
+             <span>Noticia: </span><textarea style="color:black" id="cuerpoNoticia" rows="4" cols="50" class="input-field" name="cuerpoNoticia" ></textarea>
              <span>Date: </span><input type="text" id="datepicker" name="fecha" />
              <span>Equipos:</span> <?php muestraEquipos(); ?>
              <input type="submit"  name="btnCrearNoticia" value="Crear"  onclick="return validacionRegistro();"/>
