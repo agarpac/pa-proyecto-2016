@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once './conexionBD.php';
 
 //Comprueba si ya hay alguien con el correo registrado

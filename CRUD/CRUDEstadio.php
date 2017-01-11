@@ -1,6 +1,5 @@
 <?php
 
-session_start();
 require_once './conexionBD.php';
 
 //Comprueba si existe un estadio con ese nombre

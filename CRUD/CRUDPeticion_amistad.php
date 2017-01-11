@@ -1,6 +1,5 @@
 <?php
 
-session_start();
 require_once './conexionBD.php';
 
 //Comprueba si existe una peticion creada a ese usuario
