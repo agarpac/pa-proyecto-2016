@@ -85,7 +85,10 @@ h2 {
 .form-style{
     max-width: 500px;
     font: 14px Arial, Helvetica, sans-serif;
-    margin: 0 auto;
+    margin: 0 auto;    
+}
+.form-style ul{
+    list-style:none;
 }
 .form-style-heading{
     font-weight: bold;
@@ -386,6 +389,7 @@ ul.icons li:last-child {
     color:black;
     padding: 1%;
     border-radius: 5px;
+    margin-bottom: 1%;
 }
 #colPrincipal2 {
     float: right;
@@ -395,6 +399,7 @@ ul.icons li:last-child {
     color:black;
     padding: 1%;
     border-radius: 5px;
+    margin-bottom: 1%;
 }
 
 #colPrincipal2 a:hover{
@@ -405,30 +410,33 @@ ul.icons li:last-child {
     text-decoration: none;
     color: #ed4933;
 }
-
 /*Fin columnas noticias*/
 
 /*Inicio pag genericas Ej: quienesSomos*/
 .generico {
-    padding-top: 4em;
+    padding-top: 10em;
     background-color: #ffffff;
     color: #4E4852;
-    width: 60em;
+    /*width: 70em;*/
+    width: 100%;
+    max-width: 80em;
     margin: 0 auto;
+    font-size: 11pt;
+    flex: 1; /*contenido flexible, footer bien colocado*/
 
-    flex: 1; /*contenido flexible*/
 }
 
 /*Fin pag genericas*/
 
-.generico2 {
+.generico2 { /*inicio.php*/
     padding-top: 4em;
     width: 100%;
     max-width: 80em;
     margin: 0 auto;
-    flex: 1; /*contenido flexible*/
+    flex: 1; /*contenido flexible, footer bien colocado**/
     font-size: 11pt;
-    color:black;
+    color: #4E4852;
+
 }
 
 .pNoticia{
