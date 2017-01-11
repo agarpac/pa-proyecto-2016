@@ -353,6 +353,10 @@ ul.icons li:last-child {
     padding-left: 1em;
 }
 
+#header nav > ul > .vertical {
+    line-height: inherit; /*centrar texto cuando solo tenemos 1 elemento*/
+}
+
 #header nav > ul > li:first-child {
     border-left: 0;
     margin-left: 0;
@@ -379,6 +383,7 @@ ul.icons li:last-child {
     float: left;
     width: 70%;
     background-color: #4E4852;
+    background: rgba(144, 144, 144, 0.25);
     color:black;
 }
 #colPrincipal2 {
