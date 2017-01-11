@@ -353,6 +353,10 @@ ul.icons li:last-child {
     padding-left: 1em;
 }
 
+#header nav > ul > .vertical {
+    line-height: inherit; /*centrar texto cuando solo tenemos 1 elemento*/
+}
+
 #header nav > ul > li:first-child {
     border-left: 0;
     margin-left: 0;
@@ -377,17 +381,31 @@ ul.icons li:last-child {
 /*Inicio columnas noticias*/
 #colPrincipal1 {
     float: left;
-    width: 70%;
-    background-color: #4E4852;
+    width: 66%;
+    background: rgba(144, 144, 144, 0.25);
     color:black;
+    padding: 1%;
+    border-radius: 5px;
 }
 #colPrincipal2 {
-    float: left;
-    width: 30%;
+    float: right;
+    width: 29%;
 
-    background-color: #4E4852;
+    background-color: rgba(144, 144, 144, 0.25);
     color:black;
+    padding: 1%;
+    border-radius: 5px;
 }
+
+#colPrincipal2 a:hover{
+    color: white;
+}
+
+#colPrincipal2 a {
+    text-decoration: underline;
+    color: #ed4933;
+}
+
 /*Fin columnas noticias*/
 
 /*Inicio pag genericas Ej: quienesSomos*/
@@ -399,9 +417,24 @@ ul.icons li:last-child {
     margin: 0 auto;
 
     flex: 1; /*contenido flexible*/
-    }
+}
 
 /*Fin pag genericas*/
+
+.generico2 {
+    padding-top: 4em;
+    width: 100%;
+    max-width: 80em;
+    margin: 0 auto;
+    flex: 1; /*contenido flexible*/
+    font-size: 11pt;
+    color:black;
+}
+
+.pNoticia{
+    text-align: justify;
+}
+
 .error{
     color: red;
     text-decoration: underline;
