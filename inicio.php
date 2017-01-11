@@ -50,7 +50,7 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
                 //Muestro todos los titulares en forma de enlace. 
                 while ($col = mysqli_fetch_array($result)) {
 
-                    echo "<a href='?idNoticia=" . $col['id_noticia'] . "'>" . $col['titular_noticia'] . "</a><br/>";
+                    echo "<a href='?idNoticia=" . $col['id_noticia'] . "'>" . $col['titular_noticia'] . "</a><hr size='1' />";
                 }
                 mysqli_close($con);
             } else {
