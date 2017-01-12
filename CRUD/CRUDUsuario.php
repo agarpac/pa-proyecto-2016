@@ -141,7 +141,7 @@ function readUsuarioID($id) {
 function readUsuarioCORREO($correo) {
     $con = conectaBD();
 
-    $result = mysqli_query($con, 'SELECT * FROM usuario WHERE correo_usuario = ' . $correo);
+    $result = mysqli_query($con, 'SELECT * FROM usuario WHERE correo_usuario ="' . $correo . '"');
     if (mysqli_num_rows($result) == 1) {
         $col = mysqli_fetch_array($result);
         $_SESSION['id_usuario_CORREO'] = $col['id_usuario'];
@@ -159,7 +159,7 @@ function compruebaSiUsuarioExisteCORREO($correo){
     $existe = FALSE;
     $con = conectaBD();
 
-    $result = mysqli_query($con, 'SELECT * FROM usuario WHERE correo_usuario = ' . $correo);
+    $result = mysqli_query($con, 'SELECT * FROM usuario WHERE correo_usuario ="' . $correo . '"');
     if (mysqli_num_rows($result) == 1) {
         $existe = TRUE;
     }
