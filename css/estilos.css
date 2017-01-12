@@ -414,7 +414,8 @@ ul.icons li:last-child {
 
 /*Inicio pag genericas Ej: quienesSomos*/
 .generico {
-    padding-top: 10em;
+    padding-top: 9em;
+    padding-bottom: 5em;
     background-color: #ffffff;
     color: #4E4852;
     /*width: 70em;*/
@@ -430,6 +431,7 @@ ul.icons li:last-child {
 
 .generico2 { /*inicio.php*/
     padding-top: 4em;
+    padding-bottom: 5em;
     width: 100%;
     max-width: 80em;
     margin: 0 auto;
@@ -446,6 +448,7 @@ ul.icons li:last-child {
 .error{ /* formulario registro*/
     color: red;
     text-decoration: none;
+    text-align: center;
 
 }
 .contenedor2, .contenedor3{
