@@ -39,17 +39,17 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
         header("Location: redactarMensaje.php");
     }
     ?>
-    <section class="generico2">       
-        <table width="100%" cellpadding="2" cellspacing="0" border="0" bgcolor="#fff">
-            <tr>
-                <td width="1%" > </td>
-                <td width="20%"> Mensajes Recibidos: </td>
-            </tr>
-            <?php listaMensajes(); ?>
-        </table>
+    <section class="generico2">   
         <form  action="#" method="POST">
+            <table width="100%" cellpadding="2" cellspacing="0" border="0" bgcolor="#fff">
+                <tr>
+                    <td width="1%" > </td>
+                    <td width="80%"> Mensajes Recibidos: </td>
+                </tr>
+                <?php listaMensajes(); ?>
+            </table>
             <input type="submit" value="Redactar mensaje" name="btnRedactar" />
-            <input type="submit" value="Eliminar mensaje" name="btnBorrar" />
+            <input type="submit" value="Eliminar mensaje" name="btnBorrar" onclick="return confirmDel()" />
         </form>
     </section>
     <?php
