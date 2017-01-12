@@ -73,9 +73,6 @@ and open the template in the editor.
                  $titulo = $_POST['titulo'];
                  $cuerpoNoticia = $_POST['cuerpoNoticia'];                 
                  
-                echo $_SESSION['id_noticia'];
-                echo $titulo;
-                echo $cuerpoNoticia;
                  updateNoticia($_SESSION['id_noticia'], $titulo, $cuerpoNoticia);
                  unset($_SESSION['id_noticia']);
                  ?>
