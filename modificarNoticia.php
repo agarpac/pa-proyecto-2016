@@ -16,7 +16,10 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado'] && ($_
             <title>Social Football</title>
             <link rel="stylesheet" href="css/estilos.css" type="text/css" />
             <script script type="text/javascript" src="js/clear.js"></script>  
-
+            <link rel="stylesheet" href="jquery-ui-1.11.4/jquery-ui.css" type="text/css" />
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+            <script src="./jquery-ui-1.11.4/jquery-ui.js"></script>
+            <script src="./jquery-ui-1.11.4/jquery-ui.min.js"></script>
 
             <script type="text/javascript">
                 //Funcion que valida los datos del registro, en caso de errores muestra un mensaje por cada error y devuelve false
@@ -71,22 +74,13 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado'] && ($_
             if (isset($_POST['btnModificarNoticia'])) {
                 //Recogida de datos del formulario
                 $titulo = $_POST['titulo'];
-                $cuerpoNoticia = $_POST['cuerpoNoticia'];
-                if ($titulo != "" && $cuerpoNoticia != "") {
-                    $_SESSION['existe_ERROR'] = FALSE;
-                    updateNoticia($_SESSION['id_noticia'], $titulo, $cuerpoNoticia);
-                    unset($_SESSION['id_noticia']);
-                    header('location: noticiasAdmin.php');
-                } else {
-                    $_SESSION['existe_ERROR'] = TRUE;
-                }
+                $cuerpoNoticia = $_POST['cuerpoNoticia'];               
+                updateNoticia($_SESSION['id_noticia'], $titulo, $cuerpoNoticia);
+                header('location: noticiasAdmin.php');                
             }
             ?>
             <?php
-            if (isset($_SESSION['existe_ERROR']) && $_SESSION['existe_ERROR'] == TRUE) {
-                $_SESSION['existe_ERROR'] = FALSE;
-                echo '<span style="color:red"><strong>ERROR: Debe rellenar los datos.</strong></span>';
-            }
+           
             ?>
             <form method="POST" action="#" >
                 <span>Titulo: </span><input type="text" id="titulo" class="input-field" name="titulo" value="<?php echo $_SESSION['titular_noticia'] ?>"  />
