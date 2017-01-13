@@ -15,52 +15,6 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado'] && ($_
             <meta charset="UTF-8">
             <title>Social Football</title>
             <link rel="stylesheet" href="css/estilos.css" type="text/css" />
-            <script script type="text/javascript" src="js/clear.js"></script>  
-
-
-            <script type="text/javascript">
-                //Funcion que valida los datos del registro, en caso de errores muestra un mensaje por cada error y devuelve false
-                function validacionRegistro() {
-
-                    var titulo = document.getElementById("titulo");
-                    var cuerpoNoticia = document.getElementById("cuerpoNoticia");
-
-                    var bool = true;
-
-                    //Borramos mensajes de error anteriores si los hay
-                    if ($("#tituloError").length !== 0) {
-                        $("#tituloError").remove();
-                    }
-
-                    if ($("#cuerpoError").length !== 0) {
-                        $("#cuerpoError").remove();
-                    }
-
-                    //Comprobamos todos los campos, mostrando un error en aquellos que los haya
-                    if (titulo.value === "") {
-                        var aux = document.createElement("p");
-                        aux.setAttribute("id", "tituloError");
-                        aux.setAttribute("class", "error");
-                        aux.innerHTML = "Introduzca un titulo.";
-                        $("#titulo").after(aux);
-                        bool = false;
-                    }
-
-
-                    if (cuerpoNoticia.value === "") {
-                        var aux = document.createElement("p");
-                        aux.setAttribute("id", "cuerpoError");
-                        aux.setAttribute("class", "error");
-                        aux.innerHTML = "Introduzca un texto";
-                        $("#cuerpoNoticia").after(aux);
-                        bool = false;
-                    }
-
-
-
-                    return bool;
-                }
-            </script>
         </head>
         <body style="color:black">
             <?php
@@ -92,7 +46,7 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado'] && ($_
                 <span>Titulo: </span><input type="text" id="titulo" class="input-field" name="titulo" value="<?php echo $_SESSION['titular_noticia'] ?>"  />
                 <span>Noticia: </span><textarea style="color:black" id="cuerpoNoticia" rows="4" cols="50" class="input-field" name="cuerpoNoticia" ><?php echo $_SESSION['texto_noticia'] ?></textarea>
 
-                <input type="submit"  name="btnModificarNoticia" value="Modificar"  onclick="return validacionRegistro();"/>
+                <input type="submit"  name="btnModificarNoticia" value="Modificar"/>
                 <input type="button" name="clear" value="Limpiar" onclick="clearForm(this.form);" >
                 <input type="submit"  name="btnVolver" value="Volver" />
             </form>           
