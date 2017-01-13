@@ -17,17 +17,14 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
                 } else {
                     $_SESSION['existe_ERROR'] = TRUE;
                     $_SESSION['texto_ERROR'] = "ERROR: No puedes enviarte un correo a ti mismo.";
-                    //echo '<span style="color:red"><br><br>ERROR: No puedes enviarte un correo a ti mismo.</span>';
                 }
             } else {
                 $_SESSION['existe_ERROR'] = TRUE;
                 $_SESSION['texto_ERROR'] = "ERROR: El usuario no existe.";
-                //echo '<br><br>ERROR: El usuario no existe';
             }
         } else {
             $_SESSION['existe_ERROR'] = TRUE;
             $_SESSION['texto_ERROR'] = "ERROR: Debe rellenar los datos.";
-            //echo '<br><br>ERROR: DEBE RELLENAR LOS DATOS';
         }
     } elseif (isset($_POST['btnVolver'])) {
         header("Location: mensajes.php");
