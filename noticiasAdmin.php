@@ -8,10 +8,12 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado'] && ($_
         header('location: crearNoticia.php');
     }
     if (isset($_GET['btnModificarNoticia'])) {
-        header('location: modificarNoticia.php');
+        if (isset($_SESSION['id_noticia'])) {
+            header('location: modificarNoticia.php');
+        }
     }
     if (isset($_GET['btnEliminarNoticia'])) {
-        if ($_SESSION['id_noticia']) {
+        if (isset($_SESSION['id_noticia'])) {
             deleteNoticia($_SESSION['id_noticia']);
             unset($_SESSION['id_noticia']);
         }
@@ -30,7 +32,7 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado'] && ($_
                     echo '<p class="pNoticia">' . $_SESSION['texto_noticia'] . '</p>';
                     $_SESSION['id_noticia'] = $_GET['idNoticia'];
                 } else {
-                    echo "Prueba a seleccionar una noticia";
+                    echo "Selecciona una noticia";
                 }
                 ?>
             </div>
@@ -47,7 +49,6 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado'] && ($_
 
                     //Muestro todos los titulares en forma de enlace. 
                     while ($col = mysqli_fetch_array($result)) {
-
                         echo "<a href='?idNoticia=" . $col['id_noticia'] . "'>" . $col['titular_noticia'] . "</a><hr size='1' />";
                     }
                     mysqli_close($con);

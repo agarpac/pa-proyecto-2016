@@ -99,7 +99,7 @@ and open the template in the editor.
                  createNoticia($titulo, $cuerpoNoticia, $id_equipo, $fecha);
                  ?>
                  <article >
-                    <p>Noticia se ha creado con éxito</p>
+                    <p>La noticia se ha creado con éxito</p>
                     <form method="post" action="./noticiasAdmin.php">
                         <input class="botonBusqueda" type="submit" value="Volver"/>
                     </form>
@@ -112,10 +112,10 @@ and open the template in the editor.
         if (!isset($_POST['btnCrearNoticia'])) {
             ?>
          <form method="POST" >
-             <span>Titulo: </span><input type="text" id="titulo" class="input-field" name="titulo"   />
-             <span>Noticia: </span><textarea style="color:black" id="cuerpoNoticia" rows="4" cols="50" class="input-field" name="cuerpoNoticia" ></textarea>
-             <span>Date: </span><input type="text" id="datepicker" name="fecha" />
-             <span>Equipos:</span> <?php muestraEquipos(); ?>
+             <span>Titulo: </span><input type="text" id="titulo" class="input-field" name="titulo"   /> <br>
+             <span>Noticia: </span><br><textarea style="color:black" id="cuerpoNoticia" rows="4" cols="50" class="input-field" name="cuerpoNoticia" ></textarea><br>
+             <span>Fecha: </span><input type="text" id="datepicker" name="fecha" /><br>
+             <span>Equipos:</span> <?php muestraEquipos(); ?><br>
              <input type="submit"  name="btnCrearNoticia" value="Crear"  onclick="return validacionRegistro();"/>
              <input type="button" name="clear" value="Limpiar" onclick="clearForm(this.form);" >
              <input type="submit"  name="btnVolver" value="Volver" />
