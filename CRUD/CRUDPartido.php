@@ -1,7 +1,7 @@
 <?php
 
 require_once './conexionBD.php';
-require_once './CRUDEstadio.php';
+require_once './CRUD/CRUDEstadio.php';
 
 //Comprueba si el estadio está ocupado ese dia a esa hora
 function compruebaSiEstadioLibre($id_estadio, $fecha, $hora) {
@@ -18,7 +18,7 @@ function compruebaSiEstadioLibre($id_estadio, $fecha, $hora) {
     return $libre;
 }
 
-//Crea un partido nuevo
+//Crea un partido nuevo y devuelve un booleano
 function createPartido($fecha, $hora, $id_estadio, $id_usuario_creador, $id_usuario_2, $id_usuario_3, $id_usuario_4, $id_usuario_5, $id_usuario_6, $id_usuario_7, $id_usuario_8, $id_usuario_9, $id_usuario_10) {
     if (compruebaSiEstadioLibre($id_estadio, $fecha, $hora)) {
         $con = conectaBD();
@@ -27,18 +27,19 @@ function createPartido($fecha, $hora, $id_estadio, $id_usuario_creador, $id_usua
                 . 'VALUES ("' . $fecha . '", "' . $hora . '", ' . $id_estadio . ', ' . $id_usuario_creador . ', ' . $id_usuario_2 . ', ' . $id_usuario_3 . ', ' . $id_usuario_4 . ', ' . $id_usuario_5 . ', ' . $id_usuario_6 . ', ' . $id_usuario_7 . ', ' . $id_usuario_8 . ', ' . $id_usuario_9 . ', ' . $id_usuario_10 . ')');
 
         mysqli_close($con);
+        return TRUE;
     } else {
-        echo 'ERROR: El estadio está ocupado el dia ' . $fecha . ' en el tramo horario de ' . $hora;
+        return FALSE;
     }
 }
 
 //Lee los datos de un partido
-function readPartido($id){
+function readPartido($id) {
     $con = conectaBD();
-    
+
     $result = mysqli_query($con, 'SELECT * FROM partido WHERE id_partido = ' . $id);
-    
-    if(mysqli_num_rows($result)){
+
+    if (mysqli_num_rows($result)) {
         $col = mysqli_fetch_array($result);
         $_SESSION['fecha_partido'] = $col['fecha_partido'];
         $_SESSION['hora_partido'] = $col['hora_partido'];
@@ -58,20 +59,25 @@ function readPartido($id){
     mysqli_close($con);
 }
 
-//Edita la fecha, hora y/o estadio de un partido
-function updatePartido($id_partido, $fecha, $hora, $id_estadio){
-    $con = conectaBD();
-    
-    mysqli_query($con, 'UPDATE partido SET fecha_partido = "' . $fecha . '", hora_partido = "' . $hora . '", id_estadio = ' . $id_estadio . ' WHERE id_partido = ' . $id_partido);
-    
-    mysqli_close($con);
+//Edita la fecha, hora y/o estadio de un partido y devuelve un booleano
+function updatePartido($id_partido, $fecha, $hora, $id_estadio) {
+    if (compruebaSiEstadioLibre($id_estadio, $fecha, $hora)) {
+        $con = conectaBD();
+
+        mysqli_query($con, 'UPDATE partido SET fecha_partido = "' . $fecha . '", hora_partido = "' . $hora . '", id_estadio = ' . $id_estadio . ' WHERE id_partido = ' . $id_partido);
+
+        mysqli_close($con);
+        return TRUE;
+    } else {
+        return FALSE;
+    }
 }
 
 //Elimina un partido
-function detelePartido($id){
+function detelePartido($id) {
     $con = conectaBD();
-    
+
     mysqli_query($con, 'DELETE FROM partido WHERE id_partido = ' . $id);
-    
+
     mysqli_close($con);
 }
