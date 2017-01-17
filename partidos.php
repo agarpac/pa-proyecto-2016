@@ -1,21 +1,46 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title></title>
-    </head>
-    <body>
-        <?php 
-            session_start();
-            include './header.php';
-            
-            echo 'Aqui deberian de listarse por un lado los partidos disponibles. Por otro lado un enlace para poder crear un partido';
-        ?>
-        <?php include './footer.php';?>
-    </body>
-</html>
+<?php
+include './header.php';
+require_once './conexionBD.php';
+require_once './CRUD/CRUDEstadio.php';
+require_once './CRUD/CRUDPartido.php';
+
+//Lista todos los partidos con huecos disponibles
+function listaPartidos() {
+    $con = conectaBD();
+
+    $result = mysqli_query($con, 'SELECT id_partido, fecha_partido, hora_partido, id_estadio FROM partido WHERE id_usuario_2 = ' . -1 . ' OR ' . 'id_usuario_3 = ' . -1 . ' OR ' . 'id_usuario_4 = ' . -1 . ' OR ' . 'id_usuario_5 = ' . -1 . ' OR ' . 'id_usuario_6 = ' . -1 . ' OR ' . 'id_usuario_7 = ' . -1 . ' OR ' . 'id_usuario_8 = ' . -1 . ' OR ' . 'id_usuario_9 = ' . -1 . ' OR ' . 'id_usuario_10 = ' . -1);
+
+    while ($col = mysqli_fetch_array($result)) {
+        readEstadio($col['id_estadio']);
+        echo '<tr>';
+        echo '<td width="5%"><input type="radio" name="verPartido" value="' . $col['id_partido'] . '"></td>';
+        echo '<td width="40%">' . $_SESSION['nombre_estadio'] . ', ' . $col['fecha_partido'] . ', ' . $col['hora_partido'] . '</td>';
+        echo '</tr>';
+    }
+}
+
+if (isset($_POST['btnVerPartido'])) {
+    if (isset($_POST['verPartido'])) {
+        $_SESSION['partidoVisto'] = $_POST['verPartido'];
+        header('location: verPartido.php');
+    }
+}
+if (isset($_POST['btnCrearPartido'])) {
+    header('location: crearPartido.php');
+}
+?>
+<section class="generico2">
+    <form action = "#" method = "POST">
+        <table width="50%" cellpadding="2" cellspacing="0" border="0" bgcolor="#fff">
+            <tr>
+                <td> </td>
+                <td><h4>Partidos disponibles</h4></td>
+            </tr>
+            <?php listaPartidos(); ?>
+        </table>
+        <input type="submit" value="Ver Partido" name="btnVerPartido" />
+        <input type="submit" value="Crear partido" name="btnCrearPartido" />
+    </form>
+</section>
+
+<?php include './footer.php'; ?>
