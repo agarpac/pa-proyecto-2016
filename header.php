@@ -42,7 +42,7 @@ session_start();
                     if ($("#emailError").length === 0) {
                         var boton = document.getElementById("amistad");
                          $("#amistad").css("display", "block");
-                        //$("#dataForm").after(aux);
+                       
                         $("#dataForm").append(boton);
                     }
                 });
