@@ -7,7 +7,7 @@ require_once './CRUD/CRUDUsuario.php';
 function listadoJugadores() {
     $encontrado = FALSE;
     readUsuarioID($_SESSION['id_usuario_creador']);
-    echo $_SESSION['nombre_usuario_ID'] . ' ' . $_SESSION['apellido1_usuario_ID'] . ' ' . $_SESSION['apellido2_usuario_ID'];
+    echo '1. ' . $_SESSION['nombre_usuario_ID'] . ' ' . $_SESSION['apellido1_usuario_ID'] . ' ' . $_SESSION['apellido2_usuario_ID'];
     if ($_SESSION['id_usuario_creador'] == $_SESSION['id_usuario_login']) {
         $encontrado = TRUE;
     }
@@ -15,7 +15,7 @@ function listadoJugadores() {
     for ($i = 2; $i <= 10; $i++) {
         if ($_SESSION['id_usuario_' . $i] != -1) {
             readUsuarioID($_SESSION['id_usuario_' . $i]);
-            echo '<br>' . $_SESSION['nombre_usuario_ID'] . ' ' . $_SESSION['apellido1_usuario_ID'] . ' ' . $_SESSION['apellido2_usuario_ID'];
+            echo '<br>'. $i . '. ' . $_SESSION['nombre_usuario_ID'] . ' ' . $_SESSION['apellido1_usuario_ID'] . ' ' . $_SESSION['apellido2_usuario_ID'];
             if ($_SESSION['id_usuario_' . $i] == $_SESSION['id_usuario_login'] && !$encontrado) {
                 $encontrado = TRUE;
             }

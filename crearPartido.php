@@ -19,22 +19,28 @@ if (isset($_POST['btnCrear'])) {
     $fecha = $_POST['fecha'];
     $hora = $_POST['hora'];
     $estadio = $_POST['estadio'];
-    if (createPartido($fecha, $hora, $estadio, $_SESSION['id_usuario_login'], -1, -1, -1, -1, -1, -1, -1, -1, -1)) {
-        header('location: partidos.php');
+    
+    if ($fecha < date("Y-m-d")) {
+        echo '<script type="text/javascript">alert("Elija una fecha igual o posterior a la actual");</script>';
     } else {
-        echo '<script type="text/javascript">alert("Estadio ocupado, elija otra fecha");</script>';
+        if (createPartido($fecha, $hora, $estadio, $_SESSION['id_usuario_login'], -1, -1, -1, -1, -1, -1, -1, -1, -1)) {
+            header('location: partidos.php');
+        } else {
+            echo '<script type="text/javascript">alert("Estadio ocupado, elija otra fecha");</script>';
+        }
     }
 }
 if (isset($_POST['btnCancelar'])) {
+    //echo '<br><br><br> ' . date("Y-m-d") . ' yyyy ' . $_POST['fecha'];
     header('location: partidos.php');
 }
 ?>
 <section class="generico2">
     <form action="#" method="POST">
         Estadios: <select name="estadio" style="color:black">
-            <?php listaEstadios(); ?>
+<?php listaEstadios(); ?>
         </select> <br>
-        Día: <input name = fecha type=date id=e> <script> document.getElementById('e').value = new Date().toISOString().substring(0, 10);</script><br>
+        Día: <input name="fecha" type="date" id="fecha"> <script> document.getElementById('fecha').value = new Date().toISOString().substring(0, 10);</script><br>
         Hora: <select name="hora" style="color:black">
             <option disabled>Horarios de mañana</option>
             <option value="10:00">10:00 - 11:30</option>
