@@ -35,9 +35,16 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
         if (isset($_POST['borra'])) {
             deleteMensaje($_POST['borra']);
         }
-    } elseif (isset($_POST['btnRedactar'])) {
+    } 
+    if (isset($_POST['btnRedactar'])) {
         header("Location: redactarMensaje.php");
     }
+    if (isset($_POST['btnMarcar'])) {
+        if (isset($_POST['borra'])) {
+            mensajeNoLeido($_POST['borra']);
+            header('location: mensajes.php');
+        }
+    } 
     ?>
     <section class="generico2">   
         <form  action="#" method="POST">
@@ -48,8 +55,9 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
                 </tr>
                 <?php listaMensajes(); ?>
             </table>
-            <input type="submit" value="Redactar mensaje" name="btnRedactar" />
-            <input type="submit" value="Eliminar mensaje" name="btnBorrar" onclick="return confirmDel()" />
+            <input type="submit" value="Redactar" name="btnRedactar" />
+            <input type="submit" value="Eliminar" name="btnBorrar" onclick="return confirmDel()" />
+            <input type="submit" value='Marcar como "No leído"' name="btnMarcar" />
         </form>
     </section>
     <?php
