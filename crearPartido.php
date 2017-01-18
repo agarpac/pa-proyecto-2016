@@ -1,7 +1,9 @@
 <?php
 include './header.php';
-require_once './conexionBD.php';
+
+if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
 require_once './CRUD/CRUDPartido.php';
+require_once './CRUD/CRUDEstadio.php';
 
 //Lista todos los estadios para el listBox
 function listaEstadios() {
@@ -19,22 +21,42 @@ if (isset($_POST['btnCrear'])) {
     $fecha = $_POST['fecha'];
     $hora = $_POST['hora'];
     $estadio = $_POST['estadio'];
-    if (createPartido($fecha, $hora, $estadio, $_SESSION['id_usuario_login'], -1, -1, -1, -1, -1, -1, -1, -1, -1)) {
-        header('location: partidos.php');
+
+    if ($fecha < date("Y-m-d")) {
+        echo '<script type="text/javascript">alert("Elija una fecha igual o posterior a la actual");</script>';
     } else {
-        echo '<script type="text/javascript">alert("Estadio ocupado, elija otra fecha");</script>';
+        if (createPartido($fecha, $hora, $estadio)) {
+            header('location: partidos.php');
+        } else {
+            echo '<script type="text/javascript">alert("Estadio ocupado, elija otra fecha");</script>';
+        }
     }
 }
 if (isset($_POST['btnCancelar'])) {
     header('location: partidos.php');
+}
+
+if (isset($_POST['btnCrearEstadio'])) {
+    header('location: crearEstadio.php');
+}
+
+if (isset($_POST['btnEliminarEstadio'])) {
+    if (!readPartidoESTADIO($_POST['estadio'])) {
+        deleteEstadio($_POST['estadio']);
+    } else {
+        echo '<script type="text/javascript">alert("El estadio está ocupado por algún partido, no se puede eliminar");</script>';
+    }
 }
 ?>
 <section class="generico2">
     <form action="#" method="POST">
         Estadios: <select name="estadio" style="color:black">
             <?php listaEstadios(); ?>
-        </select> <br>
-        Día: <input name = fecha type=date id=e> <script> document.getElementById('e').value = new Date().toISOString().substring(0, 10);</script><br>
+        </select> <input type="submit" value="+" name="btnCrearEstadio" /> <?php if ($_SESSION['admin'] == 0) {
+                echo '<input type="submit" value="-" name="btnEliminarEstadio" onclick="return confirmDel()" />';
+            } ?>
+        <br>
+        Día: <input name="fecha" type="date" id="fecha"> <script> document.getElementById('fecha').value = new Date().toISOString().substring(0, 10);</script><br>
         Hora: <select name="hora" style="color:black">
             <option disabled>Horarios de mañana</option>
             <option value="10:00">10:00 - 11:30</option>
@@ -50,4 +72,9 @@ if (isset($_POST['btnCancelar'])) {
 </section>
 
 
-<?php include './footer.php'; ?>
+<?php 
+
+} else {
+    header('location: login.php');
+}
+include './footer.php';

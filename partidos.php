@@ -5,18 +5,21 @@ require_once './CRUD/CRUDEstadio.php';
 require_once './CRUD/CRUDPartido.php';
 
 //Lista todos los partidos con huecos disponibles
-function listaPartidos() {
+function listaPartidosDisponibles() {
     $con = conectaBD();
 
-    $result = mysqli_query($con, 'SELECT id_partido, fecha_partido, hora_partido, id_estadio FROM partido WHERE id_usuario_2 = ' . -1 . ' OR ' . 'id_usuario_3 = ' . -1 . ' OR ' . 'id_usuario_4 = ' . -1 . ' OR ' . 'id_usuario_5 = ' . -1 . ' OR ' . 'id_usuario_6 = ' . -1 . ' OR ' . 'id_usuario_7 = ' . -1 . ' OR ' . 'id_usuario_8 = ' . -1 . ' OR ' . 'id_usuario_9 = ' . -1 . ' OR ' . 'id_usuario_10 = ' . -1);
+    $result = mysqli_query($con, 'SELECT id_partido, fecha_partido, hora_partido, id_estadio FROM partido');
 
     while ($col = mysqli_fetch_array($result)) {
-        readEstadio($col['id_estadio']);
-        echo '<tr>';
-        echo '<td width="5%"><input type="radio" name="verPartido" value="' . $col['id_partido'] . '"></td>';
-        echo '<td width="40%">' . $_SESSION['nombre_estadio'] . ', ' . $col['fecha_partido'] . ', ' . $col['hora_partido'] . '</td>';
-        echo '</tr>';
+        if ($col['fecha_partido'] >= date("Y-m-d")) {
+            readEstadio($col['id_estadio']);
+            echo '<tr>';
+            echo '<td width="5%"><input type="radio" name="verPartido" value="' . $col['id_partido'] . '"></td>';
+            echo '<td width="40%">' . $_SESSION['nombre_estadio'] . ', ' . $col['fecha_partido'] . ', ' . $col['hora_partido'] . '</td>';
+            echo '</tr>';
+        }
     }
+    mysqli_close($con);
 }
 
 if (isset($_POST['btnVerPartido'])) {
@@ -36,11 +39,12 @@ if (isset($_POST['btnCrearPartido'])) {
                 <td> </td>
                 <td><h4>Partidos disponibles</h4></td>
             </tr>
-            <?php listaPartidos(); ?>
+            <?php listaPartidosDisponibles(); ?>
         </table>
         <input type="submit" value="Ver Partido" name="btnVerPartido" />
         <input type="submit" value="Crear partido" name="btnCrearPartido" />
     </form>
 </section>
 
-<?php include './footer.php'; ?>
+<?php
+include './footer.php';
