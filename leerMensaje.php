@@ -8,6 +8,7 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
         header('location: mensajes.php');
     }
     if (isset($_POST['btnResponder'])){
+        setcookie("texto_mensaje", $_SESSION['texto_mensaje']);
         header('location: responderMensaje.php');
     }
     mensajeLeido($_GET['id']); //Modifica LEIDO a SI
