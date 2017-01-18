@@ -8,8 +8,8 @@ require_once './CRUD/CRUDPartido.php';
 function listaPartidosDisponibles() {
     $con = conectaBD();
 
-    $result = mysqli_query($con, 'SELECT id_partido, fecha_partido, hora_partido, id_estadio FROM partido WHERE id_usuario_2 = ' . -1 . ' OR ' . 'id_usuario_3 = ' . -1 . ' OR ' . 'id_usuario_4 = ' . -1 . ' OR ' . 'id_usuario_5 = ' . -1 . ' OR ' . 'id_usuario_6 = ' . -1 . ' OR ' . 'id_usuario_7 = ' . -1 . ' OR ' . 'id_usuario_8 = ' . -1 . ' OR ' . 'id_usuario_9 = ' . -1 . ' OR ' . 'id_usuario_10 = ' . -1);
-    
+    $result = mysqli_query($con, 'SELECT id_partido, fecha_partido, hora_partido, id_estadio FROM partido');
+
     while ($col = mysqli_fetch_array($result)) {
         if ($col['fecha_partido'] >= date("Y-m-d")) {
             readEstadio($col['id_estadio']);
@@ -46,4 +46,5 @@ if (isset($_POST['btnCrearPartido'])) {
     </form>
 </section>
 
-<?php include './footer.php'; ?>
+<?php
+include './footer.php';

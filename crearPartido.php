@@ -1,5 +1,7 @@
 <?php
 include './header.php';
+
+if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
 require_once './CRUD/CRUDPartido.php';
 require_once './CRUD/CRUDEstadio.php';
 
@@ -23,7 +25,7 @@ if (isset($_POST['btnCrear'])) {
     if ($fecha < date("Y-m-d")) {
         echo '<script type="text/javascript">alert("Elija una fecha igual o posterior a la actual");</script>';
     } else {
-        if (createPartido($fecha, $hora, $estadio, $_SESSION['id_usuario_login'], -1, -1, -1, -1, -1, -1, -1, -1, -1)) {
+        if (createPartido($fecha, $hora, $estadio)) {
             header('location: partidos.php');
         } else {
             echo '<script type="text/javascript">alert("Estadio ocupado, elija otra fecha");</script>';
@@ -70,4 +72,9 @@ if (isset($_POST['btnEliminarEstadio'])) {
 </section>
 
 
-<?php include './footer.php'; ?>
+<?php 
+
+} else {
+    header('location: login.php');
+}
+include './footer.php';

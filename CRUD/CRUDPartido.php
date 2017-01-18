@@ -1,5 +1,4 @@
 <?php
-
 require_once './conexionBD.php';
 require_once './CRUD/CRUDEstadio.php';
 
@@ -19,13 +18,19 @@ function compruebaSiEstadioLibre($id_estadio, $fecha, $hora) {
 }
 
 //Crea un partido nuevo y devuelve un booleano
-function createPartido($fecha, $hora, $id_estadio, $id_usuario_creador, $id_usuario_2, $id_usuario_3, $id_usuario_4, $id_usuario_5, $id_usuario_6, $id_usuario_7, $id_usuario_8, $id_usuario_9, $id_usuario_10) {
+function createPartido($fecha, $hora, $id_estadio) {
     if (compruebaSiEstadioLibre($id_estadio, $fecha, $hora)) {
         $con = conectaBD();
 
-        mysqli_query($con, 'INSERT INTO partido (fecha_partido, hora_partido, id_estadio, id_usuario_creador, id_usuario_2, id_usuario_3, id_usuario_4, id_usuario_5, id_usuario_6, id_usuario_7, id_usuario_8, id_usuario_9, id_usuario_10) '
-                . 'VALUES ("' . $fecha . '", "' . $hora . '", ' . $id_estadio . ', ' . $id_usuario_creador . ', ' . $id_usuario_2 . ', ' . $id_usuario_3 . ', ' . $id_usuario_4 . ', ' . $id_usuario_5 . ', ' . $id_usuario_6 . ', ' . $id_usuario_7 . ', ' . $id_usuario_8 . ', ' . $id_usuario_9 . ', ' . $id_usuario_10 . ')');
-
+        mysqli_query($con, 'INSERT INTO partido (fecha_partido, hora_partido, id_estadio) VALUES ("' . $fecha . '", "' . $hora . '", ' . $id_estadio . ')');
+        $result = mysqli_query($con, 'SELECT id_partido FROM partido WHERE fecha_partido ="' . $fecha .'" AND hora_partido="' . $hora . '" AND id_estadio = ' . $id_estadio);
+        
+        if(mysqli_num_rows($result) == 1){
+            $col = mysqli_fetch_array($result);
+            $id_partido = $col['id_partido'];
+            mysqli_query($con, 'INSERT INTO partido_usuario (id_partido, id_usuario) VALUES ('. $id_partido .', ' . $_SESSION['id_usuario_login'] .')');
+        }
+        
         mysqli_close($con);
         return TRUE;
     } else {
@@ -45,16 +50,6 @@ function readPartido($id) {
         $_SESSION['hora_partido'] = $col['hora_partido'];
         $_SESSION['id_estadio'] = $col['id_estadio'];
         readEstadio($col['id_estadio']);
-        $_SESSION['id_usuario_creador'] = $col['id_usuario_creador'];
-        $_SESSION['id_usuario_2'] = $col['id_usuario_2'];
-        $_SESSION['id_usuario_3'] = $col['id_usuario_3'];
-        $_SESSION['id_usuario_4'] = $col['id_usuario_4'];
-        $_SESSION['id_usuario_5'] = $col['id_usuario_5'];
-        $_SESSION['id_usuario_6'] = $col['id_usuario_6'];
-        $_SESSION['id_usuario_7'] = $col['id_usuario_7'];
-        $_SESSION['id_usuario_8'] = $col['id_usuario_8'];
-        $_SESSION['id_usuario_9'] = $col['id_usuario_9'];
-        $_SESSION['id_usuario_10'] = $col['id_usuario_10'];
     }
     mysqli_close($con);
 }

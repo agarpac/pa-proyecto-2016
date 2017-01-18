@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-01-2017 a las 19:32:47
+-- Tiempo de generación: 18-01-2017 a las 20:36:42
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `equipo` (
   `nombre_equipo` varchar(150) NOT NULL,
   `anio_fundacion` varchar(6) NOT NULL,
   `foto_equipo` varchar(150) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `equipo`
@@ -56,9 +56,9 @@ INSERT INTO `equipo` (`id_equipo`, `nombre_equipo`, `anio_fundacion`, `foto_equi
 (15, 'Osasuna', '1920', './img/osasuna.png'),
 (16, 'Madrid', '1902', './img/realmadrid.png'),
 (17, 'Real', '1920', './img/realsociedad.png'),
-(18, 'Sporting', '1905', './img/sporting.png'),
 (19, 'Valencia', '1919', './img/valencia.png'),
-(20, 'Villarreal', '1923', './img/villarreal.png');
+(20, 'Villarreal', '1923', './img/villarreal.png'),
+(23, 'Getafe', '1983', 'img/1484756163getafe.png');
 
 -- --------------------------------------------------------
 
@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS `estadio` (
   `nombre_estadio` varchar(150) NOT NULL,
   `direccion` varchar(150) NOT NULL,
   `ciudad` varchar(150) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `estadio`
@@ -79,7 +79,8 @@ CREATE TABLE IF NOT EXISTS `estadio` (
 
 INSERT INTO `estadio` (`id_estadio`, `nombre_estadio`, `direccion`, `ciudad`) VALUES
 (1, 'Polideportivo Montequinto', 'C/ rey baltasar, 99', 'Sevilla'),
-(2, 'Pista futbol sala Olivar de Quintos', 'C/ Papá Noel, 1', 'Sevilla');
+(2, 'Pista futbol sala Olivar de Quintos', 'C/ Papá Noel, 1', 'Sevilla'),
+(6, 'Estadio Ricardo', 'C/ Josefa Bover, 1', 'Sevilla');
 
 -- --------------------------------------------------------
 
@@ -93,15 +94,24 @@ CREATE TABLE IF NOT EXISTS `mensaje` (
   `leido` varchar(2) NOT NULL,
   `id_usuario_envia` int(11) NOT NULL,
   `id_usuario_recibe` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `mensaje`
 --
 
 INSERT INTO `mensaje` (`id_mensaje`, `texto`, `leido`, `id_usuario_envia`, `id_usuario_recibe`) VALUES
-(1, 'Hola que ase', 'no', 40, 45),
-(2, 'Po na, aqui', 'no', 45, 40);
+(1, 'Hola que ase', 'si', 40, 45),
+(4, 'hola fran!!', 'si', 40, 44),
+(6, 'hola que pasa!', 'si', 40, 44),
+(8, 'eeeee', 'si', 40, 45),
+(11, 'HOLA QUE ASEEEE', 'si', 45, 40),
+(13, 'ffffffffffffffffff', 'si', 40, 45),
+(14, 'srgwe', 'si', 45, 40),
+(15, 'sgsg', 'si', 40, 45),
+(16, 'rwrfsrfvcwsfvcswrf', 'si', 45, 40),
+(17, 'hola', 'si', 43, 44),
+(18, 'sgfsdfsdg', 'si', 43, 44);
 
 -- --------------------------------------------------------
 
@@ -115,7 +125,7 @@ CREATE TABLE IF NOT EXISTS `noticia` (
   `titular_noticia` varchar(500) NOT NULL,
   `texto_noticia` varchar(10000) NOT NULL,
   `id_equipo` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `noticia`
@@ -126,7 +136,8 @@ INSERT INTO `noticia` (`id_noticia`, `fecha_noticia`, `titular_noticia`, `texto_
 (2, '26/12/2016', 'El Sevilla se hace con el central Clement.', 'Finalmente fue el equipo de Nervión el que se hizo con los servicios del jugador. Todo parecía indicar que el galo acabaría jugando en el equipo colchonero debido a que la oferta era mayor, pero para sorpresa de todos, el jugador del Nantes decidió irse a Sevilla.', 1),
 (3, '10/09/2017', 'Lucas sufre una sobrecarga muscular', 'El Atlético de Madrid confirmó que la lesión del defensor francés Lucas Hernández, sustituido ayer en el descanso del partido de la Copa del Rey contra la Unión Deportiva Las Palmas, es una "sobrecarga muscular en el recto anterior del muslo derecho". Las pruebas realizadas este miércoles en la Clínica FREMAP de Majadahonda han determinado que la lesión es muscular y afecta al recto anterior del muslo derecho, por lo que el jugador tendrá que someterse a un tratamiento de fisioterapia y entrenamiento en el gimnasio. No se ha precisado tiempo de baja. Lucas, que salió al césped como lateral izquierdo titular en el partido de vuelta de octavos de final de la Copa del Rey que terminó con victoria visitante 2-3 y clasificación local a cuartos, fue cambiado en el intermedio por Gabi Fernández.', 5),
 (4, '09/01/2017', 'El Betis buscará el sábado vencer por primera vez al Atlético de Simeone', 'El Real Betis, que el sábado visitará el Vicente Calderón (18.30 horas), sólo ha ganado uno de sus diez últimos partidos oficiales contra el Atlético de Madrid, al que no vence desde un 0-2 en diciembre de 2011 que propició la llegada al banquillo colchonero del argentino Diego Simeone. En aquella decimoséptima jornada de la Liga 2011-12, el Betis ganó en Madrid por 0-2, con goles de Pozuelo y el paraguayo Roque Santa Cruz, resultado que provocó la destitución de Gregorio Manzano como entrenador atlético y el fichaje de Simeone. El preparador argentino empató a dos en el partido de vuelta de aquel campeonato (Pozuelo y Pereira marcaron para los locales y Koke y Falcao hicieron los goles visitantes) y, desde entonces, ha encadenado siete victorias y un empate en sus enfrentamientos con el Betis.', 2),
-(5, '10/09/2017', 'Jovetic entra en la lista y Lenglet será titular', 'El Sevilla se mide este jueves al Real Madrid en la vuelta copera, una cita para la que ha estado trabajando hoy en la ciudad deportiva. Y lo ha hecho con la novedad de Stevan Jovetic, que se ha ejercitado por primera vez junto a sus nuevos compañeros para, instantes después, entrar en la convocatoria para dicho encuentro. El delantero montenegrino se ha unido así al francés Lenglet, la otra incorporación del Sevilla en el presente mercado invernal. El defensa tiene muchas posibilidades de estrenarse como titular ante el Madrid, como ha confirmado el propio Jorge Sampaoli: "Tenemos la posibilidad con la llegada de Lenglet de tener tres centrales y el equipo se siente cómodo con ese dibujo. Sería ilógico cambiarlo". Los 18 jugadores que ha citado el entrenador argentino son Sergio Rico, David Soria, Kranevitter, Lenglet, Iborra, Vietto, Nasri, Correa, Ben Yedder, Kiyotake, Jovetic, Sarabia, Escudero, Ganso, Vitolo, Nico Pareja, Rami y Mercado.', 1);
+(5, '10/09/2017', 'Jovetic entra en la lista y Lenglet será titular', 'El Sevilla se mide este jueves al Real Madrid en la vuelta copera, una cita para la que ha estado trabajando hoy en la ciudad deportiva. Y lo ha hecho con la novedad de Stevan Jovetic, que se ha ejercitado por primera vez junto a sus nuevos compañeros para, instantes después, entrar en la convocatoria para dicho encuentro. El delantero montenegrino se ha unido así al francés Lenglet, la otra incorporación del Sevilla en el presente mercado invernal. El defensa tiene muchas posibilidades de estrenarse como titular ante el Madrid, como ha confirmado el propio Jorge Sampaoli: "Tenemos la posibilidad con la llegada de Lenglet de tener tres centrales y el equipo se siente cómodo con ese dibujo. Sería ilógico cambiarlo". Los 18 jugadores que ha citado el entrenador argentino son Sergio Rico, David Soria, Kranevitter, Lenglet, Iborra, Vietto, Nasri, Correa, Ben Yedder, Kiyotake, Jovetic, Sarabia, Escudero, Ganso, Vitolo, Nico Pareja, Rami y Mercado.', 1),
+(7, '13/01/2017', 'Real Betis Balompiéeeeeeee', 'Olé mi Betis cañero!eeee', 2);
 
 -- --------------------------------------------------------
 
@@ -138,18 +149,45 @@ CREATE TABLE IF NOT EXISTS `partido` (
   `id_partido` int(11) NOT NULL,
   `fecha_partido` varchar(20) NOT NULL,
   `hora_partido` varchar(10) NOT NULL,
-  `id_estadio` int(11) NOT NULL,
-  `id_usuario_creador` int(11) NOT NULL,
-  `id_usuario_2` int(11) NOT NULL,
-  `id_usuario_3` int(11) NOT NULL,
-  `id_usuario_4` int(11) NOT NULL,
-  `id_usuario_5` int(11) NOT NULL,
-  `id_usuario_6` int(11) NOT NULL,
-  `id_usuario_7` int(11) NOT NULL,
-  `id_usuario_8` int(11) NOT NULL,
-  `id_usuario_9` int(11) NOT NULL,
-  `id_usuario_10` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `id_estadio` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `partido`
+--
+
+INSERT INTO `partido` (`id_partido`, `fecha_partido`, `hora_partido`, `id_estadio`) VALUES
+(16, '2017-02-16', '20:00', 2),
+(17, '2017-01-16', '10:00', 1),
+(18, '2017-01-20', '10:00', 1),
+(27, '2017-01-19', '20:00', 6),
+(28, '2017-01-29', '10:00', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `partido_usuario`
+--
+
+CREATE TABLE IF NOT EXISTS `partido_usuario` (
+  `id_partido_usuario` int(5) NOT NULL,
+  `id_partido` int(5) NOT NULL,
+  `id_usuario` int(5) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `partido_usuario`
+--
+
+INSERT INTO `partido_usuario` (`id_partido_usuario`, `id_partido`, `id_usuario`) VALUES
+(1, 27, 40),
+(2, 18, 40),
+(3, 16, 40),
+(8, 18, 45),
+(14, 27, 45),
+(16, 28, 45),
+(17, 16, 44),
+(19, 18, 44);
 
 -- --------------------------------------------------------
 
@@ -237,6 +275,12 @@ ALTER TABLE `partido`
   ADD PRIMARY KEY (`id_partido`);
 
 --
+-- Indices de la tabla `partido_usuario`
+--
+ALTER TABLE `partido_usuario`
+  ADD PRIMARY KEY (`id_partido_usuario`);
+
+--
 -- Indices de la tabla `peticion_amistad`
 --
 ALTER TABLE `peticion_amistad`
@@ -256,27 +300,32 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `equipo`
 --
 ALTER TABLE `equipo`
-  MODIFY `id_equipo` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
+  MODIFY `id_equipo` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT de la tabla `estadio`
 --
 ALTER TABLE `estadio`
-  MODIFY `id_estadio` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id_estadio` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT de la tabla `mensaje`
 --
 ALTER TABLE `mensaje`
-  MODIFY `id_mensaje` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id_mensaje` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT de la tabla `noticia`
 --
 ALTER TABLE `noticia`
-  MODIFY `id_noticia` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `id_noticia` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT de la tabla `partido`
 --
 ALTER TABLE `partido`
-  MODIFY `id_partido` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_partido` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=29;
+--
+-- AUTO_INCREMENT de la tabla `partido_usuario`
+--
+ALTER TABLE `partido_usuario`
+  MODIFY `id_partido_usuario` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT de la tabla `peticion_amistad`
 --
