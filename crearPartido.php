@@ -1,7 +1,7 @@
 <?php
 include './header.php';
-require_once './conexionBD.php';
 require_once './CRUD/CRUDPartido.php';
+require_once './CRUD/CRUDEstadio.php';
 
 //Lista todos los estadios para el listBox
 function listaEstadios() {
@@ -31,15 +31,23 @@ if (isset($_POST['btnCrear'])) {
     }
 }
 if (isset($_POST['btnCancelar'])) {
-    //echo '<br><br><br> ' . date("Y-m-d") . ' yyyy ' . $_POST['fecha'];
     header('location: partidos.php');
+}
+
+if (isset($_POST['btnCrearEstadio'])) {
+    header('location: crearEstadio.php');
+}
+
+if (isset($_POST['btnEliminarEstadio'])) {
+    deleteEstadio($_POST['estadio']);
 }
 ?>
 <section class="generico2">
     <form action="#" method="POST">
         Estadios: <select name="estadio" style="color:black">
 <?php listaEstadios(); ?>
-        </select> <br>
+        </select> <input type="submit" value="+" name="btnCrearEstadio" /> <?php if ($_SESSION['admin'] == 0) {echo '<input type="submit" value="-" name="btnEliminarEstadio" onclick="return confirmDel()" />'; }?>
+        <br>
         Día: <input name="fecha" type="date" id="fecha"> <script> document.getElementById('fecha').value = new Date().toISOString().substring(0, 10);</script><br>
         Hora: <select name="hora" style="color:black">
             <option disabled>Horarios de mañana</option>
