@@ -58,6 +58,16 @@ function mensajeLeido($id) {
     mysqli_close($con);
 }
 
+//Modifica el campo "leido" a "no"
+function mensajeNoLeido($id) {
+    $con = conectaBD();
+
+    mysqli_query($con, 'UPDATE mensaje SET leido = "no" WHERE id_mensaje = ' . $id);
+
+    mysqli_close($con);
+}
+
+//Devuelve el numero de mensajes no leidos por el usuario
 function numMensajesNoLeidos($id_usuario_recibe){
     $num = 0;
     $con = conectaBD();
