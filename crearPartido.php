@@ -19,7 +19,7 @@ if (isset($_POST['btnCrear'])) {
     $fecha = $_POST['fecha'];
     $hora = $_POST['hora'];
     $estadio = $_POST['estadio'];
-    
+
     if ($fecha < date("Y-m-d")) {
         echo '<script type="text/javascript">alert("Elija una fecha igual o posterior a la actual");</script>';
     } else {
@@ -39,14 +39,20 @@ if (isset($_POST['btnCrearEstadio'])) {
 }
 
 if (isset($_POST['btnEliminarEstadio'])) {
-    deleteEstadio($_POST['estadio']);
+    if (!readPartidoESTADIO($_POST['estadio'])) {
+        deleteEstadio($_POST['estadio']);
+    } else {
+        echo '<script type="text/javascript">alert("El estadio está ocupado por algún partido, no se puede eliminar");</script>';
+    }
 }
 ?>
 <section class="generico2">
     <form action="#" method="POST">
         Estadios: <select name="estadio" style="color:black">
-<?php listaEstadios(); ?>
-        </select> <input type="submit" value="+" name="btnCrearEstadio" /> <?php if ($_SESSION['admin'] == 0) {echo '<input type="submit" value="-" name="btnEliminarEstadio" onclick="return confirmDel()" />'; }?>
+            <?php listaEstadios(); ?>
+        </select> <input type="submit" value="+" name="btnCrearEstadio" /> <?php if ($_SESSION['admin'] == 0) {
+                echo '<input type="submit" value="-" name="btnEliminarEstadio" onclick="return confirmDel()" />';
+            } ?>
         <br>
         Día: <input name="fecha" type="date" id="fecha"> <script> document.getElementById('fecha').value = new Date().toISOString().substring(0, 10);</script><br>
         Hora: <select name="hora" style="color:black">

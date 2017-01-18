@@ -39,7 +39,7 @@ function readPartido($id) {
 
     $result = mysqli_query($con, 'SELECT * FROM partido WHERE id_partido = ' . $id);
 
-    if (mysqli_num_rows($result)) {
+    if (mysqli_num_rows($result) == 1) {
         $col = mysqli_fetch_array($result);
         $_SESSION['fecha_partido'] = $col['fecha_partido'];
         $_SESSION['hora_partido'] = $col['hora_partido'];
@@ -80,4 +80,18 @@ function detelePartido($id) {
     mysqli_query($con, 'DELETE FROM partido WHERE id_partido = ' . $id);
 
     mysqli_close($con);
+}
+
+//Comprueba si el estadio está vinculado a algun partido
+function readPartidoESTADIO($id_estadio) {
+    $ocupado = FALSE;
+    $con = conectaBD();
+
+    $result = mysqli_query($con, 'SELECT id_partido FROM partido WHERE id_estadio = ' . $id_estadio);
+
+    if (mysqli_num_rows($result) >= 1) {
+        $ocupado = TRUE;
+    }
+    mysqli_close($con);
+    return $ocupado;
 }
