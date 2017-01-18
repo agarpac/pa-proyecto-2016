@@ -57,3 +57,18 @@ function mensajeLeido($id) {
 
     mysqli_close($con);
 }
+
+function numMensajesNoLeidos($id_usuario_recibe){
+    $num = 0;
+    $con = conectaBD();
+    
+    $result = mysqli_query($con, 'SELECT leido FROM mensaje WHERE id_usuario_recibe = ' . $id_usuario_recibe);
+    
+    while ($col = mysqli_fetch_array($result)) {
+        if ($col['leido'] == "no"){
+            $num++;
+        }
+    }
+    mysqli_close($con);
+    return $num;
+}
