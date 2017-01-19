@@ -474,7 +474,13 @@ ul.icons li:last-child {
 .contenedor2, .contenedor3{
     color:black;
 }
-
+.enlaceMensajes{
+    text-decoration: none;
+    color: black;
+}
+.enlaceMensajes:hover{
+    text-decoration: underline;
+}
 /*AUTOCOMPLETE AMISTAD*/
 /* Formatting search box */
     .search-box{
@@ -512,10 +518,4 @@ ul.icons li:last-child {
     }
     /* FIN AUTOCOMPLETE AMISTAD*/
 
-.enlaceMensajes{
-    text-decoration: none;
-    color: black;
-}
-.enlaceMensajes:hover{
-    text-decoration: underline;
-}
+

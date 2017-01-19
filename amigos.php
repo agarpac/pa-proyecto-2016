@@ -46,7 +46,24 @@ include './CRUD/CRUDPeticion_amistad.php';
         </div>
         <div id="colPrincipal2">
             <p>Columna 2 (Para listar a los amigos )</p>
-            
+            <?php
+            $con = conectaBD();
+
+                $sqlQuery = "SELECT * FROM peticion_amistad WHERE (id_usuario_peticion= " . $_SESSION['id_usuario_login'] . " OR id_usuario_recibe= " . $_SESSION['id_usuario_login'] .") AND estado_peticion = 1";
+                $result = mysqli_query($con, $sqlQuery);
+
+                //Muestro todos los titulares en forma de enlace. 
+                while ($col = mysqli_fetch_array($result)) {
+                    if ($col['id_usuario_peticion'] == $_SESSION['id_usuario_login']){
+                        //Mostrar datos usuario id_usuario_recibe
+                        echo "<a href='?idNoticia=" . $col['id_noticia'] . "'>" . $col['titular_noticia'] . "</a><hr size='1' />";
+                    }else{
+                        //Mostrar datos usuario id_usuario_recibe
+                        echo "<a href='?idNoticia=" . $col['id_noticia'] . "'>" . $col['titular_noticia'] . "</a><hr size='1' />";
+                    }
+                }
+                mysqli_close($con);
+            ?>
         </div>
         <div id="colPrincipal3">
             <p>Columna 3 (Para ver las peticiones )</p>
