@@ -101,7 +101,7 @@ function listaPartidosDisponibles() {
     $result = mysqli_query($con, 'SELECT id_partido, fecha_partido, hora_partido, id_estadio FROM partido');
 
     while ($col = mysqli_fetch_array($result)) {
-        if ($col['fecha_partido'] >= date("Y-m-d")) {
+        if ($col['fecha_partido'] >= date("d/m/Y")) {
             $numPartidos++;
             readEstadio($col['id_estadio']);
             echo '<tr>';
@@ -122,7 +122,7 @@ function listaPartidosNoDisponibles() {
     $result = mysqli_query($con, 'SELECT id_partido, fecha_partido, hora_partido, id_estadio FROM partido');
 
     while ($col = mysqli_fetch_array($result)) {
-        if ($col['fecha_partido'] < date("Y-m-d")) {
+        if ($col['fecha_partido'] < date("d/m/Y")) {
             $numPartidos++;
             readEstadio($col['id_estadio']);
             echo '<tr>';
