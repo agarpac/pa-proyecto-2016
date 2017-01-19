@@ -274,9 +274,7 @@ function validacionLogin() {
         $("#passError").remove();
         $("#password").css("background-color", "#f2d6b5");
     }
-    if ($("#userError").length !== 0) {
-        $("#userError").remove();
-    }
+    
 
     if (user.value === "") {
 
