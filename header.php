@@ -44,8 +44,7 @@ include_once './CRUD/CRUDMensaje.php';
                     if ($("#emailError").length === 0) {
                          $("#amistad").css("display", "block");
                          $("#limpiar").css("display", "block");
-                         $("#autoc").attr("disabled","disabled");
-                         
+                         $("#autoc").attr("readonly","");
                     }
                 });
             });
