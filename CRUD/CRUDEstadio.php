@@ -72,3 +72,14 @@ function deleteEstadio($id) {
 
     mysqli_close($con);
 }
+
+//Lista todos los estadios para el listBox
+function listaEstadios() {
+    $con = conectaBD();
+
+    $result = mysqli_query($con, 'SELECT id_estadio, nombre_estadio FROM estadio');
+    while ($col = mysqli_fetch_array($result)) {
+        echo '<option value = "' . $col['id_estadio'] . '">' . $col['nombre_estadio'] . '</option>';
+    }
+    mysqli_close($con);
+}
