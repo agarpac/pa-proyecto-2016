@@ -42,16 +42,7 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado'] && ($_
                 <h1>Titulares:</h1><p>Haz click para ver el contenido</p>
                 <form action="noticiasAdmin.php" method="get" >   
                     <?php
-                    $con = conectaBD();
-
-                    $sqlQuery = "SELECT titular_noticia, id_noticia FROM noticia  ORDER BY id_equipo ASC";
-                    $result = mysqli_query($con, $sqlQuery);
-
-                    //Muestro todos los titulares en forma de enlace. 
-                    while ($col = mysqli_fetch_array($result)) {
-                        echo "<a href='?idNoticia=" . $col['id_noticia'] . "'>" . $col['titular_noticia'] . "</a><hr size='1' />";
-                    }
-                    mysqli_close($con);
+                    listaTitulares();
                     ?>
                     <span class="form-style">                        
                         <input type="submit" class="buttonSpecial" name="btnCrearNoticia" value="Crear"/>

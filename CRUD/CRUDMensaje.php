@@ -68,17 +68,46 @@ function mensajeNoLeido($id) {
 }
 
 //Devuelve el numero de mensajes no leidos por el usuario
-function numMensajesNoLeidos($id_usuario_recibe){
+function numMensajesNoLeidos($id_usuario_recibe) {
     $num = 0;
     $con = conectaBD();
-    
+
     $result = mysqli_query($con, 'SELECT leido FROM mensaje WHERE id_usuario_recibe = ' . $id_usuario_recibe);
-    
+
     while ($col = mysqli_fetch_array($result)) {
-        if ($col['leido'] == "no"){
+        if ($col['leido'] == "no") {
             $num++;
         }
     }
     mysqli_close($con);
     return $num;
+}
+
+function nombreUsuarioEnvia($id) {
+    readUsuarioID($id);
+    return $_SESSION['nombre_usuario_ID'] . ' ' . $_SESSION['apellido1_usuario_ID'] . ' ' . $_SESSION['apellido2_usuario_ID'];
+}
+
+function listaMensajes() {
+    $numMensajes = 0;
+    $con = conectaBD();
+
+    $result = mysqli_query($con, 'SELECT * FROM mensaje WHERE id_usuario_recibe = ' . $_SESSION['id_usuario_login']);
+
+    while ($col = mysqli_fetch_array($result)) {
+        $numMensajes++;
+        $nombreRemitente = nombreUsuarioEnvia($col['id_usuario_envia']);
+        echo '<tr>';
+        echo '<td><input type="radio" name="borra" value="' . $col['id_mensaje'] . '"> </td>';
+        echo '<td> <a href="leerMensaje.php?id=' . $col['id_mensaje'] . '" class = "enlaceMensajes">';
+        if ($col['leido'] == 'no') {
+            echo '<strong>' . $nombreRemitente . '</strong>';
+        } else {
+            echo $nombreRemitente;
+        }
+        echo'</a></td>';
+        echo '</tr>';
+    }
+    mysqli_close($con);
+    return $numMensajes;
 }

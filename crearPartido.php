@@ -5,17 +5,6 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
 require_once './CRUD/CRUDPartido.php';
 require_once './CRUD/CRUDEstadio.php';
 
-//Lista todos los estadios para el listBox
-function listaEstadios() {
-    $con = conectaBD();
-
-    $result = mysqli_query($con, 'SELECT id_estadio, nombre_estadio FROM estadio');
-    while ($col = mysqli_fetch_array($result)) {
-        echo '<option value = "' . $col['id_estadio'] . '">' . $col['nombre_estadio'] . '</option>';
-    }
-    mysqli_close($con);
-}
-
 //Si existe el boton Crear
 if (isset($_POST['btnCrear'])) {
     $fecha = $_POST['fecha'];
