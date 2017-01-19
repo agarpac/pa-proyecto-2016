@@ -8,7 +8,8 @@ session_start();
         <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" href="css/estilos.css" />
-        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>     
+        <script src="./js/clear.js"></script> 
         <script type="text/javascript">
             function confirmDel() { //confirmar borrar noticia
                 if (confirm("¿Realmente desea eliminarla?"))
@@ -40,10 +41,10 @@ session_start();
                     $(this).parents(".search-box").find('input[type="text"]').val($(this).text());
                     $(this).parent(".result").empty();
                     if ($("#emailError").length === 0) {
-                        var boton = document.getElementById("amistad");
                          $("#amistad").css("display", "block");
-                       
-                        $("#dataForm").append(boton);
+                         $("#limpiar").css("display", "block");
+                         $("#autoc").attr("disabled","disabled");
+                         
                     }
                 });
             });

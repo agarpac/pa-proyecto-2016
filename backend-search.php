@@ -1,4 +1,5 @@
 <?php
+session_start();
 /* Attempt MySQL server connection. Assuming you are running MySQL
 server with default setting (user 'root' with no password) */
 $link = mysqli_connect("localhost", "root", "", "social_football");
@@ -13,7 +14,7 @@ $query = mysqli_real_escape_string($link, $_REQUEST['query']);
  
 if(isset($query)){
     // Attempt select query execution
-    $sql = "SELECT * FROM usuario WHERE correo_usuario LIKE '" . $query . "%'";
+    $sql = "SELECT * FROM usuario WHERE correo_usuario LIKE '" . $query . "%' AND correo_usuario NOT LIKE '" . $_SESSION['correo_usuario_login'] ."'";                            
     if($result = mysqli_query($link, $sql)){
         if(mysqli_num_rows($result) > 0){
             while($row = mysqli_fetch_array($result)){
