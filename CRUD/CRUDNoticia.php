@@ -65,7 +65,7 @@ function deleteNoticia($id_noticia) {
 
     mysqli_close($con);
 }
-
+//Muestro todos los titulares de todas las noticias
 function listaTitulares() {
     $con = conectaBD();
 

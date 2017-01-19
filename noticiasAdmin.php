@@ -1,6 +1,5 @@
 <?php
 include './header.php';
-include_once './conexionBD.php';
 include_once './CRUD/CRUDNoticia.php';
 if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado'] && ($_SESSION['admin'] == 0)) {
 
@@ -47,7 +46,7 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado'] && ($_
                     <span class="form-style">                        
                         <input type="submit" class="buttonSpecial" name="btnCrearNoticia" value="Crear"/>
                         <input type="submit" class="buttonSpecial" name="btnModificarNoticia" value="Modificar"/> 
-                        <input type="submit" class="buttonSpecial" name="btnEliminarNoticia" value="Eliminar" onclick="return confirmDel()"/>
+                        <input type="submit" class="buttonSpecial" name="btnEliminarNoticia" value="Eliminar" <?php if(isset($_SESSION['id_noticia'])){ echo 'onclick="return confirmDel()"'; } ?> />
                     </span>
                 </form>
             </div>
