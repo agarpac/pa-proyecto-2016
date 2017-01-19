@@ -1,7 +1,7 @@
 <?php
-
 include './header.php';
 require_once './CRUD/CRUDEstadio.php';
+
 if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
     if (isset($_POST['btnCrear'])) {
         if ($_POST['nombre'] != "" && $_POST['direccion'] != "") {

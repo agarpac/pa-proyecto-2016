@@ -15,167 +15,9 @@ if (isset($_POST['volver'])) {
         <title>Social Football</title>
         <link rel="stylesheet" href="css/estilos.css" />
         <link rel="stylesheet" href="jquery-ui-1.11.4/jquery-ui.css" type="text/css" />
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-        <script src="./jquery-ui-1.11.4/jquery-ui.js"></script>
-        <script src="./jquery-ui-1.11.4/jquery-ui.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>        
         <script src="./pStrength-master/pStrength.jquery.js"></script>
-
-        <script type="text/javascript">
-            //Funcion que valida los datos del registro, en caso de errores muestra un mensaje por cada error y devuelve false
-            function validacionRegistro() {
-                var exp = new RegExp(/^[A-Z]{1,2}\s\d{4}\s([B-D]|[F-H]|[J-N]|[P-T]|[V-Z]){3}$/);
-                var passExp = new RegExp(/(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/);
-                var emailExp = new RegExp(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
-                var nombre = document.getElementById("nombre");
-                var apellido1 = document.getElementById("apellido1");
-                var apellido2 = document.getElementById("apellido2");
-                var pass = document.getElementById("password");
-                var email = document.getElementById("email");
-
-                var bool = true;
-
-                //Borramos mensajes de error anteriores si los hay
-                if ($("#nombreError").length !== 0) {
-                    $("#nombreError").remove();
-                }
-
-                if ($("#apellido1Error").length !== 0) {
-                    $("#apellido1Error").remove();
-                }
-                if ($("#apellido2Error").length !== 0) {
-                    $("#apellido2Error").remove();
-                }
-
-                if ($("#passError").length !== 0) {
-                    $("#passError").remove();
-                }
-
-                if ($("#emailError").length !== 0) {
-                    $("#emailError").remove();
-                }
-
-
-                //Comprobamos todos los campos, mostrando un error en aquellos que los haya
-                if (nombre.value === "") {
-                    var aux = document.createElement("p");
-                    aux.setAttribute("id", "nombreError");
-                    aux.setAttribute("class", "error");
-                    aux.innerHTML = "Introduzca un nombre.";
-                    $("#nombre").after(aux);
-                    bool = false;
-                } else {
-                    if (exp.test(String(nombre.value))) {
-                        var aux = document.createElement("p");
-                        aux.setAttribute("id", "nombreError");
-                        aux.setAttribute("class", "error");
-                        aux.innerHTML = "Introduzca un nombre correcto.";
-                        $("#nombre").after(aux);
-                        bool = false;
-                    }
-                }
-
-                if (apellido1.value === "") {
-                    var aux = document.createElement("p");
-                    aux.setAttribute("id", "apellido1Error");
-                    aux.setAttribute("class", "error");
-                    aux.innerHTML = "Introduzca un apellido.";
-                    $("#apellido1").after(aux);
-                    bool = false;
-                } else {
-                    if (exp.test(String(nombre.value))) {
-                        var aux = document.createElement("p");
-                        aux.setAttribute("id", "apellido1Error");
-                        aux.setAttribute("class", "error");
-                        aux.innerHTML = "Introduzca un apellido correcto.";
-                        $("#apellido1Error").after(aux);
-                        bool = false;
-                    }
-                }
-                if (apellido2.value === "") {
-                    var aux = document.createElement("p");
-                    aux.setAttribute("id", "apellido2Error");
-                    aux.setAttribute("class", "error");
-                    aux.innerHTML = "Introduzca un apellido.";
-                    $("#apellido2").after(aux);
-                    bool = false;
-                } else {
-                    if (exp.test(String(nombre.value))) {
-                        var aux = document.createElement("p");
-                        aux.setAttribute("id", "apellido2Error");
-                        aux.setAttribute("class", "error");
-                        aux.innerHTML = "Introduzca un apellido correcto.";
-                        $("#apellido2").after(aux);
-                        bool = false;
-                    }
-                }
-
-                if (pass.value === "") {
-                    var aux = document.createElement("p");
-                    aux.setAttribute("id", "passError");
-                    aux.setAttribute("class", "error");
-                    aux.innerHTML = "Introduzca una contrase&ntilde;a.";
-                    $("#password").after(aux);
-                    bool = false;
-                } else {
-                    if (passExp.test(String(pass.value))) {
-                        var aux = document.createElement("p");
-                        aux.setAttribute("id", "passError");
-                        aux.setAttribute("class", "error");
-                        aux.innerHTML = "Introduzca una contraseña correcta.";
-                        $("#password").after(aux);
-                        bool = false;
-                    }
-                }
-
-
-
-                if (email.value === "") {
-                    var aux = document.createElement("p");
-                    aux.setAttribute("id", "emailError");
-                    aux.setAttribute("class", "error");
-                    aux.innerHTML = "Introduzca un correo electronico.";
-                    $("#email").after(aux);
-                    bool = false;
-                } else {
-                    if (!emailExp.test(String(email.value))) {
-                        var aux = document.createElement("p");
-                        aux.setAttribute("id", "emailError");
-                        aux.setAttribute("class", "error");
-                        aux.innerHTML = "Introduzca un email valido.";
-                        $("#email").after(aux);
-                        bool = false;
-                    }
-                }
-
-
-                return bool;
-            }
-
-            //Funcion que comprueba la fortaleza de la contraseña
-            function passStrenght() {
-                $("#password").pStrength({
-                    'changeBackground': false,
-                    'passwordValidForm': 50,
-                    'backgrounds': [['#cc0000', '#FFF'], ['#cc3333', '#FFF'], ['#cc6666', '#FFF'], ['#ff9999', '#FFF'],
-                        ['#e0941c', '#FFF'], ['#efd09e', '#FFF'],
-                        ['#ccffcc', '#FFF'], ['#66cc66', '#FFF'], ['#339933', '#FFF'], ['#006600', '#FFF'], ['#105610', '#FFF']],
-                    'onValidatePassword': function (percentage) {
-                        $('#' + $(this).data('display')).html($('#' + $(this).data('display')).html() + 'La contraseña es optima para registro');
-                        $('#formulario').submit(function () {
-                            return true;
-                        });
-                    },
-                    'onPasswordStrengthChanged': function (passwordStrength, percentage) {
-                        if ($(this).val()) {
-                            $.fn.pStrength('changeBackground', this, passwordStrength);
-                        } else {
-                            $.fn.pStrength('resetStyle', this);
-                        }
-                        $('#' + $(this).data('display')).html('Porcentaje de seguridad:' + percentage + '%');
-                    }
-                });
-            }
-        </script>
+        <script src="./js/validaciones.js"></script>
     </head>
     <body>
         <header id="header">
@@ -190,43 +32,43 @@ if (isset($_POST['volver'])) {
                 </ul>
             </nav>
         </header>
-        <?php
+        
+            <?php
+            function soloImagenes($fichero) {
+                $tiposAceptados = Array('image/jpg', 'image/jpeg', 'image/png');
+                if (array_search($fichero['type'], $tiposAceptados) === false)
+                    return false;
+                else
+                    return true;
+            }
 
-        function soloImagenes($fichero) {
-            $tiposAceptados = Array('image/jpg', 'image/jpeg', 'image/png');
-            if (array_search($fichero['type'], $tiposAceptados) === false)
-                return false;
-            else
-                return true;
-        }
+            if (isset($_POST['btnEnviar'])) {
+                $valid_file = TRUE;
+                $nombre = $_POST['nombre'];
+                $apellido1 = $_POST['apellido1'];
+                $apellido2 = $_POST['apellido2'];
+                $correo = $_POST['correo'];
+                $password = $_POST['password'];
+                $foto = $_FILES['foto']['tmp_name'];
 
-        if (isset($_POST['btnEnviar'])) {
-            $valid_file = TRUE;
-            $nombre = $_POST['nombre'];
-            $apellido1 = $_POST['apellido1'];
-            $apellido2 = $_POST['apellido2'];
-            $correo = $_POST['correo'];
-            $password = $_POST['password'];
-            $foto = $_FILES['foto']['tmp_name'];
+                if ($_FILES['foto']['name']) {
+                    //Si no hay errores
+                    if ($_FILES['foto']['error'] == 0) {
+                        if (soloImagenes($_FILES['foto'])) {
+                            //Cogemos el nombre del fichero
+                            $new_file_name = strtolower($_FILES['foto']['tmp_name']); //Lo renombramos
+                            if ($_FILES['foto']['size'] > (2048000)) { //Si el fichero es menor que 2MB
+                                $valid_file = FALSE;
+                            }
 
-            if ($_FILES['foto']['name']) {
-                //Si no hay errores
-                if ($_FILES['foto']['error'] == 0) {
-                    if (soloImagenes($_FILES['foto'])) {
-                        //Cogemos el nombre del fichero
-                        $new_file_name = strtolower($_FILES['foto']['tmp_name']); //Lo renombramos
-                        if ($_FILES['foto']['size'] > (2048000)) { //Si el fichero es menor que 2MB
-                            $valid_file = FALSE;
-                        }
-
-                        //Si ha pasado bien 
-                        if ($valid_file) {
-                            $ruta = "userImgs/" . time() . $_FILES['foto']['name'];
-                            $foto = 'userImgs/' . $new_file_name;
+                            //Si ha pasado bien 
+                            if ($valid_file) {
+                                $ruta = "userImgs/" . time() . $_FILES['foto']['name'];
+                                $foto = 'userImgs/' . $new_file_name;
+                            }
                         }
                     }
                 }
-            }
             //Si foto ok
             if (isset($ruta)) {
                 $nombre = filter_var($nombre, FILTER_SANITIZE_MAGIC_QUOTES);
@@ -269,8 +111,6 @@ if (isset($_POST['volver'])) {
                 <?php
             }
         }
-
-
 
         //En este caso se muestra un formulario de registro
         if (!isset($_POST['btnEnviar'])) {
@@ -349,11 +189,9 @@ if (isset($_POST['volver'])) {
                             <input  type="submit" class="buttonSpecial" name="volver" value="Cancelar" /> 
                         </div>
                     </form>
-
                 </div>
             </section>
             <?php
         }
         include './footer.php';
         ?>
-    

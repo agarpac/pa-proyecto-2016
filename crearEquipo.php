@@ -15,7 +15,6 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
             return true;
     }
 
-// FALTA AÑADIR LA IMAGEN DEL ESCUDO
     if (isset($_POST['btnAceptar'])) {
         $foto = $_FILES['escudo']['tmp_name'];
 
@@ -60,7 +59,6 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
     </section>
 
     <?php
-
 } else {
     header('location: login.php');
 }
