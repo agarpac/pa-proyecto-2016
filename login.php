@@ -1,5 +1,8 @@
 <?php
 session_start();
+if (isset($_SESSION['usuario_logueado'])){
+    unset($_SESSION['usuario_logueado']);
+}
 include_once './CRUD/CRUDUsuario.php';
 //Si se ha pulsado sobre el botón de login
 if (isset($_POST['btnLogin'])) {

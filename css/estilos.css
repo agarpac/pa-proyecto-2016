@@ -402,6 +402,26 @@ ul.icons li:last-child {
     margin-bottom: 1%;
 }
 
+/*Columnas Partidos*/
+#colPartidos1 {
+    float: left;
+    width: 47%;
+    background: rgba(144, 144, 144, 0.25);
+    color:black;
+    padding: 1%;
+    border-radius: 5px;
+    margin-bottom: 1%;
+}
+#colPartidos2 {
+    float: right;
+    width: 47%;
+    background-color: rgba(144, 144, 144, 0.25);
+    color:black;
+    padding: 1%;
+    border-radius: 5px;
+    margin-bottom: 1%;
+}
+
 #colPrincipal2 a:hover{
     color: white;
 }
@@ -454,6 +474,7 @@ ul.icons li:last-child {
 .contenedor2, .contenedor3{
     color:black;
 }
+
 /*AUTOCOMPLETE AMISTAD*/
 /* Formatting search box */
     .search-box{
@@ -490,3 +511,11 @@ ul.icons li:last-child {
         background: #f2f2f2;
     }
     /* FIN AUTOCOMPLETE AMISTAD*/
+
+.enlaceMensajes{
+    text-decoration: none;
+    color: black;
+}
+.enlaceMensajes:hover{
+    text-decoration: underline;
+}

@@ -4,6 +4,13 @@ include_once './CRUD/CRUDMensaje.php';
 include_once './CRUD/CRUDUsuario.php';
 
 if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
+    if (isset($_POST['btnVolver'])){
+        header('location: mensajes.php');
+    }
+    if (isset($_POST['btnResponder'])){
+        setcookie("texto_mensaje", $_SESSION['texto_mensaje']);
+        header('location: responderMensaje.php');
+    }
     mensajeLeido($_GET['id']); //Modifica LEIDO a SI
     readMensaje($_GET['id']);
     readUsuarioID($_SESSION['id_usuario_envia_mensaje']);
@@ -14,7 +21,8 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
     echo '<span style="color:black"><b>Mensaje de:</b> ' . $_SESSION['nombre_usuario_ID'] . ' ' . $_SESSION['apellido1_usuario_ID'] . ' ' . $_SESSION['apellido2_usuario_ID'] . '<br>';
     echo $_SESSION['texto_mensaje'] . '</span>';
     ?>
-    <form action="mensajes.php" method="POST">
+    <form action="#" method="POST">
+        <input type="submit" value="Responder" name="btnResponder" />
         <input type="submit" value="Volver a mensajes" name="btnVolver" />
     </form>
     </section>

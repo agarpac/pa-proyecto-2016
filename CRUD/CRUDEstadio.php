@@ -31,8 +31,9 @@ function createEstadio($nombre, $direccion, $ciudad) {
         mysqli_query($con, 'INSERT INTO estadio (nombre_estadio, direccion, ciudad) VALUES ("' . $nombre . '", "' . $direccion . '", "' . $ciudad . '")');
 
         mysqli_close($con);
+        return TRUE;
     } else {
-        echo '<span style="color:red"><h3>Ese estadio existe, y se encuentra en ' . $_SESSION['direccion_estadio_existe'] . '. ' . $_SESSION['ciudad_estadio_existe'] . '.</h3></span>';
+        return FALSE;
     }
 }
 
@@ -56,18 +57,29 @@ function updateEstadio($id, $nombre, $direccion, $ciudad) {
     $nombre = filter_var($nombre, FILTER_SANITIZE_MAGIC_QUOTES);
     $direccion = filter_var($direccion, FILTER_SANITIZE_MAGIC_QUOTES);
     $ciudad = filter_var($ciudad, FILTER_SANITIZE_MAGIC_QUOTES);
-    
+
     $con = conectaBD();
-    
+
     mysqli_query($con, 'UPDATE estadio SET nombre_estadio = "' . $nombre . '", direccion = "' . $direccion . '", ciudad = "' . $ciudad . '" WHERE id_estadio = ' . $id);
     mysqli_close($con);
 }
 
 //Elimina un estadio
-function deleteEstadio($id){
+function deleteEstadio($id) {
     $con = conectaBD();
-    
+
     mysqli_query($con, 'DELETE FROM estadio WHERE id_estadio = ' . $id);
-    
+
+    mysqli_close($con);
+}
+
+//Lista todos los estadios para el listBox
+function listaEstadios() {
+    $con = conectaBD();
+
+    $result = mysqli_query($con, 'SELECT id_estadio, nombre_estadio FROM estadio');
+    while ($col = mysqli_fetch_array($result)) {
+        echo '<option value = "' . $col['id_estadio'] . '">' . $col['nombre_estadio'] . '</option>';
+    }
     mysqli_close($con);
 }

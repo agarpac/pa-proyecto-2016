@@ -1,5 +1,6 @@
 <?php
 session_start();
+include_once './CRUD/CRUDMensaje.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -66,7 +67,7 @@ session_start();
                         ?>
                         <li><a href="inicio.php">Inicio</a></li>
                         <li><a href="partidos.php">Partidos</a></li>
-                        <li><a href="mensajes.php">Mensajes</a></li>
+                        <li><a href="mensajes.php">Mensajes<?php if(numMensajesNoLeidos($_SESSION['id_usuario_login']) > 0){ echo '<strong> ['. numMensajesNoLeidos($_SESSION['id_usuario_login']) . ']</strong>';} ?></a></li>
                         <li><a href="amigos.php">Amigos</a></li>
                         <?php
                         if ($_SESSION['admin'] == 0) {

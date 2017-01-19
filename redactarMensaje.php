@@ -10,34 +10,23 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
             if (compruebaSiUsuarioExisteCORREO($_POST['usuario_destino'])) { //Si el usuario existe
                 readUsuarioCORREO($_POST['usuario_destino']);
                 if ($_SESSION['id_usuario_login'] != $_SESSION['id_usuario_CORREO']) {
-                    $_SESSION['existe_ERROR'] = FALSE;
-                    $_SESSION['texto_ERROR'] = "";
                     createMensaje($_POST['texto'], $_SESSION['id_usuario_login'], $_SESSION['id_usuario_CORREO']);
                     header('location: mensajes.php');
                 } else {
-                    $_SESSION['existe_ERROR'] = TRUE;
-                    $_SESSION['texto_ERROR'] = "ERROR: No puedes enviarte un correo a ti mismo.";
+                    echo '<script type="text/javascript">alert("No puedes enviarte un correo a ti mismo.");</script>';
                 }
             } else {
-                $_SESSION['existe_ERROR'] = TRUE;
-                $_SESSION['texto_ERROR'] = "ERROR: El usuario no existe.";
+                echo '<script type="text/javascript">alert("El usuario no existe.");</script>';
             }
         } else {
-            $_SESSION['existe_ERROR'] = TRUE;
-            $_SESSION['texto_ERROR'] = "ERROR: Debe rellenar los datos.";
+            echo '<script type="text/javascript">alert("Debe rellenar los datos.");</script>';
         }
-    } elseif (isset($_POST['btnVolver'])) {
+    } 
+    if (isset($_POST['btnVolver'])) {
         header("Location: mensajes.php");
     }
     ?>
     <section class="generico2">
-        <?php
-        if (isset($_SESSION['existe_ERROR']) && $_SESSION['existe_ERROR'] == TRUE) {
-            echo '<span style="color:red"><strong>' . $_SESSION['texto_ERROR'] . '</strong></span>';
-            $_SESSION['existe_ERROR'] = FALSE;
-            $_SESSION['texto_ERROR'] = "";
-        }
-        ?>
         <form action="#" method="post">
             <span style="color:black">Para:</span> <input type="email" name="usuario_destino" /><br>
             <span style="color:black">Texto:</span><br>
