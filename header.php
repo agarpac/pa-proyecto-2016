@@ -8,18 +8,15 @@ include_once './CRUD/CRUDMensaje.php';
         <title>Social Football</title>
         <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="stylesheet" href="css/estilos.css" />
-        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>     
-        <script src="./js/clear.js"></script> 
-        <script type="text/javascript">
-            function confirmDel() { //confirmar borrar noticia
-                if (confirm("¿Realmente desea eliminarla?"))
-                    return true; 
-                else
-                    return false;
-            }
-        </script>
-        
+        <link rel="stylesheet" href="css/estilos.css" />      
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>        
+        <script src="./js/validaciones.js"></script>         
+        <script>
+            $( function() {
+              $( "#datepicker" ).datepicker({ dateFormat: 'dd/mm/yy' }).val();              
+            } );            
+        </script>              
        
         <script type="text/javascript">
             $(document).ready(function(){
@@ -44,13 +41,11 @@ include_once './CRUD/CRUDMensaje.php';
                     if ($("#emailError").length === 0) {
                          $("#amistad").css("display", "block");
                          $("#limpiar").css("display", "block");
-                         $("#autoc").attr("readonly","");
+                         $("#autoc").attr("readonly","true");
                     }
                 });
             });
         </script>
-     
-     
     </head>
     <body>
         <header id="header">

@@ -38,14 +38,14 @@ if (isset($_POST['btnEliminarEstadio'])) {
 }
 ?>
 <section class="generico2">
-    <form action="#" method="POST">
+    <form method="POST">
         Estadios: <select name="estadio" style="color:black">
             <?php listaEstadios(); ?>
         </select> <input type="submit" value="+" name="btnCrearEstadio" /> <?php if ($_SESSION['admin'] == 0) {
                 echo '<input type="submit" value="-" name="btnEliminarEstadio" onclick="return confirmDel()" />';
             } ?>
         <br>
-        Día: <input name="fecha" type="date" id="fecha"> <script> document.getElementById('fecha').value = new Date().toISOString().substring(0, 10);</script><br>
+        Día: <input type="text" id="datepicker" name="fecha"> <br>
         Hora: <select name="hora" style="color:black">
             <option disabled>Horarios de mañana</option>
             <option value="10:00">10:00 - 11:30</option>
@@ -59,7 +59,6 @@ if (isset($_POST['btnEliminarEstadio'])) {
         <input type="submit" value="Cancelar" name="btnCancelar" />
     </form>
 </section>
-
 
 <?php 
 
