@@ -1,6 +1,5 @@
 <?php
 include './header.php';
-require_once './conexionBD.php';
 require_once './CRUD/CRUDEstadio.php';
 require_once './CRUD/CRUDPartido.php';
 if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {

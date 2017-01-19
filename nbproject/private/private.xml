@@ -1,23 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-<<<<<<< HEAD
-            <file>file:/C:/xampp/htdocs/social_football/inicio.php</file>
-            <file>file:/C:/xampp/htdocs/social_football/login.php</file>
-            <file>file:/C:/xampp/htdocs/social_football/CRUD/CRUDUsuario.php</file>
-            <file>file:/C:/xampp/htdocs/social_football/header.php</file>
-            <file>file:/C:/xampp/htdocs/social_football/css/estilos.css</file>
-            <file>file:/C:/xampp/htdocs/social_football/amigos.php</file>
-            <file>file:/C:/xampp/htdocs/social_football/CRUD/CRUDPeticion_amistad.php</file>
-=======
-            <file>file:/C:/xampp/htdocs/pa-proyecto-2016/redactarMensaje.php</file>
-            <file>file:/C:/xampp/htdocs/pa-proyecto-2016/CRUD/CRUDMensaje.php</file>
-            <file>file:/C:/xampp/htdocs/pa-proyecto-2016/mensajes.php</file>
-            <file>file:/C:/xampp/htdocs/pa-proyecto-2016/responderMensaje.php</file>
-            <file>file:/C:/xampp/htdocs/pa-proyecto-2016/leerMensaje.php</file>
->>>>>>> 25b45dd25d5b11ea5cb5f2676f6fe60d907ae1f0
-        </group>
-    </open-files>
-</project-private>
+        <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+	        <group>
+		            <file>file:/C:/xampp/htdocs/pa-proyecto-2016/redactarMensaje.php</file>
+			                <file>file:/C:/xampp/htdocs/pa-proyecto-2016/login.php</file>
+					        </group>
+						    </open-files>
+						    </project-private>

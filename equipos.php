@@ -3,16 +3,11 @@ include './header.php';
 include_once './CRUD/CRUDEquipo.php';
 if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
     if (isset($_POST['btnEliminar'])) {
-        $con = conectaBD();
-
-        $result = mysqli_query($con, 'SELECT id_usuario FROM usuario WHERE equipo_id = ' . $_POST['equipos']);
-
-        if (mysqli_num_rows($result) > 0) {
+        if (equipoFavorito($_POST['equipos'])) {
             echo '<script type="text/javascript">alert("El equipo que quiere borrar es el favorito de, al menos, un usuario");</script>';
         } else {
             deleteEquipo($_POST['equipos']);
         }
-        mysqli_close($con);
     }
 
     if (isset($_POST['btnModificar'])) {
