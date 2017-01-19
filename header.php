@@ -9,7 +9,8 @@ include_once './CRUD/CRUDMensaje.php';
         <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" href="css/estilos.css" />
-
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>     
+        <script src="./js/clear.js"></script> 
         <script type="text/javascript">
             function confirmDel() { //confirmar borrar noticia
                 if (confirm("¿Realmente desea eliminarla?"))
@@ -18,6 +19,39 @@ include_once './CRUD/CRUDMensaje.php';
                     return false;
             }
         </script>
+        
+       
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('.search-box input[type="text"]').on("keyup input", function(){
+                    /* Get input value on change */
+                    var term = $(this).val();
+                    var resultDropdown = $(this).siblings(".result");
+                    if(term.length){
+                        $.get("backend-search.php", {query: term}).done(function(data){
+                            // Display the returned data in browser
+                            resultDropdown.html(data);
+                        });
+                    } else{
+                        resultDropdown.empty();
+                    }
+                });
+
+                // Set search input value on click of result item
+                $(document).on("click", ".result p", function(){
+                    $(this).parents(".search-box").find('input[type="text"]').val($(this).text());
+                    $(this).parent(".result").empty();
+                    if ($("#emailError").length === 0) {
+                         $("#amistad").css("display", "block");
+                         $("#limpiar").css("display", "block");
+                         $("#autoc").attr("disabled","disabled");
+                         
+                    }
+                });
+            });
+        </script>
+     
+     
     </head>
     <body>
         <header id="header">

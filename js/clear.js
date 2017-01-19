@@ -35,3 +35,12 @@ function clearForm(oForm) {
 	}
     }
 }
+
+function limpiaTexto(input){
+    var campoTexto = document.getElementById("autoc");
+    campoTexto.value = "";
+    campoTexto.disabled = false;
+    var botonEnviar = document.getElementById("amistad");
+    botonEnviar.style.display = "none";
+    input.style.display = "none";
+}
