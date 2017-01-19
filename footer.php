@@ -14,9 +14,5 @@
         <li><a href="politicas.php">Politicas</a></li>
     </ul>
 </footer>
-
-<!-- Scripts -->
-
-
 </body>
 </html>

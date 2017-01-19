@@ -41,7 +41,7 @@ if (isset($_POST['btnRegistro'])) {
         <title>Social Football</title>
         <link rel="stylesheet" href="css/estilos.css" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-
+        <script src="js/validaciones.js"></script>
         <script type="text/javascript">
 
             $(document).ready(function () {
@@ -57,84 +57,6 @@ if (isset($_POST['btnRegistro'])) {
                     $(this).attr('value', "");
                 });
             });
-
-            //Funcion que valida los datos de login, en caso de errores muestra un mensaje por cada error y devuelve false
-            function validacionLogin() {
-                var exp = new RegExp(/^[A-Z]{1,2}\s\d{4}\s([B-D]|[F-H]|[J-N]|[P-T]|[V-Z]){3}$/);
-                var user = document.getElementById("user");
-                var pass = document.getElementById("password");
-                var bool = true;
-
-                /* if ($("#userError").length !== 0) {
-                 $("#userError").remove();
-                 $("#user").css("background-color", "#f2d6b5");
-                 }
-                 if ($("#passError").length !== 0) {
-                 $("#passError").remove();
-                 $("#password").css("background-color", "#f2d6b5");
-                 }
-                 if ($("#userError").length !== 0) {
-                 $("#userError").remove();
-                 }*/
-
-                if (user.value === "") {
-
-                    /*var aux = document.createElement("p");
-                     aux.setAttribute("id", "userError");*/
-                    /*aux.setAttribute("class", "error");*/
-                    /*aux.innerHTML = "Introduzca un usuario.";*/
-                    user.value = "Introduzca su correo";
-                    /*$("#user").after(aux);*/
-                    $("#user").css("background-color", "#f2dede");
-                    $("#user").css("color", "#a94442");
-                    $("#user").css("border-width", "1px");
-                    $("#user").css("border-style", "solid");
-                    $("#user").css("border-color", "red");
-                    $("#user").css("box-shadow", "red");
-
-                    bool = false;
-                }
-
-                if (pass.value === "") {
-
-                    /*var aux = document.createElement("p");
-                     aux.setAttribute("id", "passError");
-                     aux.setAttribute("class", "error");
-                     aux.innerHTML = "Introduzca una contrase&ntilde;a.";
-                     $("#password").after(aux);
-                     $("#password").css("background-color", "red");*/
-                    document.formLogin.password.type = 'text';
-                    password.value = "Introduzca su password";
-                    /*$("#user").after(aux);*/
-                    $("#password").css("background-color", "#f2dede");
-                    $("#password").css("color", "#a94442");
-                    $("#password").css("border-width", "1px");
-                    $("#password").css("border-style", "solid");
-                    $("#password").css("border-color", "red");
-                    $("#password").css("box-shadow", "red");
-                    bool = false;
-                }
-
-                if (user.value !== "" && exp.test(String(user.value))) {
-
-                    /*var aux = document.createElement("p");
-                     aux.setAttribute("id", "userError");
-                     aux.setAttribute("class", "error");
-                     aux.innerHTML = "Introduzca un nombre de usuario correcto.";
-                     $("#user").after(aux);*/
-                    user.value = "Introduzca un nombre correcto";
-                    $("#user").css("background-color", "#f2dede");
-                    $("#user").css("color", "#a94442");
-                    $("#user").css("border-width", "1px");
-                    $("#user").css("border-style", "solid");
-                    $("#user").css("border-color", "red");
-                    $("#user").css("box-shadow", "red");
-                    bool = false;
-                }
-
-                return bool;
-            }
-
         </script>
     </head>
     <body>
