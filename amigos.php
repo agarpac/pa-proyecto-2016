@@ -1,74 +1,50 @@
 <?php
 include './header.php';
-include './CRUD/CRUDUsuario.php';
 include './CRUD/CRUDPeticion_amistad.php';
 
-    if (isset($_POST['buttonAmistad'])) {
-
-        if (!isset($_POST['mailUser']) || $_POST['mailUser'] == '') {
-            $errores[] = 'El user está vacio';
-        }
-        
-        if (!isset($errores)) {
-            //Recogida de datos del formulario
-            $correo = filter_input(INPUT_POST, 'mailUser', FILTER_SANITIZE_MAGIC_QUOTES);
-
-            $correo = addslashes($correo);
-
-
-            if (compruebaSiUsuarioExisteCORREO($correo)) {
-                readUsuarioCORREO($correo);
-                createPeticion_amistad($_SESSION['id_usuario_login'],$_SESSION['id_usuario_CORREO']);
-            }else{
-                $errores[] = 'El user no existe';
-            }
-        }
-       
-         if (isset($errores)) {
-                    echo '<p>Datos incorrectos</p>';
-        }
-    }           
-           
+if (isset($_POST['buttonAmistad'])) {
+    if (!compruebaAmistad($_POST['mailUser'])) {
+        readUsuarioCORREO($_POST['mailUser']);
+        createPeticion_amistad($_SESSION['id_usuario_login'], $_SESSION['id_usuario_CORREO']);
+    } else {
+        echo '<script type="text/javascript">alert("El usuario ' . $_SESSION['nombre_usuario_CORREO'] . ' ' . $_SESSION['apellido1_usuario_CORREO'] . ' ya es amigo tuyo.");</script>';
+    }
+}
+if (isset($_POST['btnRechazar'])){
+    deletePeticion_amistad($_POST['idPeticion']);
+}
+if (isset($_POST['btnAceptar'])){
+    aceptaPeticion($_POST['idPeticion']);
+}
 ?>
 <section class="generico">   
     <article>
         <div id="colPrincipal1">
             <p>Columna 1 (Para pedir )</p>
             <div class="search-box">
-                
-                    <input type="text" id="autoc" name="mailUser" autocomplete="off" placeholder="Busca usuario" />
-                    <input type="submit" class="buttonSpecial" id="amistad" name="buttonAmistad" placeholder="Enviar Peticion" style="display: none;"/> 
+                <form action="#" method="POST">
+                    <input type="text" id="autoc" name="mailUser" autocomplete="off" placeholder="Busca usuario"/>
+                    <input type="submit" class="buttonSpecial" id="amistad" name="buttonAmistad" placeholder="Enviar Peticion" value="Enviar" style="display: none;"/> 
                     <input type="submit" class="buttonSpecial" id="limpiar" name="buttonLimpiar" placeholder="Limpiar" value="Limpiar" style="display: none;" onclick="limpiaTexto(this)"/> 
                     <div class="result"></div>
-                
+                </form>
             </div>
-           
+
         </div>
         <div id="colPrincipal2">
             <p>Columna 2 (Para listar a los amigos )</p>
-            <?php
-            $con = conectaBD();
-
-                $sqlQuery = "SELECT * FROM peticion_amistad WHERE (id_usuario_peticion= " . $_SESSION['id_usuario_login'] . " OR id_usuario_recibe= " . $_SESSION['id_usuario_login'] .") AND estado_peticion = 1";
-                $result = mysqli_query($con, $sqlQuery);
-
-                //Muestro todos los titulares en forma de enlace. 
-                while ($col = mysqli_fetch_array($result)) {
-                    if ($col['id_usuario_peticion'] == $_SESSION['id_usuario_login']){
-                        //Mostrar datos usuario id_usuario_recibe
-                        echo "<a href='?idNoticia=" . $col['id_noticia'] . "'>" . $col['titular_noticia'] . "</a><hr size='1' />";
-                    }else{
-                        //Mostrar datos usuario id_usuario_recibe
-                        echo "<a href='?idNoticia=" . $col['id_noticia'] . "'>" . $col['titular_noticia'] . "</a><hr size='1' />";
-                    }
-                }
-                mysqli_close($con);
-            ?>
+            <?php listarAmigos(); ?>
         </div>
         <div id="colPrincipal3">
             <p>Columna 3 (Para ver las peticiones )</p>
-            
+            <table>
+                <?php
+                if (!listarPeticionesPendientes()) {
+                    echo '<tr><td>No hay peticiones pendientes</td></tr>';
+                }
+                ?>
+            </table>
         </div>
-        </article>
+    </article>
 </section>
-<?php include './footer.php';?>
+<?php include './footer.php'; ?>

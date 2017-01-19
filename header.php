@@ -42,8 +42,6 @@ include_once './CRUD/CRUDMensaje.php';
                          $("#amistad").css("display", "block");
                          $("#limpiar").css("display", "block");
                          $("#autoc").attr("readonly","true");
-                         
-                         
                     }
                 });
             });
