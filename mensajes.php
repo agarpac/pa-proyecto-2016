@@ -19,8 +19,8 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
         }
     }
     ?>
-    <section class="generico2">
-        <article id="colPrincipal1">
+    <section class="bodyRegistro generico">
+        <article class="form-style">
             <form  action="#" method="POST">
                 <table>
                     <tr>
@@ -31,15 +31,15 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
                     $numMensajes = listaMensajes();
                     if ($numMensajes > 0) {
                         ?>
-                    </table>
-                    <input type="submit" value="Redactar" name="btnRedactar" />
-                    <input type="submit" value="Eliminar" name="btnBorrar" onclick="return confirmDel()" />
-                    <input type="submit" value='Marcar como "No leído"' name="btnMarcar" />
+                    </table>                   
+                    <input style="margin-top: 40px" type="submit" class="buttonSpecial" value="Redactar" name="btnRedactar" />
+                    <input type="submit" value="Eliminar" class="buttonSpecial" name="btnBorrar" onclick="return confirmDel()" />
+                    <input type="submit" value='Marcar como "No leído"' class="buttonSpecial" name="btnMarcar" />
                     <?php
                 } else {
                     echo '</table>';
-                    echo 'No hay mensajes recibidos para mostrar';
-                    echo '<br><input type="submit" value="Redactar" name="btnRedactar" />';
+                    echo '<label>No hay mensajes recibidos para mostrar</label>';
+                    echo '<input style="margin-top: 30px" type="submit" class="buttonSpecial" value="Redactar" name="btnRedactar" />';
                 }
                 ?>
             </form>

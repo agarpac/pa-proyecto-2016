@@ -16,17 +16,22 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
         header("location: mensajes.php");
     }
     ?>
-    <section class="generico2">
-        <form action="#" method="post">
-            <span style="color:black">Para:</span> <input type="email" name="usuario_destino" value="<?php echo $_SESSION['correo_usuario_ID']; ?>" disabled /><br>
-            <span style="color:black">Mensaje Recibido:</span><br>
-            <textarea style="color:black" rows="5" cols="60" name="textoRecibido" disabled><?php echo $_COOKIE['texto_mensaje'];
-    unset($_COOKIE["texto_mensaje"]); ?></textarea><br>
-            <span style="color:black">Texto: </span><br>
-            <textarea style="color:black" rows="5" cols="60" name="texto"></textarea><br>
-            <input type="submit" value="Enviar" name="btnEnviar" />
-            <input type="submit" value="Volver a mensajes" name="btnVolver" />
-        </form>
+    <section class="generico">
+        <div class="form-style">
+            <div class="form-style-heading">Respondiendo al mensaje:</div>
+            <form action="#" method="post">
+                <label><span>Para:</span> <input type="email" class="input-field" name="usuario_destino" value="<?php echo $_SESSION['correo_usuario_ID']; ?>" disabled /></label>
+                <label><span>Mensaje Recibido:</span>
+                    <textarea style="color:black; resize:none;" class="input-field" rows="5" cols="60" name="textoRecibido" disabled><?php
+                        echo $_COOKIE['texto_mensaje'];
+                        unset($_COOKIE["texto_mensaje"]);
+                        ?></textarea></label>
+                <label><span>Texto:</span>
+                    <textarea style="color:black; resize:none;" class="input-field" rows="5" cols="60" name="texto"></textarea></label>
+                <input type="submit" class="buttonSpecial" value="Enviar" name="btnEnviar" />
+                <input type="submit" class="buttonSpecial" value="Volver a mensajes" name="btnVolver" />
+            </form>
+        </div>
     </section>
     <?php
 } else {
