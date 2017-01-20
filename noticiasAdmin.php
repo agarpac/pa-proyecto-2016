@@ -39,10 +39,12 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado'] && ($_
         <article>
             <div id="colPrincipal2">
                 <h1>Titulares:</h1><p>Haz click para ver el contenido</p>
-                <form action="noticiasAdmin.php" method="get" >   
+                <form action="noticiasAdmin.php" method="get" >  
+                    <div style="overflow: auto">
                     <?php
                     listaTitulares();
                     ?>
+                    </div>
                     <span class="form-style">                        
                         <input type="submit" class="buttonSpecial" name="btnCrearNoticia" value="Crear"/>
                         <input type="submit" class="buttonSpecial" name="btnModificarNoticia" value="Modificar"/> 
