@@ -30,7 +30,7 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
     }
     ?>
     <section class="generico">
-        <article id="colPartidos1">
+        <article id="colPartidos1" class="form-style">
             <form action = "#" method = "POST">
                 <table>
                     <tr>
@@ -42,24 +42,21 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
                     if ($numPartidos > 0) {
                         ?>
                     </table>
-                    <span class="form-style">
-                        <input type="submit" class="buttonSpecial" value="Ver partido" name="btnVerPartidoDisponible" />
-                        <input type="submit" class="buttonSpecial" value="Crear partido" name="btnCrearPartido" />
-                        <?php
-                        if ($_SESSION['admin'] == 0) {
-                            echo '<input type="submit" class="buttonSpecial" value="Eliminar partido" name="btnEliminarPartido" onclick="return confirmDel()" />';
-                        }
-                        ?>
-                    </span>
+                    <input type="submit" class="buttonSpecial" value="Ver partido" name="btnVerPartidoDisponible" />
+                    <input type="submit" class="buttonSpecial" value="Crear partido" name="btnCrearPartido" />
                     <?php
+                    if ($_SESSION['admin'] == 0) {
+                        echo '<input type="submit" class="buttonSpecial" value="Eliminar partido" name="btnEliminarPartido" onclick="return confirmDel()" />';
+                    }
                 } else {
                     echo '</table>';
-                    echo 'No hay partidos "disponibles" para mostrar';
+                    echo '<label>No hay partidos "disponibles" para mostrar</label>';
+                    echo '<input type="submit" class="buttonSpecial" value="Crear partido" name="btnCrearPartido" />';
                 }
                 ?>
             </form>
         </article>
-        <article id="colPartidos2">
+        <article id="colPartidos2" class="form-style">
             <form action = "#" method = "POST">
                 <table>
                     <tr>
@@ -71,15 +68,11 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
                     if ($numPartidos > 0) {
                         ?>
                     </table>
-                <span class="form-style">
-                        <input type="submit" class="buttonSpecial" value="Ver partido" name="btnVerPartidoNoDisponible" />
-                        <?php
-                        if ($_SESSION['admin'] == 0) {
-                            echo '<input type="submit" class="buttonSpecial" value="Eliminar partido" name="btnEliminarPartido" onclick="return confirmDel()" />';
-                        }
-                        ?>
-                    </span>
+                    <input type="submit" class="buttonSpecial" value="Ver partido" name="btnVerPartidoNoDisponible" />
                     <?php
+                    if ($_SESSION['admin'] == 0) {
+                        echo '<input type="submit" class="buttonSpecial" value="Eliminar partido" name="btnEliminarPartido" onclick="return confirmDel()" />';
+                    }
                 } else {
                     echo '</table>';
                     echo 'No hay partidos "no disponibles" para mostrar';
