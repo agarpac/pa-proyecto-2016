@@ -96,16 +96,16 @@ function readUsuario($correo, $password) {
 }
 
 //Actualiza un usuario
-function updateUsuario($id, $nombre, $apellido1, $apellido2, $password, $foto, $ciudad, $equipo) {
+function updateUsuario($id, $nombre, $apellido1, $apellido2, $password, $ciudad, $equipo) {
     $nombre = filter_var($nombre, FILTER_SANITIZE_MAGIC_QUOTES);
     $apellido1 = filter_var($apellido1, FILTER_SANITIZE_MAGIC_QUOTES);
     $apellido2 = filter_var($apellido2, FILTER_SANITIZE_MAGIC_QUOTES);
     $password = filter_var($password, FILTER_SANITIZE_MAGIC_QUOTES);
-    $foto = filter_var($foto, FILTER_SANITIZE_MAGIC_QUOTES);
+    $pass = md5($password);
 
     $con = conectaBD();
 
-    mysqli_query($con, 'UPDATE usuario SET nombre_usuario = "' . $nombre . '", apellido1_usuario = "' . $apellido1 . '", apellido2_usuario = "' . $apellido2 . '", pass_usuario = "' . $password . '", foto_usuario = "' . $foto . '", ciudad_usuario = "' . $ciudad . '", equipo_id = "' . $equipo . '" WHERE id_usuario = ' . $id);
+    mysqli_query($con, 'UPDATE usuario SET nombre_usuario = "' . $nombre . '", apellido1_usuario = "' . $apellido1 . '", apellido2_usuario = "' . $apellido2 . '", pass_usuario = "' . $pass . '", ciudad_usuario = "' . $ciudad . '", equipo_id = "' . $equipo . '" WHERE id_usuario = ' . $id);
 
     mysqli_close($con);
 }
