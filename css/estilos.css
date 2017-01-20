@@ -494,6 +494,7 @@ ul.icons li:last-child {
 .enlaceMensajes:hover{
     text-decoration: underline;
 }
+
 /*AUTOCOMPLETE AMISTAD*/
 /* Formatting search box */
 .search-box{
@@ -542,4 +543,10 @@ ul.icons li:last-child {
     opacity:0.5;
     font-weight:bold;
     cursor: pointer;
+}
+
+.dropdownList{
+    background-color: lightgrey;    
+    display: block;
+    
 }
