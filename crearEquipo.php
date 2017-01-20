@@ -47,18 +47,22 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
         }
     }
     ?>
-    <section class="generico2">   
-        <form action="#" method="POST" enctype="multipart/form-data">
-            <label><span>Nombre:<span class="required">* </span></span><input type="text" name="nombre" /></label><br>
-            <label><span>Año de fundación:<span class="required">* </span></span><input type="number" name="anio" /></label><br>
-            <label><span>Escudo:<span class="required">* </span></span><input type="file" name="escudo" /></label><br>
-            <br>
-            <input type="submit" value="Aceptar" name="btnAceptar" />
-            <input type="submit" value="Cancelar" name="btnCancelar" />
-        </form>
+    <section class="generico">   
+        <div class="form-style">
+            <div class="form-style-heading">Crear equipo:</div>
+            <form action="#" method="POST" enctype="multipart/form-data">
+                <label><span>Nombre:<span class="required">* </span></span><input type="text" class="input-field" name="nombre" /></label>
+                <label><span>Año de fundación:<span class="required">* </span></span><input type="number" class="input-field" name="anio" /></label>
+                <label><span>Escudo:<span class="required">* </span></span><input type="file" class="input-field" name="escudo" /></label>
+                
+                <input type="submit" class="buttonSpecial" value="Aceptar" name="btnAceptar" />
+                <input type="submit" class="buttonSpecial" value="Cancelar" name="btnCancelar" />
+            </form>
+        </div>
     </section>
 
     <?php
+
 } else {
     header('location: login.php');
 }
