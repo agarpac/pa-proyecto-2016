@@ -22,7 +22,7 @@ include_once './CRUD/CRUDPeticion_amistad.php';
        
         <script type="text/javascript">
             $(document).ready(function(){
-                $('.search-box input[type="text"]').on("keyup input", function(){
+                $('#autoc').on("keyup input", function(){
                     /* Get input value on change */
                     var term = $(this).val();
                     var resultDropdown = $(this).siblings(".result");

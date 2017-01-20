@@ -15,7 +15,7 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
             $cuerpoNoticia = $_POST['cuerpoNoticia'];
             $id_equipo = $_POST['equipos'];
             $fecha = $_POST['fecha'];
-
+            
             createNoticia($titulo, $cuerpoNoticia, $id_equipo, $fecha);
             header('location: noticiasAdmin.php');
         }
