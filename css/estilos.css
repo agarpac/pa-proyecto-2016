@@ -174,6 +174,19 @@ h2 {
     color: #fff;
 }
 
+.form-style input[type=button]{ /*para input tipo button de modificarNoticia.php*/
+    border: none;
+    padding: 8px 15px 8px 15px;
+    background: #ed4933;
+    color: #fff;
+    box-shadow: 1px 1px 4px #DADADA;
+    border-radius: 3px;
+}
+.form-style input[type=button]:hover{/*para input tipo button de modificarNoticia.php*/
+    background: #ed4933;
+    color: #fff;
+}
+
 .form-style button{ /*boton crear y eliminar estadio */
     border: none;
     padding: 6px 12px 6px 12px;

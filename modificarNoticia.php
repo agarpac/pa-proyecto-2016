@@ -26,15 +26,18 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado'] && ($_
         ?>
         <?php
         ?>
-        <section class="generico2">
+        <section class="generico">
+            <div class="form-style">
+            <div class="form-style-heading">Modificar noticia:</div>
             <form method="POST" action="#" >
-                <span>Titulo: </span><input type="text" id="titulo" class="input-field" name="titulo" value="<?php echo $_SESSION['titular_noticia'] ?>"  /><br>
-                <span>Noticia: </span><br><textarea style="color:black" id="cuerpoNoticia" rows="10" cols="100%" class="input-field" name="cuerpoNoticia" ><?php echo $_SESSION['texto_noticia'] ?></textarea><br>
+                <label><span>Titulo: </span><input type="text" id="titulo" class="input-field" name="titulo" value="<?php echo $_SESSION['titular_noticia'] ?>"  /></label>
+                <label><span>Noticia: </span><textarea style="color:black; resize:none;" id="cuerpoNoticia" rows="10px" cols="50px" class="input-field" name="cuerpoNoticia" ><?php echo $_SESSION['texto_noticia'] ?></textarea></label>
 
-                <input type="submit"  name="btnModificarNoticia" value="Modificar"  onclick="return validacionRegistroNoticia();"/>
-                <input type="button" name="clear" value="Limpiar" onclick="clearForm(this.form);" >
-                <input type="submit"  name="btnVolver" value="Volver" />
+                <input type="submit" class="buttonSpecial"  name="btnModificarNoticia" value="Modificar"  onclick="return validacionRegistroNoticia();"/>
+                <input type="button" class="buttonSpecial" name="clear" value="Limpiar" onclick="clearForm(this.form);" >
+                <input type="submit" class="buttonSpecial"  name="btnVolver" value="Volver" />
             </form>
+            </div>
         </section>
         <?php
     } else {

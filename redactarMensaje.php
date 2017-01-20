@@ -29,7 +29,7 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
     <section class="generico">
         <div class="form-style">
             <div class="form-style-heading">Redactar mensaje:</div>
-
+            
             <label><span>Para:</span> <input type="email" class="input-field" name="usuario_destino" /></label>
             <label><span>Texto:</span>
                 <textarea style="color:black; resize:none;" class="input-field" rows="5" cols="60" name="texto"></textarea></label>
