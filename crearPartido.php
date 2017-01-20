@@ -11,14 +11,14 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
         $hora = $_POST['hora'];
         $estadio = $_POST['estadio'];
 
-        if ($fecha < date("d/m/Y")) {
-            echo '<script type="text/javascript">alert("Elija una fecha igual o posterior a la actual");</script>';
-        } else {
+        if ($fecha >= date("d/m/Y") && $fecha != "") {
             if (createPartido($fecha, $hora, $estadio)) {
                 header('location: partidos.php');
             } else {
                 echo '<script type="text/javascript">alert("Estadio ocupado, elija otra fecha");</script>';
             }
+        } else {
+            echo '<script type="text/javascript">alert("Elija una fecha igual o posterior a la actual");</script>';
         }
     }
     if (isset($_POST['btnCancelar'])) {
@@ -69,6 +69,7 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
             </form>
         </div>
     </section>
+
 
     <?php
 } else {
