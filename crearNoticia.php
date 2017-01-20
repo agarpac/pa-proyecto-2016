@@ -37,7 +37,7 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
             <form method="POST" >
                 <span>Titulo: </span><input type="text" id="titulo" class="input-field" name="titulo"   /> <br>
                 <span>Noticia: </span><br><textarea style="color:black" id="cuerpoNoticia" rows="4" cols="50" class="input-field" name="cuerpoNoticia" ></textarea><br>
-                <span>Fecha: </span><input type="text" id="datepicker" name="fecha" /><br>
+                <span>Fecha: </span><input type="text" id="datepicker" name="fecha" readonly value="<?php echo date('d/m/Y'); ?>" /><br>
                 <span>Equipos:</span> <?php muestraEquipos(); ?><br>
                 <input type="submit"  name="btnCrearNoticia" value="Crear"  onclick="return validacionRegistroNoticias();"/>
                 <input type="button" name="clear" value="Limpiar" onclick="clearForm(this.form);" >
