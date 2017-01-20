@@ -8,18 +8,20 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
     <section class="generico2">   
         <?php
         echo '<table><tr>';
-        echo '<td><img src="' . $_SESSION['foto_usuario_login'] . '" alt="' . $_SESSION['nombre_usuario_login'] . '" height="150"></td>';
-        echo '<td><h1>Bienvenido  ' . $_SESSION['nombre_usuario_login'] . ' ' . $_SESSION['apellido1_usuario_login'] . ' ' . $_SESSION['apellido2_usuario_login'] . '</h1></td>';
+        echo '<td><a href="editarPerfil.php" class = "enlaceMensajes"><img src="' . $_SESSION['foto_usuario_login'] . '" alt="' . $_SESSION['nombre_usuario_login'] . '" height="150"></a></td>';
+        echo '<td><h1>Bienvenido  <a href="editarPerfil.php" class = "enlaceMensajes">' . $_SESSION['nombre_usuario_login'] . ' ' . $_SESSION['apellido1_usuario_login'] . ' ' . $_SESSION['apellido2_usuario_login'] . '</a></h1></td>';
         echo '</tr></table>';
         ?>
-        <article>           
+        <a href="editarPerfil.php"></a>
+        <article>
             <div id="colPrincipal1">
-                <table><tr><td>
-                            <h1>Noticias de mi equipo: <em><?php echo " " . $_SESSION['nombre_equipo']; ?></em></h1>
+                <table>
+                    <tr>
+                        <td>
+                            <h1>Noticias del<em><?php echo " " . $_SESSION['nombre_equipo']; ?></em></h1>
                         </td>
-                        <td><?php
-                            echo '<img src="' . $_SESSION['foto_equipo'] . '" alt="' . $_SESSION['nombre_equipo'] . '" height="35">';
-                            ?>
+                        <td>
+                            <img src="<?php echo $_SESSION['foto_equipo']; ?>" alt="<?php echo $_SESSION['nombre_equipo']; ?>" height="35px">
                         </td>
                     </tr>
                 </table>
