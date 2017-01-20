@@ -11,14 +11,14 @@ if (isset($_POST['btnCrear'])) {
     $hora = $_POST['hora'];
     $estadio = $_POST['estadio'];
 
-    if ($fecha < date("d/m/Y")) {
-        echo '<script type="text/javascript">alert("Elija una fecha igual o posterior a la actual");</script>';
-    } else {
+    if ($fecha >= date("d/m/Y") && $fecha != "") {
         if (createPartido($fecha, $hora, $estadio)) {
             header('location: partidos.php');
         } else {
             echo '<script type="text/javascript">alert("Estadio ocupado, elija otra fecha");</script>';
         }
+    } else {
+        echo '<script type="text/javascript">alert("Elija una fecha igual o posterior a la actual");</script>';
     }
 }
 if (isset($_POST['btnCancelar'])) {
@@ -45,7 +45,7 @@ if (isset($_POST['btnEliminarEstadio'])) {
                 echo '<input type="submit" value="-" name="btnEliminarEstadio" onclick="return confirmDel()" />';
             } ?>
         <br>
-        Día: <input type="text" id="datepicker" name="fecha" value="<?php echo date("d/m/Y"); ?>"> <br>
+        Día: <input type="text" id="datepicker" name="fecha" value="<?php echo date("d/m/Y"); ?>" readonly> <br>
         Hora: <select name="hora" style="color:black">
             <option disabled>Horarios de mañana</option>
             <option value="10:00">10:00 - 11:30</option>

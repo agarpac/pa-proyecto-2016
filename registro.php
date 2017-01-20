@@ -1,7 +1,6 @@
 <?php
 session_start();
 include './CRUD/CRUDUsuario.php';
-include_once './conexionBD.php';
 include './CRUD/CRUDEquipo.php';
 
 if (isset($_POST['volver'])) {
@@ -32,43 +31,44 @@ if (isset($_POST['volver'])) {
                 </ul>
             </nav>
         </header>
-        
-            <?php
-            function soloImagenes($fichero) {
-                $tiposAceptados = Array('image/jpg', 'image/jpeg', 'image/png');
-                if (array_search($fichero['type'], $tiposAceptados) === false)
-                    return false;
-                else
-                    return true;
-            }
 
-            if (isset($_POST['btnEnviar'])) {
-                $valid_file = TRUE;
-                $nombre = $_POST['nombre'];
-                $apellido1 = $_POST['apellido1'];
-                $apellido2 = $_POST['apellido2'];
-                $correo = $_POST['correo'];
-                $password = $_POST['password'];
-                $foto = $_FILES['foto']['tmp_name'];
+        <?php
 
-                if ($_FILES['foto']['name']) {
-                    //Si no hay errores
-                    if ($_FILES['foto']['error'] == 0) {
-                        if (soloImagenes($_FILES['foto'])) {
-                            //Cogemos el nombre del fichero
-                            $new_file_name = strtolower($_FILES['foto']['tmp_name']); //Lo renombramos
-                            if ($_FILES['foto']['size'] > (2048000)) { //Si el fichero es menor que 2MB
-                                $valid_file = FALSE;
-                            }
+        function soloImagenes($fichero) {
+            $tiposAceptados = Array('image/jpg', 'image/jpeg', 'image/png');
+            if (array_search($fichero['type'], $tiposAceptados) === false)
+                return false;
+            else
+                return true;
+        }
 
-                            //Si ha pasado bien 
-                            if ($valid_file) {
-                                $ruta = "userImgs/" . time() . $_FILES['foto']['name'];
-                                $foto = 'userImgs/' . $new_file_name;
-                            }
+        if (isset($_POST['btnEnviar'])) {
+            $valid_file = TRUE;
+            $nombre = $_POST['nombre'];
+            $apellido1 = $_POST['apellido1'];
+            $apellido2 = $_POST['apellido2'];
+            $correo = $_POST['correo'];
+            $password = $_POST['password'];
+            $foto = $_FILES['foto']['tmp_name'];
+
+            if ($_FILES['foto']['name']) {
+                //Si no hay errores
+                if ($_FILES['foto']['error'] == 0) {
+                    if (soloImagenes($_FILES['foto'])) {
+                        //Cogemos el nombre del fichero
+                        $new_file_name = strtolower($_FILES['foto']['tmp_name']); //Lo renombramos
+                        if ($_FILES['foto']['size'] > (2048000)) { //Si el fichero es menor que 2MB
+                            $valid_file = FALSE;
+                        }
+
+                        //Si ha pasado bien 
+                        if ($valid_file) {
+                            $ruta = "userImgs/" . time() . $_FILES['foto']['name'];
+                            $foto = 'userImgs/' . $new_file_name;
                         }
                     }
                 }
+            }
             //Si foto ok
             if (isset($ruta)) {
                 $nombre = filter_var($nombre, FILTER_SANITIZE_MAGIC_QUOTES);
@@ -81,38 +81,41 @@ if (isset($_POST['volver'])) {
                 if (createUsuario($nombre, $apellido1, $apellido2, $correo, $password, $foto, $_POST['ciudades'], $_POST['equipos'])) {
                     //Una vez que se ha insertado en Base de datos, trato la ruta de la foto y la muevo
                     move_uploaded_file($_FILES['foto']['tmp_name'], $ruta);
-                    ?>
-                    <!--Mensaje de exito-->
-                    <article class="contenedor2 generico">
-                        <p>Su cuenta se ha creado con éxito</p>
-                        <form method="post" action="./index.php">
-                            <input  type="submit" value="Iniciar sesi&oacute;n"/>
-                        </form>
-                    </article>
-                    <?php
+
+                    $pass = md5($password);
+
+                    if (readUsuario($correo, $pass)) {
+                        echo '<script type="text/javascript">alert("Su cuenta se ha creado con éxito");';
+                        $_SESSION['usuario_logueado'] = TRUE;
+                        echo 'window.location.href = "./inicio.php";</script>';
+                    }
                 } else {
+                    echo '<script type="text/javascript">alert("El correo ' . $correo . ' ya está registrado");';
+                    echo 'window.location.href = "./registro.php";</script>';
                     ?>
-                    <article class="contenedor2 generico">
-                        <p>El usuario ya existe</p>
-                        <form method="post" action="./registro.php">
-                            <input type="submit" value="Volver"/>
-                        </form>
-                    </article>
+                    <!-- <article class="contenedor2 generico">
+                         <p>El usuario ya existe</p>
+                         <form method="post" action="./registro.php">
+                             <input type="submit" value="Volver"/>
+                         </form>
+                     </article> -->
                     <?php
                 }
             } else {
+                echo '<script type="text/javascript">alert("El fichero debe ser jpg,png o jpeg y debe ser inferior a 2MB");';
+                echo 'window.location.href = "./registro.php";</script>';
                 ?>
-                <article class="contenedor3">
-                    <p>El fichero debe ser jpg,png o jpeg y debe ser inferior a 2MB</p>
-                    <form method="post" action="./registro.php">
-                        <input type="submit" value="Volver"/>
-                    </form>
-                </article>
+                <!-- <article class="contenedor3 generico">
+                     <p>El fichero debe ser jpg,png o jpeg y debe ser inferior a 2MB</p>
+                     <form method="post" action="./registro.php">
+                         <input type="submit" value="Volver"/>
+                     </form>
+                 </article>-->
                 <?php
             }
         }
 
-        //En este caso se muestra un formulario de registro
+//En este caso se muestra un formulario de registro
         if (!isset($_POST['btnEnviar'])) {
             ?>
 
@@ -121,7 +124,7 @@ if (isset($_POST['volver'])) {
                 <div class="form-style">
 
                     <div class="form-style-heading">Registro en Social Football</div>
-                    <form action="#" method="POST" enctype="multipart/form-data" >
+                    <form method="POST" enctype="multipart/form-data" >
                         <label><span>Nombre: <span class="required">*</span></span><input id="nombre" type="text" class="input-field" name="nombre" value="" /></label>
                         <label><span>Primer apellido: <span class="required">*</span></span><input id="apellido1" type="text" class="input-field" name="apellido1" value="" /></label>
                         <label><span>Segundo apellido: <span class="required">*</span></span><input id="apellido2" type="text" class="input-field" name="apellido2" value="" /></label>

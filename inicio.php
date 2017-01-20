@@ -1,13 +1,16 @@
 <?php
 include './header.php';
 include_once './CRUD/CRUDUsuario.php';
-datosEquipo($_SESSION['equipoUser']);
+include_once './CRUD/CRUDNoticia.php';
+datosMiEquipo($_SESSION['equipoUser']);
 if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
     ?>
     <section class="generico2">   
         <?php
-        echo '<h1>Bienvenido  ' . $_SESSION['nombre_usuario_login'] . ' ' . $_SESSION['apellido1_usuario_login'] . ' ' . $_SESSION['apellido2_usuario_login'] . '</h1>';
-        echo '<img src="' . $_SESSION['foto_usuario_login'] . '" alt="' . $_SESSION['nombre_usuario_login'] . '" height="150">';
+        echo '<table><tr>';
+        echo '<td><img src="' . $_SESSION['foto_usuario_login'] . '" alt="' . $_SESSION['nombre_usuario_login'] . '" height="150"></td>';
+        echo '<td><h1>Bienvenido  ' . $_SESSION['nombre_usuario_login'] . ' ' . $_SESSION['apellido1_usuario_login'] . ' ' . $_SESSION['apellido2_usuario_login'] . '</h1></td>';
+        echo '</tr></table>';
         ?>
         <article>           
             <div id="colPrincipal1">
@@ -51,16 +54,7 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
             <div id="colPrincipal2">
                 <h1>Titulares:</h1><p>Haz click para ver el contenido</p>
                 <?php
-                $con = conectaBD();
-
-                $sqlQuery = "SELECT titular_noticia, id_noticia FROM noticia WHERE id_equipo= " . $_SESSION['equipoUser'] . " ORDER BY id_noticia DESC";
-                $result = mysqli_query($con, $sqlQuery);
-
-                //Muestro todos los titulares en forma de enlace. 
-                while ($col = mysqli_fetch_array($result)) {
-                    echo "<a href='?idNoticia=" . $col['id_noticia'] . "'>" . $col['titular_noticia'] . "</a><hr size='1' />";
-                }
-                mysqli_close($con);
+                listaMisTitulares($_SESSION['equipoUser']);
                 ?>
             </div>
         </article>
