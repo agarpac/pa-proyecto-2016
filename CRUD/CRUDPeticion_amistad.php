@@ -115,7 +115,7 @@ function compruebaAmistad($correo_recibe) {
     mysqli_close($con);
     return $existe;
 }
-
+//lista todas las peticiones pentientes
 function listarPeticionesPendientes() {
     $existe = FALSE;
     $con = conectaBD();
@@ -125,19 +125,40 @@ function listarPeticionesPendientes() {
         while ($col = mysqli_fetch_array($result)) {
             readUsuarioID($col['id_usuario_peticion']);
             echo '<tr><td><form action="#" method="POST">';
+            echo '<label>';
+            echo '<fieldset>';
             echo '<input type="hidden" name="idPeticion" value="'. $col['id_peticion'] .'" />';
             echo '<img src="' . $_SESSION['foto_usuario_ID'] . '" width="40px"/>' . ' ' . $_SESSION['nombre_usuario_ID'] . ' ' . $_SESSION['apellido1_usuario_ID'];
-            echo '<input type="submit" value="Aceptar" name="btnAceptar" />';
-            echo '<input type="submit" value="Rechazar" name="btnRechazar" onclick="return confirmDel()" /> <br>';
+            echo '<br><input type="submit" value="Aceptar" name="btnAceptar" />';
+            echo '<input type="submit" value="Rechazar" name="btnRechazar" onclick="return confirmDel()" />';
+            echo '</fieldset>';
+            echo '</label>';
             echo '</form></td></tr>';
         }
     }
     mysqli_close($con);
     return $existe;
 }
-
+//cambia el estado de la peticion a "aceptada"
 function aceptaPeticion($idPeticion){
     $con = conectaBD();
     mysqli_query($con, 'UPDATE peticion_amistad SET estado_peticion = 1 WHERE id_peticion = ' . $idPeticion);
     mysqli_close($con);
+}
+//elimina todas las peticiones enviadas y recibidas por el usuario
+function eliminaPeticionesUsuario($idUsuario){
+    $con = conectaBD();
+    mysqli_query($con, 'DELETE FROM peticion_amistad WHERE id_usuario_peticion = ' . $idUsuario . ' OR id_usuario_recibe = ' . $idUsuario);
+    mysqli_close($con);
+}
+
+function numPeticionesPendientes() {
+    $numPeticiones = 0;
+    $con = conectaBD();
+    $result = mysqli_query($con, 'SELECT * FROM peticion_amistad WHERE id_usuario_recibe = ' . $_SESSION['id_usuario_login'] . ' AND estado_peticion = 0');
+        while ($col = mysqli_fetch_array($result)) {
+            $numPeticiones++;
+        }
+    mysqli_close($con);
+    return $numPeticiones;
 }
