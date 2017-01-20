@@ -15,6 +15,7 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
 //Muestra los datos del partido
     function datosPartido() {
         readPartido($_SESSION['partidoVisto']);
+        echo '<div id = "colPartidos1">';
         echo '<fieldset>';
         echo '<legend>Datos del partido</legend>';
         echo 'Nombre: ' . $_SESSION['nombre_estadio'];
@@ -22,20 +23,26 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
         echo '<br>Direccion: ' . $_SESSION['direccion_estadio'];
         echo '<br>Fecha: ' . $_SESSION['fecha_partido'];
         echo '<br>Hora: ' . $_SESSION['hora_partido'];
-        echo '</fieldset>';
+        echo '</fieldset>';     
+        echo '</div>';
+        
+        echo '<div id = "colPartidos2">';
         echo '<fieldset>';
         echo '<legend>Jugadores (Máx. 10 personas)</legend>';
         listadoJugadores();
         echo '</fieldset>';
+        echo '</div>';
     }
     ?>
 
-    <section class="generico2">
+    <section class="generico">
         <form action="" method = "POST">
-    <?php datosPartido(); ?>
+            <?php datosPartido(); ?>
         </form>
         <form action="partidos.php" method = "POST">
-            <input type="submit" value="Volver" name="btnVolver" />
+            <div class="form-style" style="float: right">
+                <input type="submit"  class="buttonSpecial" value="Volver a partidos" name="btnVolver" />
+            </div>
         </form>
     </section>
     <?php

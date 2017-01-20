@@ -153,9 +153,13 @@ function listadoJugadores() {
     }
     mysqli_close($con);
     if (!$encontrado && $_SESSION['noDisponible'] == FALSE) {
-        echo '<br><input type = "submit" value = "Suscribirse" name = "btnRegistro" />';
+        echo '<span class="form-style">';
+        echo '<br><input type = "submit"  class="buttonSpecial" value = "Suscribirse" name = "btnRegistro" />';
+        echo '</span>';
     } elseif ($encontrado && $_SESSION['noDisponible'] == FALSE) {
-        echo '<br><input type = "submit" value = "Cancelar suscripción" name = "btnCancelar" />';
+        echo '<span class="form-style">';
+        echo '<br><input type = "submit"  class="buttonSpecial" value = "Cancelar suscripción" name = "btnCancelar" />';
+        echo '</span>';
     }
 }
 
