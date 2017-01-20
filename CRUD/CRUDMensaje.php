@@ -111,3 +111,9 @@ function listaMensajes() {
     mysqli_close($con);
     return $numMensajes;
 }
+//elimina todos los mensajes recibidos y enviados por el usuario
+function eliminaMensajesUsuario($id_usuario){
+    $con = conectaBD();
+    mysqli_query($con, 'DELETE FROM mensaje WHERE id_usuario_envia = ' . $id_usuario . ' OR id_usuario_recibe = ' . $id_usuario);
+    mysqli_close($con);
+}

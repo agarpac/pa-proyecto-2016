@@ -1,6 +1,5 @@
 <?php
 
-require_once './conexionBD.php';
 require_once './CRUD/CRUDEstadio.php';
 
 //Comprueba si el estadio está ocupado ese dia a esa hora
@@ -172,5 +171,11 @@ function registrarse() {
 function cancelarSuscripcion() {
     $con = conectaBD();
     mysqli_query($con, 'DELETE FROM partido_usuario WHERE id_partido = ' . $_SESSION['partidoVisto'] . ' AND id_usuario = ' . $_SESSION['id_usuario_login']);
+    mysqli_close($con);
+}
+
+function eliminaSuscripcionesUsuario($idUsuario){
+    $con = conectaBD();
+    mysqli_query($con, 'DELETE FROM partido_usuario WHERE id_usuario = ' . $idUsuario);
     mysqli_close($con);
 }

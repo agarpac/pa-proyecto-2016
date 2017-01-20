@@ -1,6 +1,6 @@
 <?php
 include './header.php';
-include './CRUD/CRUDPeticion_amistad.php';
+include_once './CRUD/CRUDPeticion_amistad.php';
 
 if (isset($_POST['buttonAmistad'])) {
     if (!compruebaAmistad($_POST['mailUser'])) {
@@ -12,9 +12,11 @@ if (isset($_POST['buttonAmistad'])) {
 }
 if (isset($_POST['btnRechazar'])){
     deletePeticion_amistad($_POST['idPeticion']);
+    header('location: amigos.php');
 }
 if (isset($_POST['btnAceptar'])){
     aceptaPeticion($_POST['idPeticion']);
+    header('location: amigos.php');
 }
 ?>
 <section class="generico">   
