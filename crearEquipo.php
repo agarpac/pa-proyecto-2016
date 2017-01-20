@@ -51,9 +51,9 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
         <div class="form-style">
             <div class="form-style-heading">Crear equipo:</div>
             <form action="#" method="POST" enctype="multipart/form-data">
-                <label><span>Nombre:<span class="required">* </span></span><input type="text" class="input-field" name="nombre" /></label>
-                <label><span>Año de fundación:<span class="required">* </span></span><input type="number" class="input-field" name="anio" /></label>
-                <label><span>Escudo:<span class="required">* </span></span><input type="file" class="input-field" name="escudo" /></label>
+                <label><span>Nombre:<span class="required"> * </span></span><input type="text" class="input-field" name="nombre" /></label>
+                <label><span>Año de fundación:<span class="required"> * </span></span><input type="number" class="input-field" name="anio" /></label>
+                <label><span>Escudo:<span class="required"> * </span></span><input type="file" class="input-field" name="escudo" /></label>
                 
                 <input type="submit" class="buttonSpecial" value="Aceptar" name="btnAceptar" />
                 <input type="submit" class="buttonSpecial" value="Cancelar" name="btnCancelar" />
