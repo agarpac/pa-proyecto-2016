@@ -19,16 +19,18 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
         header('location: crearEquipo.php');
     }
     ?>
-    <section class="generico2">   
-        <form action="#" method="POST">
-            <div style="width: fit-content">
-                <?php muestraEquipos(); ?>
-            </div>
-            <br>
-            <input type="submit" value="Crear" name="btnCrear" />
-            <input type="submit" value="Modificar" name="btnModificar" />
-            <input type="submit" value="Eliminar" name="btnEliminar" onclick="return confirmDel()" />
-        </form>
+    <section class="bodyRegistro generico"> 
+        <div class="form-style">
+            <form action="#" method="POST">
+                <div>
+                    <?php muestraEquipos(); ?>
+                </div>
+                <br>
+                <input type="submit" class="buttonSpecial" value="Crear" name="btnCrear" />
+                <input type="submit" class="buttonSpecial" value="Modificar" name="btnModificar" />
+                <input type="submit" class="buttonSpecial" value="Eliminar" name="btnEliminar" onclick="return confirmDel()" />
+            </form>
+        </div>
     </section>
 
     <?php
