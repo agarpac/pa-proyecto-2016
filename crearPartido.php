@@ -45,10 +45,10 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
                 <label><span>Estadios:</span> <select name="estadio" style="color:black">
                         <?php listaEstadios(); ?>
                     </select>
-                    <button type="submit" class="buttonSpecial" name="btnCrearEstadio"><img src="img/crear.png" width="25" height="25" alt="+"/>
+                    <button type="submit" class="buttonSpecial" name="btnCrearEstadio"><img src="img/crear.png" width="15" height="15" alt="+"/>
                     </button> <?php
                     if ($_SESSION['admin'] == 0) {
-                        echo '<button type="submit" class="buttonSpecial" name="btnEliminarEstadio"><img src="img/eliminar.png" width="25" height="25" alt="-"/>
+                        echo '<button type="submit" class="buttonSpecial" name="btnEliminarEstadio"><img src="img/eliminar.png" width="15" height="15" alt="-"/>
                     </button>';
                     }
                     ?></label>
