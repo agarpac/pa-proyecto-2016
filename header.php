@@ -1,6 +1,7 @@
 <?php
 session_start();
 include_once './CRUD/CRUDMensaje.php';
+include_once './CRUD/CRUDPeticion_amistad.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -63,7 +64,7 @@ include_once './CRUD/CRUDMensaje.php';
                         <li><a href="inicio.php">Inicio</a></li>
                         <li><a href="partidos.php">Partidos</a></li>
                         <li><a href="mensajes.php">Mensajes<?php if(numMensajesNoLeidos($_SESSION['id_usuario_login']) > 0){ echo '<strong> ['. numMensajesNoLeidos($_SESSION['id_usuario_login']) . ']</strong>';} ?></a></li>
-                        <li><a href="amigos.php">Amigos</a></li>
+                        <li><a href="amigos.php">Amigos<?php if (numPeticionesPendientes() > 0) {echo '<strong> [' . numPeticionesPendientes() . ']</strong>';}?></a></li>
                         <?php
                         if ($_SESSION['admin'] == 0) {
                             ?>

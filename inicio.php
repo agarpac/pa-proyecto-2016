@@ -5,13 +5,19 @@ include_once './CRUD/CRUDNoticia.php';
 datosMiEquipo($_SESSION['equipoUser']);
 if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
     ?>
-    <section class="generico2">   
-        <?php
-        echo '<table><tr>';
-        echo '<td><a href="editarPerfil.php" class = "enlaceMensajes"><img src="' . $_SESSION['foto_usuario_login'] . '" alt="' . $_SESSION['nombre_usuario_login'] . '" height="150"></a></td>';
-        echo '<td><h1>Bienvenido  <a href="editarPerfil.php" class = "enlaceMensajes">' . $_SESSION['nombre_usuario_login'] . ' ' . $_SESSION['apellido1_usuario_login'] . ' ' . $_SESSION['apellido2_usuario_login'] . '</a></h1></td>';
-        echo '</tr></table>';
-        ?>
+    <section class="generico2">
+        <table>
+            <tr>
+                <td>
+                    <div id="perfil">
+                        <a href="editarPerfil.php" class = "enlaceMensajes"><img src="<?php echo $_SESSION['foto_usuario_login']; ?>" alt="<?php echo $_SESSION['nombre_usuario_login']; ?>" height="150px"></a>
+                        <div>Editar perfil</div>
+                    </div>
+                </td>
+                <td><h1>Bienvenido  <a href="editarPerfil.php" class = "enlaceMensajes"><?php echo $_SESSION['nombre_usuario_login'] . ' ' . $_SESSION['apellido1_usuario_login'] . ' ' . $_SESSION['apellido2_usuario_login']; ?></a></h1></td>
+            </tr>
+        </table>
+
         <a href="editarPerfil.php"></a>
         <article>
             <div id="colPrincipal1">

@@ -1,7 +1,10 @@
 <?php
 include './header.php';
-include_once './CRUD/CRUDUsuario.php';
+//include_once './CRUD/CRUDUsuario.php';
 include_once './CRUD/CRUDEquipo.php';
+include_once './CRUD/CRUDMensaje.php';
+include_once './CRUD/CRUDPeticion_amistad.php';
+include_once './CRUD/CRUDPartido.php';
 
 if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
     readUsuarioID($_SESSION['id_usuario_login']);
@@ -18,6 +21,16 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
     }
     if (isset($_POST['btnVolver'])){
         header('location: inicio.php');
+    }
+    if (isset($_POST['btnEliminar'])){
+        unlink($_SESSION['foto_usuario_login']);// elimino su foto de perfil
+        eliminaMensajesUsuario($_SESSION['id_usuario_login']);
+        eliminaPeticionesUsuario($_SESSION['id_usuario_login']);
+        eliminaSuscripcionesUsuario($_SESSION['id_usuario_login']);
+        deleteUsuario($_SESSION['id_usuario_login']);
+        $_SESSION['usuario_logueado'] = FALSE;
+        unset($_SESSION['usuario_logueado']);
+        header('location: index.php');
     }
     ?>
     <section class="generico2">
@@ -91,6 +104,7 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
 
             <br><input type="submit" value="Aceptar" name="btnAceptar" />
             <input type="submit" value="Volver" name="btnVolver" />
+            <input type="submit" value="Eliminar mi cuenta" name="btnEliminar" onclick="return confirmDel()" style="float: right" />
         </form>
     </section>
     <?php
