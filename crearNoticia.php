@@ -4,8 +4,6 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
     include_once './CRUD/CRUDNoticia.php';
     include_once './CRUD/CRUDEquipo.php';
     ?>
-
-
     <body style="color:black">
         <?php
         if (isset($_POST['btnVolver'])) {
@@ -19,14 +17,7 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
             $fecha = $_POST['fecha'];
 
             createNoticia($titulo, $cuerpoNoticia, $id_equipo, $fecha);
-            ?>
-            <article >
-                <p>La noticia se ha creado con éxito</p>
-                <form method="post" action="./noticiasAdmin.php">
-                    <input class="botonBusqueda" type="submit" value="Volver"/>
-                </form>
-            </article>
-            <?php
+            header('location: noticiasAdmin.php');
         }
         ?>
         <?php
