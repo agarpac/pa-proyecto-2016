@@ -3,7 +3,7 @@
 require_once './conexionBD.php';
 
 //Recoge los datos del equipo
-function datosEquipo($id) {
+function datosMiEquipo($id) {
     //Se conecta
     $con = conectaBD();
 
@@ -40,7 +40,7 @@ function readNoticia($id_noticia) {
         $_SESSION['fecha_noticia'] = $col['fecha_noticia'];
         $_SESSION['texto_noticia'] = $col['texto_noticia'];
         $_SESSION['titular_noticia'] = $col['titular_noticia'];
-        datosEquipo($col['id_equipo']);
+        datosMiEquipo($col['id_equipo']);
     }
     mysqli_close($con);
 }
@@ -65,11 +65,25 @@ function deleteNoticia($id_noticia) {
 
     mysqli_close($con);
 }
+
 //Muestro todos los titulares de todas las noticias
 function listaTitulares() {
     $con = conectaBD();
 
     $sqlQuery = "SELECT titular_noticia, id_noticia FROM noticia  ORDER BY id_equipo ASC";
+    $result = mysqli_query($con, $sqlQuery);
+
+    //Muestro todos los titulares en forma de enlace. 
+    while ($col = mysqli_fetch_array($result)) {
+        echo "<a href='?idNoticia=" . $col['id_noticia'] . "'>" . $col['titular_noticia'] . "</a><hr size='1' />";
+    }
+    mysqli_close($con);
+}
+
+function listaMisTitulares($idEquipo) {
+    $con = conectaBD();
+
+    $sqlQuery = "SELECT titular_noticia, id_noticia FROM noticia WHERE id_equipo= " . $idEquipo . " ORDER BY id_noticia DESC";
     $result = mysqli_query($con, $sqlQuery);
 
     //Muestro todos los titulares en forma de enlace. 
