@@ -98,6 +98,7 @@ function listaMensajes() {
         $numMensajes++;
         $nombreRemitente = nombreUsuarioEnvia($col['id_usuario_envia']);
         echo '<tr>';
+        echo '<tr></tr>';
         echo '<td><input type="radio" name="borra" value="' . $col['id_mensaje'] . '"> </td>';
         echo '<td> <a href="leerMensaje.php?id=' . $col['id_mensaje'] . '" class = "enlaceMensajes">';
         if ($col['leido'] == 'no') {
