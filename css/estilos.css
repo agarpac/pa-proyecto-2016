@@ -8,6 +8,7 @@ html, body, div, footer, h1, header, form, article, section {
     font-size: 100%;
     font: inherit;
     vertical-align: baseline;
+    font-family: "Open Sans", Helvetica, sans-serif;
 }
 html
 {
