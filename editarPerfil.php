@@ -33,7 +33,7 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
         header('location: index.php');
     }
     ?>
-    <section class="generico2">
+    <section class="bodyRegistro generico2">
         <div class="form-style">
             <div class="form-style-heading">Editar mi cuenta:</div>
             <form action="#" method="post">
