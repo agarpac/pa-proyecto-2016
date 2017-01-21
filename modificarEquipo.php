@@ -17,7 +17,7 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
     }
     ?>
 
-    <section class="generico">
+    <section class="bodyRegistro generico">
         <div class="form-style">
             <div class="form-style-heading">Modificar equipo:</div>
             <form action="#" method="POST">
