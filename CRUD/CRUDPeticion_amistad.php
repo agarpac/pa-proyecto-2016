@@ -108,7 +108,7 @@ function compruebaAmistad($correo_recibe) {
     $existe = FALSE;
     readUsuarioCORREO($correo_recibe);
     $con = conectaBD();
-    $result = mysqli_query($con, 'SELECT * FROM peticion_amistad WHERE ((id_usuario_peticion = ' . $_SESSION['id_usuario_login'] . ' AND id_usuario_recibe = ' . $_SESSION['id_usuario_CORREO'] . ') OR (id_usuario_peticion = ' . $_SESSION['id_usuario_CORREO'] . ' AND id_usuario_recibe = ' . $_SESSION['id_usuario_login'] . ')) AND estado_peticion = 1');
+    $result = mysqli_query($con, 'SELECT * FROM peticion_amistad WHERE ((id_usuario_peticion = ' . $_SESSION['id_usuario_login'] . ' AND id_usuario_recibe = ' . $_SESSION['id_usuario_CORREO'] . ') OR (id_usuario_peticion = ' . $_SESSION['id_usuario_CORREO'] . ' AND id_usuario_recibe = ' . $_SESSION['id_usuario_login'] . ')) AND (estado_peticion = 1 OR estado_peticion = 0)');
     if (mysqli_num_rows($result) == 1) {
         $existe = TRUE;
     }

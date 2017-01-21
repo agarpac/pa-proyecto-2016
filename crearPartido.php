@@ -11,7 +11,7 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
         $hora = $_POST['hora'];
         $estadio = $_POST['estadio'];
 
-        if ($fecha >= date("d/m/Y") && $fecha != "") {
+        if (compararFechas($fecha, date("d/m/Y")) >= 0) {
             if (createPartido($fecha, $hora, $estadio)) {
                 header('location: partidos.php');
             } else {
