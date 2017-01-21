@@ -20,7 +20,7 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
 
         <a href="editarPerfil.php"></a>
         <article>
-            <div id="colPrincipal1">
+            <div id="colNoticias1">
                 <table>
                     <tr>
                         <td>
@@ -59,7 +59,7 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
         </article>
 
         <article>
-            <div id="colPrincipal2">
+            <div id="colNoticias2">
                 <h1>Titulares:</h1><p>Haz click para ver el contenido</p>
                 <?php
                 listaMisTitulares($_SESSION['equipoUser']);

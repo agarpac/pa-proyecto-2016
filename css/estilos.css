@@ -429,6 +429,38 @@ ul.icons li:last-child {
     margin-bottom: 1%;
 }
 
+#colNoticias2 {
+    float: right;
+    width: 30%;
+
+    background-color: rgba(144, 144, 144, 0.25);
+    color:black;
+    padding: 1%;
+    border-radius: 5px;
+    margin-bottom: 1%;
+    overflow: auto;
+    height: 27rem;
+}
+
+#colNoticias2 a:hover{
+    color: white;
+}
+
+#colNoticias2 a {
+    text-decoration: none;
+    color: #ed4933;
+}
+
+#colNoticias1 {
+    float: left;
+    width: 65%;
+    background: rgba(144, 144, 144, 0.25);
+    color:black;
+    padding: 1%;
+    border-radius: 5px;
+    margin-bottom: 1%;
+}
+
 /*Columnas Partidos*/
 #colPartidos1 {
     float: left;
@@ -457,7 +489,8 @@ ul.icons li:last-child {
     text-decoration: none;
     color: #ed4933;
 }
-/*Fin columnas noticias*/
+
+
 
 /*Inicio pag genericas Ej: quienesSomos*/
 .generico {
