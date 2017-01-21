@@ -27,7 +27,7 @@ if(isset($query)){
             // Close result set
             mysqli_free_result($result);
         } else{
-            echo "<p>No hay resultado para <b>$query</b></p>";
+            echo "<p class='dropdownList'>No hay resultado para <b>$query</b></p>";
         }
     } else{
         echo "ERROR: No se puede ejecutar $sql. " . mysqli_error($con);
