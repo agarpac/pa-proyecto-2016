@@ -16,7 +16,7 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
         header("location: mensajes.php");
     }
     ?>
-    <section class="generico">
+    <section class="bodyRegistro generico">
         <div class="form-style">
             <div class="form-style-heading">Respondiendo al mensaje:</div>
             <form action="#" method="post">

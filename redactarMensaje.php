@@ -26,7 +26,7 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
         header("Location: mensajes.php");
     }
     ?>
-    <section class="generico">
+    <section class="bodyRegistro generico">
         <div class="form-style">
             <div class="form-style-heading">Redactar mensaje:</div>
             
