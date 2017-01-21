@@ -94,11 +94,11 @@ function listarAmigos() {
         if ($col['id_usuario_peticion'] == $_SESSION['id_usuario_login']) {
             //Mostrar datos usuario id_usuario_recibe
             readUsuarioID($col['id_usuario_recibe']);
-            echo '<img src="' . $_SESSION['foto_usuario_ID'] . '" width="40px"/>' . ' ' . $_SESSION['nombre_usuario_ID'] . ' ' . $_SESSION['apellido1_usuario_ID'] . '<br>';
+            echo '<tr><td><img src="' . $_SESSION['foto_usuario_ID'] . '" width="40px"/>' . ' </td><td>' . $_SESSION['nombre_usuario_ID'] . ' ' . $_SESSION['apellido1_usuario_ID'] . '</td></tr>';
         } else {
             //Mostrar datos usuario id_usuario_peticion
             readUsuarioID($col['id_usuario_peticion']);
-            echo '<img src="' . $_SESSION['foto_usuario_ID'] . '" width="40px"/>' . ' ' . $_SESSION['nombre_usuario_ID'] . ' ' . $_SESSION['apellido1_usuario_ID'] . '<br>';
+            echo '<tr><td><img src="' . $_SESSION['foto_usuario_ID'] . '" width="40px"/>' . '</td><td> ' . $_SESSION['nombre_usuario_ID'] . ' ' . $_SESSION['apellido1_usuario_ID'] . '</td></tr>';
         }
     }
     mysqli_close($con);
@@ -115,6 +115,7 @@ function compruebaAmistad($correo_recibe) {
     mysqli_close($con);
     return $existe;
 }
+
 //lista todas las peticiones pentientes
 function listarPeticionesPendientes() {
     $existe = FALSE;
@@ -125,28 +126,28 @@ function listarPeticionesPendientes() {
         while ($col = mysqli_fetch_array($result)) {
             readUsuarioID($col['id_usuario_peticion']);
             echo '<tr><td><form action="#" method="POST">';
-            echo '<label>';
-            echo '<fieldset>';
-            echo '<input type="hidden" name="idPeticion" value="'. $col['id_peticion'] .'" />';
-            echo '<img src="' . $_SESSION['foto_usuario_ID'] . '" width="40px"/>' . ' ' . $_SESSION['nombre_usuario_ID'] . ' ' . $_SESSION['apellido1_usuario_ID'];
-            echo '<br><input type="submit" value="Aceptar" name="btnAceptar" />';
-            echo '<input type="submit" value="Rechazar" name="btnRechazar" onclick="return confirmDel()" />';
+            echo '<fieldset class="form-style">';
+            echo '<input type="hidden" name="idPeticion" value="' . $col['id_peticion'] . '" />';
+            echo '<table style="text-align: center;"><tr><td><img src="' . $_SESSION['foto_usuario_ID'] . '" width="40px"/>' . '</td><td> ' . $_SESSION['nombre_usuario_ID'] . ' ' . $_SESSION['apellido1_usuario_ID'] . '</td></tr>';
+            echo '<tr><td><input type="submit" value="Aceptar" class="buttonSpecial" name="btnAceptar" /></td>';
+            echo '<td><input type="submit" value="Rechazar" class="buttonSpecial" name="btnRechazar" onclick="return confirmDel()" /></td></tr></table>';
             echo '</fieldset>';
-            echo '</label>';
             echo '</form></td></tr>';
         }
     }
     mysqli_close($con);
     return $existe;
 }
+
 //cambia el estado de la peticion a "aceptada"
-function aceptaPeticion($idPeticion){
+function aceptaPeticion($idPeticion) {
     $con = conectaBD();
     mysqli_query($con, 'UPDATE peticion_amistad SET estado_peticion = 1 WHERE id_peticion = ' . $idPeticion);
     mysqli_close($con);
 }
+
 //elimina todas las peticiones enviadas y recibidas por el usuario
-function eliminaPeticionesUsuario($idUsuario){
+function eliminaPeticionesUsuario($idUsuario) {
     $con = conectaBD();
     mysqli_query($con, 'DELETE FROM peticion_amistad WHERE id_usuario_peticion = ' . $idUsuario . ' OR id_usuario_recibe = ' . $idUsuario);
     mysqli_close($con);
@@ -156,9 +157,9 @@ function numPeticionesPendientes() {
     $numPeticiones = 0;
     $con = conectaBD();
     $result = mysqli_query($con, 'SELECT * FROM peticion_amistad WHERE id_usuario_recibe = ' . $_SESSION['id_usuario_login'] . ' AND estado_peticion = 0');
-        while ($col = mysqli_fetch_array($result)) {
-            $numPeticiones++;
-        }
+    while ($col = mysqli_fetch_array($result)) {
+        $numPeticiones++;
+    }
     mysqli_close($con);
     return $numPeticiones;
 }
