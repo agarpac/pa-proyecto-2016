@@ -1,5 +1,6 @@
 <?php
 session_start();
+include_once './conexionBD.php';
 ?>
 <html>
     <head>
@@ -10,20 +11,15 @@ session_start();
         <?php
 /* Attempt MySQL server connection. Assuming you are running MySQL
 server with default setting (user 'root' with no password) */
-$link = mysqli_connect("localhost", "root", "", "social_football");
- 
-// Check connection
-if($link === false){
-    die("ERROR: NO hay conexión. " . mysqli_connect_error());
-}
+$con = conectaBD();
  
 // Escape user inputs for security
-$query = mysqli_real_escape_string($link, $_REQUEST['query']);
+$query = mysqli_real_escape_string($con, $_REQUEST['query']);
  
 if(isset($query)){
     // Attempt select query execution
     $sql = "SELECT * FROM usuario WHERE correo_usuario LIKE '" . $query . "%' AND correo_usuario NOT LIKE '" . $_SESSION['correo_usuario_login'] ."'";                            
-    if($result = mysqli_query($link, $sql)){
+    if($result = mysqli_query($con, $sql)){
         if(mysqli_num_rows($result) > 0){
             while($row = mysqli_fetch_array($result)){
                 echo "<p class='dropdownList'>" . $row['correo_usuario'] . "</p>";
@@ -34,10 +30,10 @@ if(isset($query)){
             echo "<p>No hay resultado para <b>$query</b></p>";
         }
     } else{
-        echo "ERROR: No se puede ejecutar $sql. " . mysqli_error($link);
+        echo "ERROR: No se puede ejecutar $sql. " . mysqli_error($con);
     }
 }
  
 // close connection
-mysqli_close($link);
+mysqli_close($con);
 ?>
