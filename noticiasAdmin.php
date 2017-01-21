@@ -20,7 +20,7 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado'] && ($_
     ?>
     <section class="generico">   
         <article>
-            <div id="colPrincipal1">
+            <div id="colNoticias1">
                 <h1>Cuerpo de la noticia:</h1>
                 <?php
                 if (isset($_GET['idNoticia'])) {
@@ -37,21 +37,27 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado'] && ($_
             </div>
         </article>
         <article>
-            <div id="colPrincipal2">
+            <div id="colNoticias2">
                 <h1>Titulares:</h1><p>Haz click para ver el contenido</p>
-                <form action="noticiasAdmin.php" method="get" >  
-                    <div style="overflow: auto">
+                <form action="noticiasAdmin.php" method="get" >                      
                     <?php
                     listaTitulares();
                     ?>
-                    </div>
-                    <span class="form-style">                        
+<!--                    <span class="form-style">                        
+                        <input type="submit" class="buttonSpecial" name="btnCrearNoticia" value="Crear"/>
+                        <input type="submit" class="buttonSpecial" name="btnModificarNoticia" value="Modificar"/> 
+                        <input type="submit" class="buttonSpecial" name="btnEliminarNoticia" value="Eliminar" <?php if(isset($_SESSION['id_noticia'])){ echo 'onclick="return confirmDel()"'; } ?> />
+                    </span>-->
+                </form>
+            </div>
+            
+            <form action="noticiasAdmin.php" method="get" >
+                <span class="form-style" style="clear: right; float: right;">                        
                         <input type="submit" class="buttonSpecial" name="btnCrearNoticia" value="Crear"/>
                         <input type="submit" class="buttonSpecial" name="btnModificarNoticia" value="Modificar"/> 
                         <input type="submit" class="buttonSpecial" name="btnEliminarNoticia" value="Eliminar" <?php if(isset($_SESSION['id_noticia'])){ echo 'onclick="return confirmDel()"'; } ?> />
                     </span>
-                </form>
-            </div>
+            </form>
         </article>
     </section>
 

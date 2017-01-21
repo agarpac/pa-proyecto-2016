@@ -41,6 +41,7 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
                     if (listaPartidosDisponibles() > 0) {
                         ?>
                     </table>
+                    <br>
                     <input type="submit" class="buttonSpecial" value="Ver partido" name="btnVerPartidoDisponible" />
                     <input type="submit" class="buttonSpecial" value="Crear partido" name="btnCrearPartido" />
                     <?php
@@ -66,6 +67,7 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
                     if (listaPartidosNoDisponibles() > 0) {
                         ?>
                     </table>
+                    <br>
                     <input type="submit" class="buttonSpecial" value="Ver partido" name="btnVerPartidoNoDisponible" />
                     <?php
                     if ($_SESSION['admin'] == 0) {
