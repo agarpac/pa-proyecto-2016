@@ -8,10 +8,10 @@
     </ul>
     <ul class="enlacesFooter">
         <li>&copy; PA-Proyecto</li>
-        <li><a href="quienesSomos.php">Quienes Somos</a></li>
-        <li><a href="queHacemos.php">Que Hacemos</a></li>
-        <li><a href="dondeEstamos.php">Donde Estamos</a></li>
-        <li><a href="politicas.php">Politicas</a></li>
+        <li><a href="./footer/quienesSomos.php">Quienes Somos</a></li>
+        <li><a href="./footer/queHacemos.php">Que Hacemos</a></li>
+        <li><a href="./footer/dondeEstamos.php">Donde Estamos</a></li>
+        <li><a href="./footer/politicas.php">Politicas</a></li>
     </ul>
 </footer>
 </body>

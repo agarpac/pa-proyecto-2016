@@ -38,8 +38,7 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
                         <td><h4>Partidos disponibles</h4></td>
                     </tr>
                     <?php
-                    $numPartidos = listaPartidosDisponibles();
-                    if ($numPartidos > 0) {
+                    if (listaPartidosDisponibles() > 0) {
                         ?>
                     </table>
                     <input type="submit" class="buttonSpecial" value="Ver partido" name="btnVerPartidoDisponible" />
@@ -64,8 +63,7 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
                         <td><h4>Partidos no disponibles</h4></td>
                     </tr>
                     <?php
-                    $numPartidos = listaPartidosNoDisponibles();
-                    if ($numPartidos > 0) {
+                    if (listaPartidosNoDisponibles() > 0) {
                         ?>
                     </table>
                     <input type="submit" class="buttonSpecial" value="Ver partido" name="btnVerPartidoNoDisponible" />

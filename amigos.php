@@ -7,7 +7,7 @@ if (isset($_POST['buttonAmistad'])) {
         readUsuarioCORREO($_POST['mailUser']);
         createPeticion_amistad($_SESSION['id_usuario_login'], $_SESSION['id_usuario_CORREO']);
     } else {
-        echo '<script type="text/javascript">alert("El usuario ' . $_SESSION['nombre_usuario_CORREO'] . ' ' . $_SESSION['apellido1_usuario_CORREO'] . ' ya es amigo tuyo.");</script>';
+        echo '<script type="text/javascript">alert("El usuario ' . $_SESSION['nombre_usuario_CORREO'] . ' ' . $_SESSION['apellido1_usuario_CORREO'] . ' ya es amigo tuyo o hay una petición a la espera de ser aceptada o eliminada.");</script>';
     }
 }
 if (isset($_POST['btnRechazar'])){

@@ -100,7 +100,7 @@ function listaPartidosDisponibles() {
     $result = mysqli_query($con, 'SELECT id_partido, fecha_partido, hora_partido, id_estadio FROM partido');
 
     while ($col = mysqli_fetch_array($result)) {
-        if ($col['fecha_partido'] >= date("d/m/Y")) {
+        if (compararFechas($col['fecha_partido'], date("d/m/Y")) >= 0) {
             $numPartidos++;
             readEstadio($col['id_estadio']);
             echo '<tr>';
@@ -121,7 +121,7 @@ function listaPartidosNoDisponibles() {
     $result = mysqli_query($con, 'SELECT id_partido, fecha_partido, hora_partido, id_estadio FROM partido');
 
     while ($col = mysqli_fetch_array($result)) {
-        if ($col['fecha_partido'] < date("d/m/Y")) {
+        if (compararFechas($col['fecha_partido'], date("d/m/Y")) < 0) {
             $numPartidos++;
             readEstadio($col['id_estadio']);
             echo '<tr>';
@@ -162,20 +162,41 @@ function listadoJugadores() {
     }
 }
 
+//registra al usuario en el partido
 function registrarse() {
     $con = conectaBD();
     mysqli_query($con, 'INSERT INTO partido_usuario (id_partido, id_usuario) VALUES (' . $_SESSION['partidoVisto'] . ', ' . $_SESSION['id_usuario_login'] . ')');
     mysqli_close($con);
 }
 
+//cancela la suscripcion del usuaario en un partido concreto
 function cancelarSuscripcion() {
     $con = conectaBD();
     mysqli_query($con, 'DELETE FROM partido_usuario WHERE id_partido = ' . $_SESSION['partidoVisto'] . ' AND id_usuario = ' . $_SESSION['id_usuario_login']);
     mysqli_close($con);
 }
 
-function eliminaSuscripcionesUsuario($idUsuario){
+//Elimina todos las suscripciones del usuario
+function eliminaSuscripcionesUsuario($idUsuario) {
     $con = conectaBD();
     mysqli_query($con, 'DELETE FROM partido_usuario WHERE id_usuario = ' . $idUsuario);
     mysqli_close($con);
+}
+
+//devuelve true si la fecha del partido es igual o superior a la actual
+function compararFechas($fechaPatido, $fechaActual) {
+    $fPartido = explode("/", $fechaPatido);
+    $fActual = explode("/", $fechaActual);
+    
+    $diaPartido = $fPartido[0];
+    $mesPartido = $fPartido[1];
+    $anioPartido = $fPartido[2];
+    $diaActual = $fActual[0];
+    $mesActual = $fActual[1];
+    $anioActual = $fActual[2];
+    
+    $diasFechaPartido = gregoriantojd($mesPartido, $diaPartido, $anioPartido);
+    $diasFechaActual = gregoriantojd($mesActual, $diaActual, $anioActual);
+    
+    return $diasFechaPartido - $diasFechaActual;
 }
