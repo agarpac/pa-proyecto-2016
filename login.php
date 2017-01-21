@@ -1,32 +1,32 @@
 <?php
 session_start();
-if (isset($_SESSION['usuario_logueado'])){
+if (isset($_SESSION['usuario_logueado'])) {
     unset($_SESSION['usuario_logueado']);
 }
 include_once './CRUD/CRUDUsuario.php';
 //Si se ha pulsado sobre el botón de login
 if (isset($_POST['btnLogin'])) {
-    //Compruebo que el usuario existe
-    if (!isset($_POST['correo']) || $_POST['correo'] == '') {
-        $errores[] = 'El correo no es correcto';
+    /* if (!isset($_POST['correo']) || $_POST['correo'] == '') {
+      $errores[] = 'El correo no es correcto';
+      }
+      if (!isset($_POST['password']) || $_POST['password'] == '') {
+      $errores[] = 'El pass no es correcto';
+      }
+      if (!isset($errores)) { */
+
+    //Recogida de datos del formulario
+    $correo = filter_input(INPUT_POST, 'correo', FILTER_SANITIZE_MAGIC_QUOTES);
+    $pass = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_MAGIC_QUOTES);
+
+    $correo = addslashes($correo);
+    $pass = md5($pass);
+
+    if (readUsuario($correo, $pass)) {
+        header('location: inicio.php');
+    } else {
+        echo '<script type="text/javascript">alert("El email o contraseña que ha introducido no coincide con los datos de nuestro sistema.");</script>';
     }
-    if (!isset($_POST['password']) || $_POST['password'] == '') {
-        $errores[] = 'El pass no es correcto';
-    }
-    if (!isset($errores)) {
-        //Recogida de datos del formulario
-        $correo = filter_input(INPUT_POST, 'correo', FILTER_SANITIZE_MAGIC_QUOTES);
-
-        $pass = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_MAGIC_QUOTES);
-
-
-        $correo = addslashes($correo);
-        $pass = md5($pass);
-
-        if (readUsuario($correo, $pass)) {
-            header('location: inicio.php');
-        }
-    }
+    //}
 }
 //Si se pulsa sobre el botón de registrarse, se manda al formulario
 if (isset($_POST['btnRegistro'])) {

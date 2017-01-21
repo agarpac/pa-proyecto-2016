@@ -17,15 +17,18 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
     }
     ?>
 
-    <section class="generico2">   
-        <form action="#" method="POST">
-            <label><span>Escudo:</span></label><img src="<?php echo $_SESSION['foto_equipo_modificar']; ?>" alt="equipo<?php echo $_SESSION['id_equipo_modificar']; ?>" width="40px"/><br>
-            <label><span>Nombre:<span class="required">* </span></span><input type="text" name="nombre" value="<?php echo $_SESSION['nombre_equipo_modificar']; ?>"/></label><br>
-            <label><span>Año de fundación:<span class="required">* </span></span><input type="number" name="anio" value="<?php echo $_SESSION['anio_fundacion_modificar']; ?>" /></label><br>
+    <section class="bodyRegistro generico">
+        <div class="form-style">
+            <div class="form-style-heading">Modificar equipo:</div>
+            <form action="#" method="POST">
+                <label><span>Escudo:</span></label><img src="<?php echo $_SESSION['foto_equipo_modificar']; ?>" alt="equipo<?php echo $_SESSION['id_equipo_modificar']; ?>" width="40px"/>
+                <label><span>Nombre:<span class="required"> * </span></span><input type="text" class="input-field" name="nombre" value="<?php echo $_SESSION['nombre_equipo_modificar']; ?>"/></label>
+                <label><span>Fundación:<span class="required">*</span></span><input type="number" class="input-field" name="anio" value="<?php echo $_SESSION['anio_fundacion_modificar']; ?>" /></label>
 
-            <input type="submit" value="Aceptar" name="btnAceptar" />
-            <input type="submit" value="Cancelar" name="btnCancelar" />
-        </form>
+                <input type="submit" class="buttonSpecial" value="Aceptar" name="btnAceptar" />
+                <input type="submit" class="buttonSpecial" value="Cancelar" name="btnCancelar" />
+            </form>
+        </div>
     </section>
 
     <?php

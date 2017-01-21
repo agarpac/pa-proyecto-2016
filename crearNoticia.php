@@ -24,18 +24,21 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
         //En este caso se muestra un formulario de registro
         if (!isset($_POST['btnCrearNoticia'])) {
             ?>
-        <section class="generico2">
-            <form method="POST" >
-                <span>Titulo: </span><input type="text" id="titulo" class="input-field" name="titulo"   /> <br>
-                <span>Noticia: </span><br><textarea style="color:black" id="cuerpoNoticia" rows="4" cols="50" class="input-field" name="cuerpoNoticia" ></textarea><br>
-                <span>Fecha: </span><input type="text" id="datepicker" name="fecha" readonly value="<?php echo date('d/m/Y'); ?>" /><br>
-                <span>Equipos:</span> <?php muestraEquipos(); ?><br>
-                <input type="submit"  name="btnCrearNoticia" value="Crear"  onclick="return validacionRegistroNoticias();"/>
-                <input type="button" name="clear" value="Limpiar" onclick="clearForm(this.form);" >
-                <input type="submit"  name="btnVolver" value="Volver" />
-            </form>  
-        </section>
-        <?php
+            <section class="bodyRegistro generico">
+                <div class="form-style">
+                    <div class="form-style-heading">Crear noticia:</div>
+                    <form method="POST" >
+                        <label><span>Titulo: </span><input type="text" id="titulo" class="input-field" name="titulo"   /></label>
+                        <label><span>Fecha: </span><input type="text" id="datepicker" class="input-field" name="fecha" readonly value="<?php echo date('d/m/Y'); ?>" /></label>
+                        <label><span>Noticia: </span><textarea style="color:black; resize:none;" id="cuerpoNoticia" rows="6px" cols="36px" class="input-field" name="cuerpoNoticia" ></textarea></label>                     
+                        <label><span>Equipos: </span><?php muestraEquipos(); ?></label>
+                        <input type="submit"  name="btnCrearNoticia" value="Crear"  onclick="return validacionRegistroNoticias();"/>
+                        <input type="button" name="clear" value="Limpiar" onclick="clearForm(this.form);" >
+                        <input type="submit"  name="btnVolver" value="Volver" />
+                    </form>  
+                </div>
+            </section>
+            <?php
         }
     } else {
         header('location: login.php');

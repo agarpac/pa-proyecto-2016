@@ -23,9 +23,9 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
         echo '<br>Direccion: ' . $_SESSION['direccion_estadio'];
         echo '<br>Fecha: ' . $_SESSION['fecha_partido'];
         echo '<br>Hora: ' . $_SESSION['hora_partido'];
-        echo '</fieldset>';     
+        echo '</fieldset>';
         echo '</div>';
-        
+
         echo '<div id = "colPartidos2">';
         echo '<fieldset>';
         echo '<legend>Jugadores (Máx. 10 personas)</legend>';
@@ -39,11 +39,11 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
         <form action="" method = "POST">
             <?php datosPartido(); ?>
         </form>
-        <form action="partidos.php" method = "POST">
-            <div class="form-style" style="float: right">
+        <div class="form-style" style="clear: left; float: left">
+            <form action="partidos.php" method = "POST">
                 <input type="submit"  class="buttonSpecial" value="Volver a partidos" name="btnVolver" />
-            </div>
-        </form>
+            </form>
+        </div>
     </section>
     <?php
 } else {

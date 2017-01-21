@@ -1,5 +1,13 @@
 <?php
 session_start();
+?>
+<html>
+    <head>
+        <title>Social Football</title>      
+        <link rel="stylesheet" href="css/estilos.css" />      
+    </head>
+</html>
+        <?php
 /* Attempt MySQL server connection. Assuming you are running MySQL
 server with default setting (user 'root' with no password) */
 $link = mysqli_connect("localhost", "root", "", "social_football");
@@ -18,7 +26,7 @@ if(isset($query)){
     if($result = mysqli_query($link, $sql)){
         if(mysqli_num_rows($result) > 0){
             while($row = mysqli_fetch_array($result)){
-                echo "<p>" . $row['correo_usuario'] . "</p>";
+                echo "<p class='dropdownList'>" . $row['correo_usuario'] . "</p>";
             }
             // Close result set
             mysqli_free_result($result);
