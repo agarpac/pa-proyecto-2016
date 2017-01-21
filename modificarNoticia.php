@@ -26,12 +26,12 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado'] && ($_
         ?>
         <?php
         ?>
-        <section class="generico">
+        <section class="bodyRegistro generico">
             <div class="form-style">
             <div class="form-style-heading">Modificar noticia:</div>
             <form method="POST" action="#" >
                 <label><span>Titulo: </span><input type="text" id="titulo" class="input-field" name="titulo" value="<?php echo $_SESSION['titular_noticia'] ?>"  /></label>
-                <label><span>Noticia: </span><textarea style="color:black; resize:none;" id="cuerpoNoticia" rows="10px" cols="50px" class="input-field" name="cuerpoNoticia" ><?php echo $_SESSION['texto_noticia'] ?></textarea></label>
+                <label><span>Noticia: </span><textarea style="color:black; resize:none;" id="cuerpoNoticia" rows="10px" cols="48px" class="input-field" name="cuerpoNoticia" ><?php echo $_SESSION['texto_noticia'] ?></textarea></label>
 
                 <input type="submit" class="buttonSpecial"  name="btnModificarNoticia" value="Modificar"  onclick="return validacionRegistroNoticia();"/>
                 <input type="button" class="buttonSpecial" name="clear" value="Limpiar" onclick="clearForm(this.form);" >
