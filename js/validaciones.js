@@ -229,7 +229,7 @@ function validacionRegistroNoticias() {
         aux.innerHTML = "Introduzca un titulo.";
         $("#titulo").after(aux);
         bool = false;
-    } 
+    }
 
 
     if (cuerpoNoticia.value === "") {
@@ -239,7 +239,7 @@ function validacionRegistroNoticias() {
         aux.innerHTML = "Introduzca un texto";
         $("#cuerpoNoticia").after(aux);
         bool = false;
-    } 
+    }
 
     if (fecha.value === "") {
         var aux = document.createElement("p");
@@ -248,7 +248,7 @@ function validacionRegistroNoticias() {
         aux.innerHTML = "Introduzca la fecha";
         $("#datepicker").after(aux);
         bool = false;
-    } 
+    }
 
     return bool;
 }
@@ -261,7 +261,7 @@ function confirmDel() { //confirmar borrar noticia
 }
 
 function validacionLogin() {
-    var exp = new RegExp(/^[A-Z]{1,2}\s\d{4}\s([B-D]|[F-H]|[J-N]|[P-T]|[V-Z]){3}$/);
+    var exp = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
     var user = document.getElementById("user");
     var pass = document.getElementById("password");
     var bool = true;
@@ -274,37 +274,26 @@ function validacionLogin() {
         $("#passError").remove();
         $("#password").css("background-color", "#f2d6b5");
     }
-    
+
 
     if (user.value === "") {
 
-        var aux = document.createElement("p");
-         aux.setAttribute("id", "userError");
-        aux.setAttribute("class", "error");
-        aux.innerHTML = "Introduzca un usuario.";
         user.value = "Introduzca su correo";
-        $("#user").after(aux);
         $("#user").css("background-color", "#f2dede");
         $("#user").css("color", "#a94442");
         $("#user").css("border-width", "1px");
         $("#user").css("border-style", "solid");
         $("#user").css("border-color", "red");
         $("#user").css("box-shadow", "red");
-
         bool = false;
     }
 
     if (pass.value === "") {
 
-        var aux = document.createElement("p");
-        aux.setAttribute("id", "passError");
-        aux.setAttribute("class", "error");
-        aux.innerHTML = "Introduzca una contrase&ntilde;a.";
-        $("#password").after(aux);
+        
         $("#password").css("background-color", "red");
         document.formLogin.password.type = 'text';
         password.value = "Introduzca su password";
-        $("#user").after(aux);
         $("#password").css("background-color", "#f2dede");
         $("#password").css("color", "#a94442");
         $("#password").css("border-width", "1px");
@@ -314,14 +303,9 @@ function validacionLogin() {
         bool = false;
     }
 
-    if (user.value !== "" && exp.test(String(user.value))) {
+    if (user.value !== "" && !exp.test(String(user.value))) {
 
-        var aux = document.createElement("p");
-        aux.setAttribute("id", "userError");
-        aux.setAttribute("class", "error");
-        aux.innerHTML = "Introduzca un nombre de usuario correcto.";
-        $("#user").after(aux);
-        user.value = "Introduzca un nombre correcto";
+        user.value = "Introduzca un mail correcto";
         $("#user").css("background-color", "#f2dede");
         $("#user").css("color", "#a94442");
         $("#user").css("border-width", "1px");
