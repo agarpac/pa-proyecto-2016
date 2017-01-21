@@ -22,12 +22,12 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
             <form action="#" method="post">
                 <label><span>Para:</span> <input type="email" class="input-field" name="usuario_destino" value="<?php echo $_SESSION['correo_usuario_ID']; ?>" disabled /></label>
                 <label><span>Mensaje Recibido:</span>
-                    <textarea style="color:black; resize:none;" class="input-field" rows="5" cols="60" name="textoRecibido" disabled><?php
+                    <textarea style="color:black; resize:none;" class="input-field" rows="5" cols="45" name="textoRecibido" disabled><?php
                         echo $_COOKIE['texto_mensaje'];
                         unset($_COOKIE["texto_mensaje"]);
                         ?></textarea></label>
                 <label><span>Texto:</span>
-                    <textarea style="color:black; resize:none;" class="input-field" rows="5" cols="60" name="texto"></textarea></label>
+                    <textarea style="color:black; resize:none;" class="input-field" rows="5" cols="45" name="texto"></textarea></label>
                 <input type="submit" class="buttonSpecial" value="Enviar" name="btnEnviar" />
                 <input type="submit" class="buttonSpecial" value="Volver a mensajes" name="btnVolver" />
             </form>
