@@ -8,7 +8,7 @@ and open the template in the editor.
 include './header.php';
 include_once './CRUD/CRUDNoticia.php';
 include_once './CRUD/CRUDEquipo.php';
-if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado'] && ($_SESSION['admin'] == 0)) {
+if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado'] && $_SESSION['admin'] == 0) {
     ?>
     <body>
         <?php
