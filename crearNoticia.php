@@ -1,6 +1,6 @@
 <?php
 include './header.php';
-if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
+if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado'] && $_SESSION['admin'] == 0) {
     include_once './CRUD/CRUDNoticia.php';
     include_once './CRUD/CRUDEquipo.php';
     ?>

@@ -1,7 +1,7 @@
 <?php
 include './header.php';
 include_once './CRUD/CRUDEquipo.php';
-if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
+if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado'] && $_SESSION['admin'] == 0) {
     readEquipoModificar($_SESSION['id_equipo_modificar']);
 
     if (isset($_POST['btnAceptar'])) {

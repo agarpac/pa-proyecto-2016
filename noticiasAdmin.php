@@ -1,7 +1,7 @@
 <?php
 include './header.php';
 include_once './CRUD/CRUDNoticia.php';
-if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado'] && ($_SESSION['admin'] == 0)) {
+if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado'] && $_SESSION['admin'] == 0) {
 
     if (isset($_GET['btnCrearNoticia'])) {
         header('location: crearNoticia.php');

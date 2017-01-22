@@ -1,7 +1,7 @@
 <?php
 include './header.php';
 include_once './CRUD/CRUDEquipo.php';
-if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
+if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado'] && $_SESSION['admin'] == 0) {
     if (isset($_POST['btnEliminar'])) {
         if (equipoFavorito($_POST['equipos'])) {
             echo '<script type="text/javascript">alert("El equipo que quiere borrar es el favorito de, al menos, un usuario");</script>';
