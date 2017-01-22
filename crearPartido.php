@@ -48,7 +48,7 @@ if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado']) {
                     <button type="submit" class="buttonSpecial" name="btnCrearEstadio"><img src="img/crear.png" width="15" height="15" alt="+"/>
                     </button> <?php
                     if ($_SESSION['admin'] == 0) {
-                        echo '<button type="submit" class="buttonSpecial" name="btnEliminarEstadio"><img src="img/eliminar.png" width="15" height="15" alt="-"/>
+                        echo '<button type="submit" class="buttonSpecial" name="btnEliminarEstadio" onclick="return confirmDel()"><img src="img/eliminar.png" width="15" height="15" alt="-"/>
                     </button>';
                     }
                     ?></label>
